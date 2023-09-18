@@ -28,9 +28,9 @@ class PageController extends Controller
         $dataBrand = BrandModel::all();
         $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/');
         view()->share([
-            'dataCategory' => $dataCategory, 
-            'dataBrand' => $dataBrand, 
-            'priceMax' => $priceMax, 
+            'dataCategory' => $dataCategory,
+            'dataBrand' => $dataBrand,
+            'priceMax' => $priceMax,
             'priceMin' => $priceMin,
             'priceMinFilter' => $priceMin+2000000,
             'priceMaxFilter' => $priceMax-2000000,
@@ -41,7 +41,7 @@ class PageController extends Controller
     public function index(){
         $dataProductNews = ProductModel::orderBy('product_id', 'DESC')->paginate(8);
         $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(8)->get();
-        $dataProductSell = OrderdetailModel::groupBy('product_id')->select('product_id')->orderBy('order_detail_id', 'DESC')->limit(4)->get();
+        $dataProductSell = OrderdetailModel::groupBy('product_id')->select('product_id')->limit(4)->get();
         $dataComment = CommentModel::where('comment_status', 3)->limit(4)->get();
         $dataSilde = SlideModel::where('active', 1)->where('type', 1)->orderBy('id', 'DESC')->limit(4)->get();
         $dataBanner = SlideModel::where('active', 1)->where('type', 2)->orderBy('id', 'DESC')->first();
@@ -136,7 +136,7 @@ class PageController extends Controller
         $pos = strpos($id, "-");
         $id = substr($id, 0, $pos);//Cắt lấy id theo cái - đầu
 
-        $data = ProductModel::find($id);    
+        $data = ProductModel::find($id);
         $dataProductCategory = ProductModel::where('product_id', '!=', $id)->where('category_id', $data->category_id)->orderBy('product_sale', 'DESC')->limit(4)->get();
         $dataProductImages = ImageModel::where('product_id', $id)->get();
         $dataComment = CommentModel::where('product_id', $id)->orderBy('comment_id', 'DESC')->limit(3)->get();
