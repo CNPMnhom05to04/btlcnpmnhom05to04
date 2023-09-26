@@ -18,11 +18,13 @@
   <link href="../backend_assets/assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../backend_assets/assets/demo/demo.css" rel="stylesheet" />
-  @yield('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    @yield('style')
 </head>
 
-<body class="">
-  <div class="wrapper ">
+<body class="" id="result">
+  <div class="wrapper " >
     {{-- Menu --}}
     @include('backend.menu')
 
@@ -33,11 +35,11 @@
       <div class="content">
 
         @yield('content')
-        
+
       </div>
     </div>
   </div>
-  
+
   <!--   Core JS Files   -->
   <script src="../backend_assets/assets/js/core/jquery.min.js"></script>
   <script src="../backend_assets/assets/js/core/popper.min.js"></script>
@@ -81,7 +83,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
-  
+
   @include('sweetalert::alert')
   @yield('script')
 

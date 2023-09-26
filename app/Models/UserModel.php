@@ -11,14 +11,14 @@ use App\Models\Ship\DistrictModel;
 use App\Models\Ship\CityModel;
 
 
-class UserModel extends Authenticatable
+class UserModel extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
     protected $table = 'users';
 
     protected $fillable = [
-        'user_name', 'user_email', 'user_password', 'user_phone', 'user_addres', 'user_district', 'user_city', 'provider', 'provider_id','role_id',  
+        'user_name', 'user_email', 'user_password', 'user_phone', 'user_addres', 'user_district', 'user_city', 'provider', 'provider_id','role_id',
     ];
 
     protected $hidden = [

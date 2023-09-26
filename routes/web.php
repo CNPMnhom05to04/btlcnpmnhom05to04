@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Artisan;
@@ -22,8 +23,9 @@ use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\frontend\CustomerController;
 use App\Http\Controllers\backend\RequirementController;
-use RealRashid\SweetAlert\Facades\Alert;//dùng sweet alert
-
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,7 @@ Route::get('/shop/product/{id}', [PageController::class, 'product']);
 Route::get('/contact', [PageController::class, 'contact']);
 
 //Route handle cart
+Route::get('/verify', [CartController::class, 'verify'])->name('verify.user');
 Route::get('/cart', [CartController::class, 'cart']);
 Route::get('/checkout', [CartController::class, 'checkout']);
 Route::post('/payment', [CartController::class, 'payment']);
@@ -87,36 +90,43 @@ Route::prefix('customer')->middleware('HandleLoginCustomer')->group(function () 
     Route::get('/wishlist', [CustomerController::class, 'customerWishList']);
 });
 
-//Route handle wish list, comment, search
+
 Route::post('/handle-wishlist', [CustomerController::class, 'handleWishList']);
 Route::post('/add-comment-customer', [CustomerController::class, 'addCommentUser']);
 Route::post('/get-data-search', [CustomerController::class, 'getDataSearch']);
 
-//Route đăng nhập phía quản trị
+
 Route::get('/admin', [UserController::class, 'getLogin']);
 Route::post('/admin', [UserController::class, 'postLogin']);
 
 
 
-//Route prefix admin, middleware login admin
 Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     //Route dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::post('get-data-chart-line', [DashboardController::class, 'getDataChartLine']);
     Route::post('get-data-chart-line-date', [DashboardController::class, 'getDataChartLineDate']);
     Route::get('get-data-chart-pie-city', [DashboardController::class, 'getChartCityBuy']);
+    Route::post('filter', [CategoryController::class, 'filter'])->name('category.filter');
 
     //Route Categorys
-    Route::get('/categorys', [CategoryController::class, 'index']);
+    Route::get('/categorys', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/categorys/create', [CategoryController::class, 'create']);
     Route::post('/categorys', [CategoryController::class, 'store']);
     Route::get('/categorys/{id}/edit', [CategoryController::class, 'edit']);
     Route::patch('/categorys/{id}', [CategoryController::class, 'update']);
-    Route::delete('/categorys/{id}', [CategoryController::class, 'destroy']);
+    Route::delete('/categorys/delete_more', [CategoryController::class, 'delete_more']);
+    Route::get('/categorys/export' , [CategoryController::class, 'export'])->name('category.export');
 
     //Route Brands
-    Route::resource('/brands', BrandController::class);
+//    Route::resource('/brands', BrandController::class);
 
+    Route::get('/brands', [BrandController::class, 'index'])->name('brand.index');
+    Route::get('/brands/create', [BrandController::class, 'create'])->name('brand.create');
+    Route::post('/brands', [BrandController::class, 'store']);
+    Route::get('/brands/{id}/edit', [BrandController::class, 'edit']);
+    Route::patch('/brands/{id}', [BrandController::class, 'update']);
+    Route::delete('/brands/{id}', [BrandController::class, 'delete'])->name('brand.destroy');
     //Route products
     Route::resource('/products', ProductController::class);
 

@@ -4,12 +4,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <a href="admin/brands/create" class="btn btn-primary" data-color="green">Thêm Không Gian Decor</a>
+            <a href="{{ route('brand.create') }}" class="btn btn-primary" data-color="green">
+                <span class="col-md-4">{{ __('message.add_category_tea') }}</span>
+            </a>
         </div>
         <div class="col-md-12">
             <div class="card">
+
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Không Gian Decor</h4>
+                <h4 class="card-title ">Phân loại Trà</h4>
             </div>
 
             @include('backend.note')
@@ -18,9 +21,10 @@
                 <div class="table-responsive table-hover">
                 <table class="table">
                     <thead class="text-primary text-center">
-                        <th style="width: 150px;">Không Gian</th>
-                        <th class="text-center">Số sản phẩm</th>
+                        <th style="width: 150px;">Phân loại</th>
+                        <th class="text-center">Số lượng</th>
                         <th>Thông tin</th>
+                        <th>Tác vụ</th>
                         <th></th>
                     </thead>
                     <tbody class="text-center">
@@ -39,12 +43,10 @@
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="admin/brands/{{$item->brand_id}}/edit">Sửa</a>
-                                        @if (count($item->product) == 0)
-                                        <form>
-                                            @csrf
-                                            <a class="dropdown-item button-delete" href="#">Xóa</a>
-                                        </form>
-                                        @endif
+                                            <form>
+                                                @csrf
+                                                <a class="dropdown-item button-delete{{ count($item->product) == 0 ? '' : ' disabled' }}" href="#">Xóa</a>
+                                            </form>
                                     </div>
                                   </div>
                             </td>
@@ -69,7 +71,7 @@
   <script>
 
       $('.button-delete').click(function (e) {
-          
+
         e.preventDefault();
         var brand_id = $(this).closest('tr').find('.id_delete').val();
         var token = $('input[name=_token]').val();

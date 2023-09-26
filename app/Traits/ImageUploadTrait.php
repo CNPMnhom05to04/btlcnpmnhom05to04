@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Storage;
 
 trait ImageUploadTrait
 {
-    //Xử lý upload 1 ảnh 
-    public function handleUploadImage($request, $fieldName, $foderName)
+    //Xử lý upload 1 ảnh
+    public function handleUploadImage($request, $fieldName, $foderName): ?string
     {
         //Kiểm tra có request fieldName có tồn tại không
         if ($request->hasFile($fieldName)) {
@@ -27,7 +27,7 @@ trait ImageUploadTrait
     }
 
     // Xử lý upload nhiều ảnh
-    public function handleUploadImageProduct($request, $fieldName, $foderName)
+    public function handleUploadImageProduct($request, $fieldName, $foderName): array
     {
         $dataPath = [];
         if ($request->hasFile($fieldName)) {

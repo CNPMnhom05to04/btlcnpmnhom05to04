@@ -24,7 +24,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="../libs/vinaneon-logo-1.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
+
 
     <base href="/">
     <!-- All css files are included here. -->
@@ -60,7 +60,7 @@
         <!-- Start Offset Wrapper -->
         @include('frontend.offset')
         <!-- End Offset Wrapper -->
-        
+
         @yield('content')
 
         <!-- Start Footer Area -->
@@ -141,35 +141,35 @@
             <!-- End Footer Widget -->
         </footer>
         <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
+        <div id="fb-root"></div>
 
-    <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
+        <!-- Your Plugin chat code -->
+        <div id="fb-customer-chat" class="fb-customerchat">
+        </div>
 
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "108936238307868");
-      chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
+        <script>
+            var chatbox = document.getElementById('fb-customer-chat');
+            chatbox.setAttribute("page_id", "110391036998379");
+            chatbox.setAttribute("attribution", "biz_inbox");
+        </script>
 
-    <!-- Your SDK code -->
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v12.0'
-        });
-      };
+        <!-- Your SDK code -->
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    xfbml            : true,
+                    version          : 'v18.0'
+                });
+            };
 
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <!-- End Footer Style -->
     </div>
     <!-- Body main wrapper end -->
@@ -209,7 +209,7 @@
                         $('.ajax-search').html(data);
 
                         $('.choose').click(function () {
-                            
+
                             $('#keyword').val($(this).text())
                             $('.ajax-search').fadeOut();
                         })
@@ -218,7 +218,7 @@
             }
         })
 
-       
+
 
         $('.cart__menu').click(function(){
             var output = '';
@@ -256,16 +256,16 @@
                     }else{
                         output = data[0]
                     }
-                    
+
 
                     $('.total__price').text(data[1].toLocaleString('ja-JP')+ ''+ ' VNĐ');
                     $('.shp__cart__wrap').html(output);
-                    
+
                     //Handle delete product in cart offset
                     $('.button_del').click(function () {
                         var id = $(this).data('id-delete-cart');
                         var _token = $('input[name=_token]').val();
-                        
+
                         $.ajax({
                             url: 'delete_cart_offset',
                             method: 'POST',

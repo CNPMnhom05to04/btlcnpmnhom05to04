@@ -21,8 +21,7 @@ class UserController extends Controller
         $active = "active";
         view()->share('activeUser', $active);
     }
-    
-    //Danh sách tài khoản
+
     public function index()
     {
         //
@@ -31,20 +30,18 @@ class UserController extends Controller
         return view('backend.users.list', ['data' => $data]);
     }
 
-    //Form tạo tài khoản
     public function create()
     {
         return view('backend.users.add');
     }
 
-    //Thêm tài khoản
     public function store(UserRequest $request)
     {
         $data = new UserModel();
-        
+
         $data->user_name = $request->user_name;
         $data->user_email = $request->user_email;
-        $data->password = bcrypt($request->user_password);//bcrypt mã hóa mật khẩu trước 
+        $data->password = bcrypt($request->user_password);
         $data->role_id = $request->role_id;
 
         if($data->save()){
@@ -56,7 +53,7 @@ class UserController extends Controller
 
     }
 
-    //Form sửa vai trò
+
     public function edit($id)
     {
         $data = UserModel::find($id);
@@ -64,7 +61,7 @@ class UserController extends Controller
 
     }
 
-    //Sửa vai trò
+
     public function update(Request $request, $id)
     {
         $data = UserModel::find($id);
@@ -79,7 +76,6 @@ class UserController extends Controller
         }
     }
 
-    //Xóa tài khoản
     public function destroy($id)
     {
         $data = UserModel::find($id);
@@ -99,12 +95,10 @@ class UserController extends Controller
         }
     }
 
-    //Form login
     public function getLogin(){
         return view('backend.users.login');
     }
 
-    //Xửa lý đăng nhập
     public function postLogin(Request $request){
         $user_email = $request->user_email;
         $password = $request->user_password;
@@ -117,7 +111,7 @@ class UserController extends Controller
         };
     }
 
-    //Xử lý đăng xuất 
+    //Xử lý đăng xuất
     public function logoutAdmin(){
         Auth::logout();
 
@@ -135,7 +129,6 @@ class UserController extends Controller
         }
     }
 
-    //Form chỉnh sửa thoogn tin admin
     public function showFormUpdateAdmin(){
         $dataUser = Auth::user();
 
@@ -144,7 +137,6 @@ class UserController extends Controller
         return view('backend.profile.update', ['data' => $data]);
     }
 
-    //Cập nhật thông tin admin
     public function updateProfileAdmin(UserUpdateProfileRequest $request){
         $dataUser = Auth::user();
 
@@ -152,7 +144,7 @@ class UserController extends Controller
 
         $data->user_name = $request->user_name;
         $data->password = bcrypt($request->user_password);
-        
+
         if($data->save()){
             return redirect('admin/profile/show')->with('msgSuccess', 'Cập nhật thông tin thành công');
         }

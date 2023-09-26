@@ -74,7 +74,7 @@
   <script>
 
       $('.button-delete').click(function (e) {
-          
+
         e.preventDefault();
         var product_id = $(this).closest('tr').find('.id_delete').val();
         var token = $('input[name=_token]').val();

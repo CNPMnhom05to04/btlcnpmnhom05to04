@@ -12,4 +12,10 @@ class ImageModel extends Model
     protected $table = 'images';
 
     protected $primaryKey = 'image_id';
+
+    protected $fillable = [
+        'image_name',
+        'product_id',
+        'image_name'
+    ];
 }

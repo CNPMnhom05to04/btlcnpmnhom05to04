@@ -3838,6 +3838,27 @@ tbody.collapse.show {
   box-shadow: none;
 }
 
+
+.button-delete.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+*  {
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    color: #333;
+    font-size: 1em;
+}
+
+.product-count {
+    margin-right: 10px;
+}
+
 .btn-group-vertical {
   flex-direction: column;
   align-items: flex-start;
@@ -3897,7 +3918,7 @@ tbody.collapse.show {
   position: relative;
   flex: 1 1 auto;
   width: 1%;
-  margin-bottom: 0;
+  margin-bottom: 30px;
 }
 
 .input-group>.form-control:focus,
