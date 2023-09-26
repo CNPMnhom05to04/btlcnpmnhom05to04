@@ -1,6 +1,6 @@
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
     <div class="logo"><a href="/" class="simple-text logo-normal">
-        VINANEON
+        TEA TAM
       </a></div>
     <div class="sidebar-wrapper">
       <ul class="nav">
@@ -28,7 +28,7 @@
           @endphp">
           <a class="nav-link" href="admin/brands">
             <i class="material-icons">content_paste</i>
-            <p>Không Gian Decor</p>
+            <p>Phân Loại chất lượng</p>
           </a>
         </li>
         <li class="nav-item @php
@@ -50,7 +50,7 @@
           </a>
         </li>
         @if (Auth::user()->role_id == 1)
-          <li class="nav-item 
+          <li class="nav-item
             @php
             if(isset($activeUser))
             echo $activeUser;
@@ -61,7 +61,7 @@
             </a>
           </li>
         @endif
-        
+
         <li class="nav-item @php
               if(isset($activeOrder))
               echo $activeOrder;

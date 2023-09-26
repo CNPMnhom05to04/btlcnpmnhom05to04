@@ -19,11 +19,12 @@ class ProductController extends Controller
 {
     use ImageUploadTrait;
 
-    public function __construct(){
+    public function __construct()
+    {
         $active = "active";
         view()->share('activeProduct', $active);
     }
-    
+
     //Danh sách sản phẩm
     public function index()
     {
@@ -38,7 +39,7 @@ class ProductController extends Controller
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
 
-        return view('backend.products.add',['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand]);
+        return view('backend.products.add', ['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand]);
     }
 
     //Thêm sản phẩm
@@ -46,41 +47,37 @@ class ProductController extends Controller
     {
         try {
             DB::beginTransaction();
+            $data = ProductModel::create([
+                'product_image' => $this->handleUploadImage($request, 'product_image', 'images_product'),
+                'product_name' => $request->product_name,
+                'category_id' => $request->category_id,
+                'brand_id' => $request->brand_id,
+                'product_price_buy' => $request->product_price_buy,
+                'product_price_sell' => $request->product_price_sell,
+                'product_amount' => $request->product_amount,
+                'product_sale' => $request->product_sale,
+                'product_attribute' => $request->product_attribute,
+                'product_detail' => $request->product_detail,
+                'product_keyword' => $request->product_keyword,
+                'product_description' => $request->product_description,
+            ]);
 
-            $data = new ProductModel();
-        
-            $data->product_image = $this->handleUploadImage($request, 'product_image', 'images_product');
-            $data->product_name = $request->product_name;
-            $data->category_id = $request->category_id;
-            $data->brand_id = $request->brand_id;
-            $data->product_price_buy = $request->product_price_buy;
-            $data->product_price_sell = $request->product_price_sell;
-            $data->product_amount = $request->product_amount;
-            $data->product_sale = $request->product_sale;
-            $data->product_attribute = $request->product_attribute;
-            $data->product_detail = $request->product_detail;
-            $data->product_keyword = $request->product_keyword;
-            $data->product_description = $request->product_description;
-
-            $data->save();
             $id_product_insert = $data->product_id;
 
             $dataPath = $this->handleUploadImageProduct($request, 'product_list_image', 'images_product');
             if ($dataPath != null) {
                 foreach ($dataPath as $key => $path) {
-                    $dataImages = new ImageModel();
-
-                    $dataImages->image_name = $path;
-                    $dataImages->product_id = $id_product_insert;
-                    $dataImages->save();
+                    ImageModel::create([
+                        'image_name' => $path,
+                        'product_id' => $id_product_insert,
+                    ]);
                 }
             }
             DB::commit();
             return redirect('admin/products/create')->with('msgSuccess', 'Thêm sản phẩm thành công');
-        }
-        catch (\Exception $e) {
-            DB::rollBack();
-            return redirect('admin/products/create')->with('msgSuccess', 'Thêm sản phẩm thất bại');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect('admin/products/create')->with('msgError', 'Lỗi khi thêm sản phẩm: ' . $e->getMessage());
         }
     }
 
@@ -101,7 +98,7 @@ class ProductController extends Controller
         $data = ProductModel::find($id);
         $dataImage = ImageModel::where('product_id', $id)->get();
 
-        return view('backend.products.update',['data' => $data, 'dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'dataImage' => $dataImage]);
+        return view('backend.products.update', ['data' => $data, 'dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'dataImage' => $dataImage]);
 
     }
 
@@ -111,17 +108,17 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
             $data = ProductModel::find($id);
-        
+
             $dataPathImage = $this->handleUploadImage($request, 'product_image', 'images_product');
-    
+
             if ($dataPathImage != null) {
                 $image_path = public_path() . '/' . $data->product_image;
-    
+
                 if (file_exists(public_path('/' . $data->product_image))) unlink($image_path);
-    
+
                 $data->product_image = $dataPathImage;
             }
-    
+
             $data->product_name = $request->product_name;
             $data->category_id = $request->category_id;
             $data->brand_id = $request->brand_id;
@@ -133,13 +130,13 @@ class ProductController extends Controller
             $data->product_detail = $request->product_detail;
             $data->product_keyword = $request->product_keyword;
             $data->product_description = $request->product_description;
-    
+
             $data->save();
-            
+
             $dataPath = $this->handleUploadImageProduct($request, 'product_list_image', 'images_product');
             if ($dataPath != null) {
                 $dataImgs = ImageModel::where('product_id', $id)->get();
-                
+
                 foreach ($dataImgs as $image) {
                     $image_path = public_path() . '/' . $image->image_name;
                     if (file_exists(public_path('/' . $image->image_name))) unlink($image_path);
@@ -147,7 +144,7 @@ class ProductController extends Controller
                 }
                 foreach ($dataPath as $key => $path) {
                     $dataImages = new ImageModel();
-                    
+
                     $dataImages->image_name = $path;
                     $dataImages->product_id = $id;
                     $dataImages->save();
@@ -155,8 +152,7 @@ class ProductController extends Controller
             }
             DB::commit();
             return redirect()->back()->with('msgSuccess', 'Sửa sản phẩm thành công');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('msgSuccess', 'Sửa sản phẩm thất bại');
         }
@@ -168,20 +164,19 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
             $data = ProductModel::find($id);
-            if (file_exists(public_path('/' . $data->product_image))) unlink(public_path() .'/'. $data->product_image);
+            if (file_exists(public_path('/' . $data->product_image))) unlink(public_path() . '/' . $data->product_image);
             $dataImages = ImageModel::where('product_id', $id)->get();
-            foreach($dataImages as $image){
+            foreach ($dataImages as $image) {
                 $dataImage = ImageModel::find($image->image_id);
-                if (file_exists(public_path('/' . $dataImage->image_name))) unlink(public_path() .'/'.$dataImage->image_name);
+                if (file_exists(public_path('/' . $dataImage->image_name))) unlink(public_path() . '/' . $dataImage->image_name);
                 $dataImage->delete();
             }
             $data->delete();
             DB::commit();
-            return response()->json(['msgSuccess'=>'Xóa sản phẩm thành công']);
-        }
-        catch (\Exception $e) {
+            return response()->json(['msgSuccess' => 'Xóa sản phẩm thành công']);
+        } catch (\Exception $e) {
             DB::rollBack();
-            return response()->json(['msgError'=>'Xóa sản phẩm thất bại']);
+            return response()->json(['msgError' => 'Xóa sản phẩm thất bại']);
         }
     }
 }

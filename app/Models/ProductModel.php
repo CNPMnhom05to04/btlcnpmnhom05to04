@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductModel extends Model
 {
@@ -13,10 +14,25 @@ class ProductModel extends Model
 
     protected $primaryKey = 'product_id';
 
+    protected $fillable = [
+        'product_image',
+        'product_name',
+        'category_id',
+        'brand_id',
+        'product_price_buy',
+        'product_price_sell',
+        'product_amount',
+        'product_sale',
+        'product_attribute',
+        'product_detail',
+        'product_keyword',
+        'product_description'
+    ];
+
     /**
      * Get the category that owns the ProductModel
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function category()
     {
@@ -26,7 +42,7 @@ class ProductModel extends Model
     /**
      * Get the brand that owns the ProductModel
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function brand()
     {

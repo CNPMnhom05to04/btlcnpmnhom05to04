@@ -49,9 +49,12 @@
                 </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary pull-right">Thêm Loại Sản Phẩm</button>
-          <a href="/admin/categorys" class="btn btn-primary pull-right">Danh sách loại sản phẩm</a>
-        <div class="clearfix"></div>
+          <button type="submit" class="btn btn-primary pull-right">
+              <i class="fa-solid fa-arrow-right"></i>
+          </button>
+            <a href="/admin/categorys" class="btn btn-primary pull-right">
+                <i class="fa-solid fa-arrow-left fa-lg"></i>
+            </a>
         </div>
       </div>
       </form>

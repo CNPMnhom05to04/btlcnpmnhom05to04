@@ -49,7 +49,9 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary pull-right">Thêm Không Gian Decor</button>
-          <a href="/admin/brands" class="btn btn-primary pull-right">Danh sách không gian decor</a>
+          <a href="/admin/brands" class="btn btn-primary pull-right">
+              <i class="fa-solid fa-angles-left"></i>
+          </a>
         <div class="clearfix"></div>
         </div>
       </div>

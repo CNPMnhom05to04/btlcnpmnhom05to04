@@ -4,8 +4,10 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Brands\BrandRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\BrandModel;
+use mysql_xdevapi\Exception;
 
 class BrandController extends Controller
 {
@@ -14,7 +16,7 @@ class BrandController extends Controller
         $active = "active";
         view()->share('activeBrand', $active);
     }
-    
+
     //Danh sách không gian decor
     public function index()
     {
@@ -33,7 +35,7 @@ class BrandController extends Controller
     public function store(BrandRequest $request)
     {
         $data = new BrandModel();
-        
+
         $data->brand_name = $request->brand_name;
         $data->brand_keyword = $request->brand_keyword;
         $data->brand_description = $request->brand_description;
@@ -73,7 +75,7 @@ class BrandController extends Controller
     }
 
     //Xóa không gian decor
-    public function destroy($id)
+    public function delete($id)
     {
         $data = BrandModel::find($id);
 
