@@ -7,18 +7,25 @@ use App\Exports\CateExport;
 use App\Helpers\CommonHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Categorys\CategoryRequest;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\CategoryModel;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use stdClass;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
 
 class CategoryController extends Controller
 {
 
     public function __construct()
     {
+        $this->responses = new stdClass();
         $active = "active";
         view()->share('activeCategory', $active);
     }
@@ -108,17 +115,24 @@ class CategoryController extends Controller
     }
 
     // filter
-    public function filter(Request $request){
+    public function filter(Request $request)
+    {
         $filter = $request->input('selectedValue');
         $data = (new \App\Helpers\CommonHelper)->get_data_filter($filter);
         return view('backend.categorys.list', ['data' => $data]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
-     */
-    public function export(): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    public function export(Request $request)
     {
-        return Excel::download(new CateExport, 'cate.xlsx');
+        $responses = CategoryModel::withCount('product')->get();
+
+        $orderedResponses = $responses->map->only([
+            "category_id",
+            "category_name",
+            "product_count",
+            "category_keyword",
+            "category_description"
+        ]);
+        return Excel::download(new CateExport($orderedResponses), 'Thống kê loại sản phẩm Tâm Trà-' . now()->format('Y-m-d') . '.xlsx');
     }
 }
