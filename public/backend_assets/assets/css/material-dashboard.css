@@ -1037,6 +1037,24 @@ pre code {
   margin-left: -15px;
 }
 
+.pagination .page-item .page-link {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #9c27b0;
+    border-color: #9c27b0;
+    color: #ffffff;
+}
+
+.pagination.page-link:hover {
+    background-color: #9c27b0;
+    color: #ffffff;
+}
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -5327,7 +5345,7 @@ a.button-common-edit {
 
 thead.text-primary {
     text-align: center;
-    background-color: #1890ff;
+    background: linear-gradient(60deg, #ab47bc, #8e24aa);
     border-right: 1px solid rgba(0,0,0,.06)!important;
     border-bottom: 1px solid rgba(0,0,0,.06)!important;
 }
