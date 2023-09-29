@@ -12,17 +12,17 @@
                         <div class="table-responsive table-hover">
                             <table class="table">
                                 <thead class="text-primary">
-                                <th style="width: 50px; font-weight: bold; font-size: 16px;"></th>
+                                <th style="width: 40px; font-weight: bold; font-size: 16px; color: #FFFFFF"></th>
                                 <th style="width: 150px; font-weight: bold; font-size: 16px;" class="text-center">Tên
                                     Loại
                                 </th>
-                                <th style="width: 130px;font-weight: bold; font-size: 16px;"
+                                <th style="width: 100px;font-weight: bold; font-size: 16px;"
                                     class="text-center product-count">Số sản phẩm
                                 </th>
                                 <th style="width: 350px;font-weight: bold; font-size: 16px;" class="text-center">Thông
                                     tin
                                 </th>
-                                <th style="width: 200px;font-weight: bold; font-size: 16px;" class="text-center">Tác
+                                <th style="width: 200px;font-weight: bold; font-size: 16px;" class="text-center align-items-center">Tác
                                     vụ
                                 </th>
                                 </thead>
@@ -36,16 +36,18 @@
                                         </td>
 
                                         <td class="text-center"><strong>{{$item->category_name}}</strong></td>
-                                        <td class="text-center product-count"><strong>{{count($item->product)}}</strong>
-                                        </td>
+
+                                        <td class="text-center product-count"><strong>{{count($item->product)}}</strong> </td>
+
                                         <td style="width: 350px;" class="text-center">
                                             <strong>Từ khóa:</strong> {{$item->category_keyword}} <br>
                                             <strong>Mô tả:</strong> {{$item->category_description}}
                                         </td>
-                                        <td class="text-center">
-                                            <a class="btn btn-warning"
+
+                                        <td class="text-center ">
+                                            <a class="button-common-edit edit "
                                                href="admin/categorys/{{$item->category_id}}/edit">
-                                                <i class="fa-solid fa-marker"></i>
+                                                <i class="fa-solid fa-marker mr-1"></i> Sửa
                                             </a>
                                         </td>
                                     </tr>
@@ -71,19 +73,22 @@
                                             </div>
 
                                             <div class="align-items-center">
-                                                <div
-                                                    class="d-grid gap-2 d-md-flex flex-column flex-md-row justify-content-md-end">
-                                                    <a class="btn btn-primary float-end"
-                                                       href="{{ route('category.export') }}">Export
+                                                <div class="d-md-flex flex-column flex-md-row justify-content-md-end">
+                                                    <a class="button-common-export export mb-2 mt-2 mr-2" href="{{ route('category.export') }}">
+                                                        <i class="fa-solid fa-file-export mr-1"></i> Export
                                                     </a>
+
                                                     <a href="admin/categorys/create"
-                                                       class="btn btn-success me-md-2 mb-2">
-                                                        <i class="fa-solid fa-plus fa-lg"></i>
+                                                       class="button-common-add add  mb-2 mt-2 mr-2">
+                                                        <i class="fa-solid fa-plus fa-lg mr-1"></i>Thêm loại sản phẩm
                                                     </a>
-                                                    <button class="btn btn-danger me-md-2 mb-2" type="button"
-                                                            onclick="deleteSelected()">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
+
+                                                    <div class="d-md-flex flex-column flex-md-row justify-content-md-end">
+                                                        <a class="button-common delete mb-2 mt-2 mr-2" onclick="deleteSelected()">
+                                                            <i class="fa-regular fa-trash-can mr-1"></i>
+                                                            <span>Xoá</span>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,6 +136,7 @@
                         type: "DELETE",
                         data: {
                             'ids': selectedIDs,
+                            '_token': token,
                         },
                         success: function (response) {
                             swal(response.msgSuccess, {

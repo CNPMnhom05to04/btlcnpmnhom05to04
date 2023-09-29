@@ -2816,7 +2816,7 @@ select.form-control-lg:not([size]):not([multiple]),
   vertical-align: middle;
   user-select: none;
   border: 1px solid transparent;
-  padding: 0.46875rem 1rem;
+    padding: 0.46875rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
@@ -5191,6 +5191,158 @@ body {
   .jumbotron {
     padding: 4rem 2rem;
   }
+}
+
+a.export:hover {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    background-color: #52c41a;
+}
+
+a.edit:hover {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    background-color: #f3ca07;
+}
+
+
+a.button-common.delete i.fa-regular.fa-trash-can,
+a.button-common.delete span {
+    color: #f5222d;
+}
+
+a.button-common.delete {
+    border: 1px solid #f5222d;
+}
+
+a.button-common-edit.edit i.fa-solid.fa-marker,
+a.button-common-edit.edit span {
+    color: #f3ca07;
+}
+
+a.button-common-edit.edit {
+    border: 1px solid #f3ca07;
+}
+
+a.button-common.delete:hover i.fa-regular.fa-trash-can,
+a.button-common.delete:hover span {
+    color: #FFFFFF;
+}
+
+a.button-common-edit.edit:hover i.fa-solid.fa-marker,
+a.button-common-edit.edit:hover span {
+    color: #FFFFFF;
+}
+
+a.button-common.delete:hover {
+    background-color: #f5222d;
+    border: 1px solid #f5222d;
+}
+
+a.button-common-edit.edit:hover {
+    background-color: #f3ca07;
+    border: 1px solid #f3ca07;
+}
+
+
+a.add:hover {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    background-color: #1890ff;
+}
+
+a.button-common-add {
+    color: #1890ff;
+}
+
+a.button-common-export {
+    color: #52c41a;
+}
+
+a.button-common {
+    color: #f5222d;
+}
+
+a.button-common-edit {
+    color: #f3ca07;
+}
+
+.button-common-add {
+    border-width: 2px;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    border: 1px solid #1890ff;
+    font-weight: 200;
+}
+
+.button-common-export {
+    border-width: 2px;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    border: 1px solid #52c41a;
+    font-weight: 200;
+}
+
+.button-common {
+    border-width: 2px;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    border: 1px solid #f5222d;
+    font-weight: 200;
+}
+
+a.button-common-edit {
+    border-width: 2px;
+    padding: 4px 6px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1rem;
+    border: 1px solid #800080;
+    font-weight: 200;
+    margin-left: 5.3rem;
+}
+
+a.button-common-edit {
+    width: 75px;
+    height: 38px;
+}
+
+thead.text-primary {
+    text-align: center;
+    background-color: #1890ff;
+    border-right: 1px solid rgba(0,0,0,.06)!important;
+    border-bottom: 1px solid rgba(0,0,0,.06)!important;
+}
+
+.table {
+    border: 2px solid #808080;
+    color: #808080
+}
+.table th {
+    border: 2px solid #808080;
+    color: #FFFFFF;
+}
+.table td {
+    border: 2px solid #808080;
+    color: rgba(0,0,0,.85)
 }
 
 .jumbotron-fluid {
