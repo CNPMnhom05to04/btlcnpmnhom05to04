@@ -50,98 +50,111 @@
 </head>
 
 <body>
-    <!-- Body main wrapper start -->
-    <div class="wrapper">
-        <!-- Start Header Style -->
-        @include('frontend.menu')
-        <!-- End Header Area -->
+<!-- Body main wrapper start -->
+<div class="wrapper">
+    <!-- Start Header Style -->
+    @include('frontend.menu')
+    <!-- End Header Area -->
 
-        <div class="body__overlay"></div>
-        <!-- Start Offset Wrapper -->
-        @include('frontend.offset')
-        <!-- End Offset Wrapper -->
+    <div class="body__overlay"></div>
+    <!-- Start Offset Wrapper -->
+    @include('frontend.offset')
+    <!-- End Offset Wrapper -->
 
-        @yield('content')
+    @yield('content')
 
-        <!-- Start Footer Area -->
-        <footer id="htc__footer">
-            <!-- Start Footer Widget -->
-            <div class="footer__container bg__cat--1">
-                <div class="container">
-                    <div class="row">
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="footer">
-                                <h2 class="title__line--2">Thông tin</h2>
-                                <div class="ft__details">
-                                    <div class="row">
-                                        <div class="col-sm-9">
-                                            <p>VINANEON luôn luôn mong muốn đem đến cho quý khách hàng những sản phẩm uy tín, chất lượng, giá cả tốt nhất thị trường</p>
-                                        </div>
-                                    </div>
-                                    <div class="ft__social__link">
-                                        <ul class="social__link">
-                                            <li><a href="#"><i class="icon-social-instagram icons"></i></a></li>
-
-                                            <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
-
-                                            <li><a href="#"><i class="icon-social-google icons"></i></a></li>
-                                        </ul>
+    <!-- Start Footer Area -->
+    <footer id="htc__footer">
+        <!-- Start Footer Widget -->
+        <div class="footer__container bg__cat--1">
+            <div class="container">
+                <div class="row">
+                    <!-- Start Single Footer Widget -->
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer">
+                            <h2 class="title__line--2">Thông tin</h2>
+                            <div class="ft__details">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <p>VINANEON luôn luôn mong muốn đem đến cho quý khách hàng những sản phẩm uy
+                                            tín, chất lượng, giá cả tốt nhất thị trường</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- End Single Footer Widget -->
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
-                            <div class="footer">
-                                <h2 class="title__line--2">MENU</h2>
-                                <div class="ft__inner">
-                                    <ul class="ft__list">
-                                        <li><a href="/">Trang chủ</a></li>
-                                        <li><a href="/shop">Cửa hàng</a></li>
-                                        <li><a href="/blog">Bài viết</a></li>
-                                        <li><a href="/contact">Liên hệ</a></li>
+                                <div class="ft__social__link">
+                                    <ul class="social__link">
+                                        <li><a href="#"><i class="icon-social-instagram icons"></i></a></li>
+
+                                        <li><a href="#"><i class="icon-social-facebook icons"></i></a></li>
+
+                                        <li><a href="#"><i class="icon-social-google icons"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Footer Widget -->
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
-                            <div class="footer">
-                                <h2 class="title__line--2">kHÔNG GIAN</h2>
-                                <div class="ft__inner">
-                                    <ul class="ft__list">
-                                        @foreach ($dataBrand as $item)
-                                            <li><a href="/shop/brand/{{$item->brand_id}}-{{Str::slug($item->brand_name, '-')}}.html">{{$item->brand_name}}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Footer Widget -->
-                        <!-- Start Single Footer Widget -->
-                        <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
-                            <div class="footer">
-                                <h2 class="title__line--2">LOẠI SẢN PHẨM</h2>
-                                <div class="ft__inner">
-                                    <ul class="ft__list">
-                                        @foreach ($dataCategory as $item)
-                                            <li><a href="/shop/category/{{$item->category_id}}-{{Str::slug($item->category_name, '-')}}.html">{{$item->category_name}}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Footer Widget -->
                     </div>
+                    <!-- End Single Footer Widget -->
+                    <!-- Start Single Footer Widget -->
+                    <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
+                        <div class="footer">
+                            <h2 class="title__line--2">MENU</h2>
+                            <div class="ft__inner">
+                                <ul class="ft__list">
+                                    <li><a href="/">Trang chủ</a></li>
+                                    <li><a href="/shop">Cửa hàng</a></li>
+                                    <li><a href="/blog">Bài viết</a></li>
+                                    <li><a href="/contact">Liên hệ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Footer Widget -->
+                    <!-- Start Single Footer Widget -->
+                    <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
+                        <div class="footer">
+                            <h2 class="title__line--2">kHÔNG GIAN</h2>
+                            <div class="ft__inner">
+                                <ul class="ft__list">
+                                    @foreach ($dataBrand as $item)
+                                        <li>
+                                            <a href="/shop/brand/{{$item->brand_id}}-{{Str::slug($item->brand_name, '-')}}.html">{{$item->brand_name}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Footer Widget -->
+                    <!-- Start Single Footer Widget -->
+                    <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
+                        <div class="footer">
+                            <h2 class="title__line--2">LOẠI SẢN PHẨM</h2>
+                            <div class="ft__inner">
+                                <ul class="ft__list">
+                                    @foreach ($dataCategory as $item)
+                                        <li>
+                                            <a href="/shop/category/{{$item->category_id}}-{{Str::slug($item->category_name, '-')}}.html">{{$item->category_name}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Footer Widget -->
                 </div>
             </div>
-            <!-- End Footer Widget -->
-        </footer>
-        <!-- Messenger Plugin chat Code -->
-        <div id="fb-root"></div>
+        </div>
+        <script>
+            var botmanWidget = {
+                aboutText: 'ssdsd',
+                introMessage: "✋ Hi! Chào mừng bạn đến với chatbot tự động của Tâm trà ",
+                customLauncherSelector: '.your-custom-launcher-element'
+            };
+        </script>
+        <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+        <!-- End Footer Widget -->
+    </footer>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
         <!-- Your Plugin chat code -->
         <div id="fb-customer-chat" class="fb-customerchat">
@@ -153,86 +166,86 @@
             chatbox.setAttribute("attribution", "biz_inbox");
         </script>
 
-        <!-- Your SDK code -->
-        <script>
-            window.fbAsyncInit = function() {
-                FB.init({
-                    xfbml            : true,
-                    version          : 'v18.0'
-                });
-            };
-
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <!-- End Footer Style -->
-    </div>
-    <!-- Body main wrapper end -->
-
-    <!-- Placed js at the end of the document so the pages load faster -->
-
-    <!-- jquery latest version -->
-    <script src="../frontend_assets/js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap framework js -->
-    <script src="../frontend_assets/js/bootstrap.min.js"></script>
-    <!-- All js plugins included in this file. -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../frontend_assets/js/plugins.js"></script>
-    <script src="../frontend_assets/js/slick.min.js"></script>
-    <script src="../frontend_assets/js/owl.carousel.min.js"></script>
-    <!-- Waypoints.min.js. -->
-    <script src="../frontend_assets/js/waypoints.min.js"></script>
-    <!-- Main js file that contents all jQuery plugins activation. -->
-    <script src="../frontend_assets/js/main.js"></script>
-    @include('sweetalert::alert')
-    @yield('script')
+    <!-- Your SDK code -->
     <script>
-        $('#keyword').keyup(function () {
-            var query = $(this).val();
-            var _token = $('input[name=_token]').val();
-            // alert(query)
-            if(query != ''){
-                $.ajax({
-                    url: 'get-data-search',
-                    method: 'POST',
-                    data: {
-                        _token: _token,
-                        query: query,
-                    },
-                    success: function (data) {
-                        $('.ajax-search').fadeIn();
-                        $('.ajax-search').html(data);
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
 
-                        $('.choose').click(function () {
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- End Footer Style -->
+</div>
+<!-- Body main wrapper end -->
 
-                            $('#keyword').val($(this).text())
-                            $('.ajax-search').fadeOut();
-                        })
-                    }
-                })
-            }
-        })
+<!-- Placed js at the end of the document so the pages load faster -->
 
-
-
-        $('.cart__menu').click(function(){
-            var output = '';
+<!-- jquery latest version -->
+<script src="../frontend_assets/js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap framework js -->
+<script src="../frontend_assets/js/bootstrap.min.js"></script>
+<!-- All js plugins included in this file. -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../frontend_assets/js/plugins.js"></script>
+<script src="../frontend_assets/js/slick.min.js"></script>
+<script src="../frontend_assets/js/owl.carousel.min.js"></script>
+<!-- Waypoints.min.js. -->
+<script src="../frontend_assets/js/waypoints.min.js"></script>
+<!-- Main js file that contents all jQuery plugins activation. -->
+<script src="../frontend_assets/js/main.js"></script>
+@include('sweetalert::alert')
+@yield('script')
+<script>
+    $('#keyword').keyup(function () {
+        var query = $(this).val();
+        var _token = $('input[name=_token]').val();
+        // alert(query)
+        if (query != '') {
             $.ajax({
-                type: "GET",
-                url: 'get_data_cart',
-                success: function(data) {
-                    var formatter = new Intl.NumberFormat('en-US', {
+                url: 'get-data-search',
+                method: 'POST',
+                data: {
+                    _token: _token,
+                    query: query,
+                },
+                success: function (data) {
+                    $('.ajax-search').fadeIn();
+                    $('.ajax-search').html(data);
+
+                    $('.choose').click(function () {
+
+                        $('#keyword').val($(this).text())
+                        $('.ajax-search').fadeOut();
+                    })
+                }
+            })
+        }
+    })
+
+
+    $('.cart__menu').click(function () {
+        var output = '';
+        $.ajax({
+            type: "GET",
+            url: 'get_data_cart',
+            success: function (data) {
+                var formatter = new Intl.NumberFormat('en-US', {
                     // style: 'currency',
                     currency: 'VND',
-                    });
-                    if(Array.isArray(data[0])){
-                        data[0].forEach(item => {
-                        output +=`<div class="shp__single__product tr-${item['cart_id']}">
+                });
+                if (Array.isArray(data[0])) {
+                    data[0].forEach(item => {
+                        output += `<div class="shp__single__product tr-${item['cart_id']}">
                                 <div class="shp__pro__thumb">
                                     <a href="#">
                                         <img src="${item['cart_image']}" alt="product images">
@@ -241,48 +254,48 @@
                                 <div class="shp__pro__details">
                                     <h2><a href="/shop/product/${item['cart_id']}">${item['cart_product']}</a></h2>
                                     <span class="quantity">QTY: ${item['cart_quantity']}</span>
-                                    <span class="shp__price">${formatter.format(item['cart_price_sale'])+ ' VNĐ'}</span>
+                                    <span class="shp__price">${formatter.format(item['cart_price_sale']) + ' VNĐ'}</span>
                                 </div>
                                 <form>
                                 @csrf
-                                <div class="remove__btn">
-                                    <button type="button" class="button_del" data-id-delete-cart="${item['cart_id']}">
+                        <div class="remove__btn">
+                            <button type="button" class="button_del" data-id-delete-cart="${item['cart_id']}">
                                         <i class="zmdi zmdi-close"></i>
                                     </button>
                                 </div>
                                 </form>
                             </div>`
                     });
-                    }else{
-                        output = data[0]
-                    }
-
-
-                    $('.total__price').text(data[1].toLocaleString('ja-JP')+ ''+ ' VNĐ');
-                    $('.shp__cart__wrap').html(output);
-
-                    //Handle delete product in cart offset
-                    $('.button_del').click(function () {
-                        var id = $(this).data('id-delete-cart');
-                        var _token = $('input[name=_token]').val();
-
-                        $.ajax({
-                            url: 'delete_cart_offset',
-                            method: 'POST',
-                            data: {
-                                _token: _token,
-                                cart_id: id,
-                            },
-                            success: function(dataDel){
-                                $('.tr-'+id).remove();
-                                $('.total__price').text(dataDel[0].toLocaleString('ja-JP')+ ''+ ' VNĐ');
-                            }
-                        })
-                    })
+                } else {
+                    output = data[0]
                 }
-            });
-        })
-    </script>
+
+
+                $('.total__price').text(data[1].toLocaleString('ja-JP') + '' + ' VNĐ');
+                $('.shp__cart__wrap').html(output);
+
+                //Handle delete product in cart offset
+                $('.button_del').click(function () {
+                    var id = $(this).data('id-delete-cart');
+                    var _token = $('input[name=_token]').val();
+
+                    $.ajax({
+                        url: 'delete_cart_offset',
+                        method: 'POST',
+                        data: {
+                            _token: _token,
+                            cart_id: id,
+                        },
+                        success: function (dataDel) {
+                            $('.tr-' + id).remove();
+                            $('.total__price').text(dataDel[0].toLocaleString('ja-JP') + '' + ' VNĐ');
+                        }
+                    })
+                })
+            }
+        });
+    })
+</script>
 </body>
 
 </html>
