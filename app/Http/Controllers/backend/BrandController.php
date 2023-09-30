@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Enums\Constant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Brands\BrandRequest;
 use Illuminate\Http\JsonResponse;
@@ -17,21 +18,18 @@ class BrandController extends Controller
         view()->share('activeBrand', $active);
     }
 
-    //Danh sách không gian decor
     public function index()
     {
-        $data = BrandModel::orderBy('brand_id', 'DESC')->paginate(5);
+        $data = BrandModel::orderBy('brand_id', 'DESC')->paginate(Constant::PER_PAGE);
 
         return view('backend.brands.list', ['data' => $data]);
     }
 
-    //Form thêm không gian decor
     public function create()
     {
         return view('backend.brands.add');
     }
 
-    //Thêm không gian decor
     public function store(BrandRequest $request)
     {
         $data = new BrandModel();
@@ -41,14 +39,13 @@ class BrandController extends Controller
         $data->brand_description = $request->brand_description;
 
         if($data->save()){
-            return redirect('admin/brands/create')->with('msgSuccess', 'Thêm không gian decor Thành Công');
+            return redirect('admin/brands')->with('msgSuccess', 'Thêm chất lượng trà Thành Công');
         }
         else{
-            return redirect('admin/brands/create')->with('msgSuccess', 'Thêm không gian decor Thất Bại');
+            return redirect('admin/brands/create')->with('msgSuccess', 'Thêm chất lượng trà Thất Bại');
         }
     }
 
-    //Form sửa không gian decor
     public function edit($id)
     {
         //
@@ -57,7 +54,6 @@ class BrandController extends Controller
         return view('backend.brands.update', ['data' => $data]);
     }
 
-    //Cập nhật không gian decor
     public function update(BrandRequest $request, $id)
     {
         $data = BrandModel::find($id);
@@ -67,23 +63,22 @@ class BrandController extends Controller
         $data->brand_description = $request->brand_description;
 
         if($data->save()){
-            return redirect()->back()->with('msgSuccess', 'Cập Nhật không gian decor Sản Phẩm Thành Công');
+            return redirect()->back()->with('msgSuccess', 'Cập nhật chất lượng trà Thành Công');
         }
         else{
-            return redirect()->back()->with('msgSuccess', 'Cập Nhật không gian decor Sản Phẩm Thất Bại');
+            return redirect()->back()->with('msgSuccess', 'Cập nhật chất lượng trà Thất Bại');
         }
     }
 
-    //Xóa không gian decor
     public function delete($id)
     {
         $data = BrandModel::find($id);
 
         if($data->delete()){
-            return response()->json(['msgSuccess'=>'Xóa không gian decor thành công']);
+            return response()->json(['msgSuccess'=>'Xóa chất lượng trà thành công']);
         }
         else{
-            return response()->json(['msgError'=>'Xóa không gian decor thất bại']);
+            return response()->json(['msgError'=>'Xóa chất lượng trà thất bại']);
         }
     }
 }

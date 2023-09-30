@@ -49,8 +49,8 @@
                 </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary pull-right">Sửa Loại Sản Phẩm</button>
-          <a href="/admin/categorys" class="btn btn-primary pull-right">Danh sách loại sản phẩm</a>
+          <button type="submit" class="btn btn-primary pull-right">Xác nhận</button>
+          <a href="/admin/categorys" class="btn btn-primary pull-right">Huỷ</a>
         <div class="clearfix"></div>
         </div>
       </div>
