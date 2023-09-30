@@ -49,11 +49,9 @@
                 </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary pull-right">
-              <i class="fa-solid fa-arrow-right"></i>
+          <button type="submit" class="btn btn-primary pull-right">Xác nhận
           </button>
-            <a href="/admin/categorys" class="btn btn-primary pull-right">
-                <i class="fa-solid fa-arrow-left fa-lg"></i>
+            <a href="/admin/categorys" class="btn btn-primary pull-right">Huỷ
             </a>
         </div>
       </div>

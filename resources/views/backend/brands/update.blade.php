@@ -49,8 +49,8 @@
                 </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary pull-right">Sửa Không Gian Decor</button>
-          <a href="/admin/brands" class="btn btn-primary pull-right">Danh sách không gian decor</a>
+          <button type="submit" class="btn btn-primary pull-right">Xác nhận</button>
+          <a href="/admin/brands" class="btn btn-primary pull-right">Huỷ</a>
         <div class="clearfix"></div>
         </div>
       </div>

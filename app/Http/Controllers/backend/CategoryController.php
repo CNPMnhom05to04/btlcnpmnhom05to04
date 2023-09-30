@@ -54,7 +54,7 @@ class CategoryController extends Controller
         $data->category_description = $request->category_description;
 
         if ($data->save()) {
-            return redirect('admin/categorys/create')->with('msgSuccess', 'Thêm Loại Sản Phẩm Thành Công');
+            return redirect('admin/categorys')->with('msgSuccess', 'Thêm Loại Sản Phẩm Thành Công');
         } else {
             return redirect('admin/categorys/create')->with('msgError', 'Thêm Loại Sản Phẩm Thất Bại');
         }
