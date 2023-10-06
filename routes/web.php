@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\backend\PDFController;
+use App\Http\Controllers\BotManController;
 use App\Http\Controllers\backend\PostController;
 use App\Http\Controllers\backend\ShipController;
 use App\Http\Controllers\backend\UserController;
@@ -212,3 +213,8 @@ Route::get('/optimize', function () {
     echo "Optimize done !";
 });
 
+Route::get('/chat', function () {
+    return view('welcome');
+});
+
+Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);

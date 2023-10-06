@@ -4,7 +4,7 @@
   Description: Asbab is a unique website template designed in HTML with a simple & beautiful look.
 
 -----------------------------------------------------------------------------------
-  
+
   CSS INDEX
   ===================
 
@@ -2899,7 +2899,7 @@ a.shipping-calculator-button:hover{
 }
 .wishlist-table table th {
     font-weight: 600;
-} 
+}
 .wishlist-table table th, .wishlist-table table td {
     border-bottom: 1px solid #c1c1c1;
     border-right: 1px solid #c1c1c1;
@@ -2914,7 +2914,7 @@ a.shipping-calculator-button:hover{
     padding: 0 15px;
     width: 20px;
 }
-.wishlist-table table .product-remove > a, 
+.wishlist-table table .product-remove > a,
 .table-content table .product-remove > a {
     font-size: 25px;
 }
@@ -3149,13 +3149,13 @@ a.shipping-calculator-button:hover{
 }
 
 
-.pointer__tooltip .tooltip__box h4, 
+.pointer__tooltip .tooltip__box h4,
 .pointer__tooltip .tooltip__box p  {
     opacity: 0;
     transition: all .45s cubic-bezier(0,0,.2,1);
 }
 
-.pointer__tooltip:hover .tooltip__box h4, 
+.pointer__tooltip:hover .tooltip__box h4,
 .pointer__tooltip:hover .tooltip__box p {
     opacity: 1;
     -webkit-transform: translate3d(0,0,0) !important;
@@ -3170,7 +3170,7 @@ a.shipping-calculator-button:hover{
 .pointer__tooltip .tooltip__box p {
     font-size: 16px;
     line-height: 1.6;
-    margin-bottom: 0;    
+    margin-bottom: 0;
     color: #737373;
 }
 
@@ -3218,7 +3218,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     opacity: 0;
     transition: all .3s ease 0s;
     z-index: 99;
-    
+
 }
 .htc__instagram__area ul li:hover i{
     opacity: 1;
@@ -3274,7 +3274,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1px;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
 .accordion__body__form .checkout-method .checkout-method__title{
     display: -moz-flex;
@@ -3417,7 +3417,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-weight: 500;
 }
 .paymentinfo .single-method a i.zmdi{
-    padding-right: 5px;  
+    padding-right: 5px;
 }
 .paymentinfo .single-method a{
     display: inline-block;
