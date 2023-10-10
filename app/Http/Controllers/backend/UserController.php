@@ -43,6 +43,8 @@ class UserController extends Controller
         $data->user_email = $request->user_email;
         $data->password = bcrypt($request->user_password);
         $data->role_id = $request->role_id;
+        $data->is_verify = 0;
+        $data->verification_code = sha1(time());
 
         if($data->save()){
             return redirect('admin/users/create')->with('msgSuccess', 'Đăng kí thành công');

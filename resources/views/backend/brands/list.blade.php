@@ -34,7 +34,7 @@
                                             Mô tả: {{$item->brand_description}}
                                         </td>
 
-                                        <td class="text-center align-items-center d-md-flex flex-column flex-md-row p-lg-3">
+                                        <td class="justify-content-between">
                                             <div class="d-flex flex-edit ml-5">
                                                 <a class="button-common-edit edit"
                                                    href="admin/brands/{{$item->brand_id}}/edit">
