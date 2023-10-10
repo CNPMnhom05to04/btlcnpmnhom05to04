@@ -8,7 +8,7 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title">Thêm sản phẩm</h4>
+              <h4 class="card-title">Sửa sản phẩm</h4>
             </div>
             <div class="card-body">
               <form action="admin/products/{{$data->product_id}}" method="POST" enctype="multipart/form-data">
@@ -130,7 +130,7 @@
                 @error('product_image')
                   <span class="text-danger">{{$message}}</span>
                 @enderror
-                <br>    
+                <br>
                 <img src="{{$data->product_image}}" id="image" style="width:200px" alt="Ảnh sản phẩm">
               </div>
             </div>
@@ -180,8 +180,10 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary pull-right">Sửa Sản Phẩm</button>
-        <a href="/admin/products" class="btn btn-primary pull-right">Danh sách sản phẩm</a>
+          <button type="submit" class="btn btn-primary pull-right">Xác nhận
+          </button>
+          <a href="/admin/products" class="btn btn-primary pull-right">Huỷ
+          </a>
         <div class="clearfix"></div>
       </div>
     </form>
@@ -204,7 +206,7 @@
 
     function chosseFiles(file){
       var place = $('#list_image');
-      
+
       if(file && file.files.length < 4){
         var count = file.files.length;
         $('.image-list').remove();
@@ -214,7 +216,7 @@
 
           reader.onload = function(event) {
             $($.parseHTML('<img style="width: 100px;" class="col-md-4 mb-3">')).attr('src', event.target.result).appendTo(place);
-            
+
           }
 
           reader.readAsDataURL(file.files[i]);
@@ -226,6 +228,6 @@
         }).then(() => $('#product_list_image').val(''))
       }
     }
-    
+
   </script>
 @endsection

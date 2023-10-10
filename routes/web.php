@@ -118,6 +118,7 @@ Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     Route::patch('/categorys/{id}', [CategoryController::class, 'update']);
     Route::delete('/categorys/delete_more', [CategoryController::class, 'delete_more']);
     Route::get('/categorys/export' , [CategoryController::class, 'export'])->name('category.export');
+    Route::delete('/categorys/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
     //Route Brands
 //    Route::resource('/brands', BrandController::class);
@@ -128,8 +129,18 @@ Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     Route::get('/brands/{id}/edit', [BrandController::class, 'edit']);
     Route::patch('/brands/{id}', [BrandController::class, 'update']);
     Route::delete('/brands/{id}', [BrandController::class, 'delete'])->name('brand.destroy');
+
     //Route products
-    Route::resource('/products', ProductController::class);
+    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/products/create', [ProductController::class, 'create']);
+    Route::post('/products', [ProductController::class, 'store']);
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
+    Route::patch('/products/{id}', [ProductController::class, 'update']);
+    Route::delete('/products/delete_more', [ProductController::class, 'delete_more']);
+//    Route::get('/products/export' , [ProductController::class, 'export'])->name('product.export');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+
 
     //Route Users
     Route::resource('/users', UserController::class)->middleware('handleRoleAdmin');

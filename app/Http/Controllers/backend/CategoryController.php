@@ -114,6 +114,18 @@ class CategoryController extends Controller
         return response()->json(['msgSuccess' => 'Xóa Loại sản phẩm thành công']);
     }
 
+    public function destroy($id)
+    {
+        $data = CategoryModel::find($id);
+
+        if($data->delete()){
+            return response()->json(['msgSuccess'=>'Xóa loại sản phẩm thành công']);
+        }
+        else{
+            return response()->json(['msgError'=>'Xóa loại sản phẩm thất bại']);
+        }
+    }
+
     // filter
     public function filter(Request $request)
     {

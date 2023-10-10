@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Models\BrandModel;
 use App\Models\ImageModel;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
@@ -19,21 +20,37 @@ class ProductController extends Controller
 {
     use ImageUploadTrait;
 
+    private $model;
+
+    /**
+     * @return string
+     */
+    public function model(): string
+    {
+        return ProductModel::class;
+    }
+
     public function __construct()
     {
         $active = "active";
         view()->share('activeProduct', $active);
     }
 
-    //Danh sách sản phẩm
-    public function index()
+    public function index(Request $request)
     {
-        $data = ProductModel::orderBy('product_id', 'DESC')->paginate(6);
-
-        return view('backend.products.list', ['data' => $data]);
+        $search = strtolower(trim($request->input('search', null)));
+        $data = ProductModel::when($search, function ($query) use ($search) {
+            $query->where('product_name', 'LIKE', '%' . $search . '%');
+        })
+            ->orderBy('product_id', 'DESC');
+        if ($request->has('export')) {
+            $data = $data->get();
+        } else {
+            $data = $data->paginate(6);
+        }
+        return view('backend.products.list', ['search' => $search, 'data' => $data]);
     }
 
-    //Form thêm sản phẩm
     public function create()
     {
         $dataCategory = CategoryModel::all();
@@ -42,7 +59,6 @@ class ProductController extends Controller
         return view('backend.products.add', ['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand]);
     }
 
-    //Thêm sản phẩm
     public function store(ProductRequest $request)
     {
         try {
@@ -81,7 +97,6 @@ class ProductController extends Controller
         }
     }
 
-    //Xem chi tiết sản phẩm
     public function show($id)
     {
         $data = ProductModel::find($id);
@@ -90,7 +105,6 @@ class ProductController extends Controller
         return view('backend.products.show', ['data' => $data, 'images' => $dataImage]);
     }
 
-    //Form cập nhật sản phẩm
     public function edit($id)
     {
         $dataCategory = CategoryModel::all();
@@ -102,7 +116,6 @@ class ProductController extends Controller
 
     }
 
-    //Cập nhật sản phẩm
     public function update(ProductUpdateRequest $request, $id)
     {
         try {
@@ -151,32 +164,65 @@ class ProductController extends Controller
                 }
             }
             DB::commit();
-            return redirect()->back()->with('msgSuccess', 'Sửa sản phẩm thành công');
+            return redirect()->route('product.index')->with('msgSuccess', 'Sửa sản phẩm thành công');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('msgSuccess', 'Sửa sản phẩm thất bại');
         }
     }
 
-    //Xóa sản phẩm
-    public function destroy($id)
+    public function delete_more(Request $request): JsonResponse
     {
-        try {
+        $ids = (array)$request->input('ids');
+        $error = false;
+        $message_error = '';
+
+        foreach ($ids as $id) {
             DB::beginTransaction();
+            if (!DB::table('products')
+                    ->where('product_id', $id)
+                ->first()) {
+                if (!$error) {
+                    $message_error = "$id";
+                    $error = true;
+                    continue;
+                }
+                $message_error .= ", $id";
+            }
             $data = ProductModel::find($id);
             if (file_exists(public_path('/' . $data->product_image))) unlink(public_path() . '/' . $data->product_image);
             $dataImages = ImageModel::where('product_id', $id)->get();
-            foreach ($dataImages as $image) {
-                $dataImage = ImageModel::find($image->image_id);
-                if (file_exists(public_path('/' . $dataImage->image_name))) unlink(public_path() . '/' . $dataImage->image_name);
-                $dataImage->delete();
-            }
-            $data->delete();
-            DB::commit();
-            return response()->json(['msgSuccess' => 'Xóa sản phẩm thành công']);
-        } catch (\Exception $e) {
+
+        }
+        if ($error && $message_error) {
             DB::rollBack();
             return response()->json(['msgError' => 'Xóa sản phẩm thất bại']);
+
+        }
+        if ($ids) {
+            DB::table('products')
+                ->whereIn('product_id', $ids)
+                ->delete();
+        }
+        foreach ($dataImages as $image) {
+            $dataImage = ImageModel::find($image->image_id);
+            if (file_exists(public_path('/' . $dataImage->image_name))) unlink(public_path() . '/' . $dataImage->image_name);
+            $dataImage->delete();
+        }
+        $data->delete();
+        DB::commit();
+        return response()->json(['msgSuccess' => 'Xóa sản phẩm thành công']);
+    }
+
+    public function destroy($id)
+    {
+        $data = ProductModel::find($id);
+
+        if($data->delete()){
+            return response()->json(['msgSuccess'=>'Xóa sản phẩm thành công']);
+        }
+        else{
+            return response()->json(['msgError'=>'Xóa sản phẩm thất bại']);
         }
     }
 }
