@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'handleLoginAdmin' => \App\Http\Middleware\HandleLoginAdmin::class,
         'handleRoleAdmin' => \App\Http\Middleware\HandleRoleAdmin::class,
         'HandleLoginCustomer' => \App\Http\Middleware\HandleLoginCustomer::class,
+        'canNotEdit' => \App\Http\Middleware\CanMiddleware::class,
     ];
 }

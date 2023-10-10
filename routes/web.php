@@ -104,7 +104,7 @@ Route::post('/admin', [UserController::class, 'postLogin']);
 
 Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     //Route dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('view');
     Route::post('get-data-chart-line', [DashboardController::class, 'getDataChartLine']);
     Route::post('get-data-chart-line-date', [DashboardController::class, 'getDataChartLineDate']);
     Route::get('get-data-chart-pie-city', [DashboardController::class, 'getChartCityBuy']);
@@ -134,9 +134,11 @@ Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     Route::get('/products', [ProductController::class, 'index'])->name('product.index');
     Route::get('/products/create', [ProductController::class, 'create']);
     Route::post('/products', [ProductController::class, 'store']);
-    Route::get('/products/{id}/edit', [ProductController::class, 'edit']);
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])
+        ->name('product.edit')
+        ->middleware(['canNotEdit']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
-    Route::delete('/products/delete_more', [ProductController::class, 'delete_more']);
+    Route::delete('/products/delete_more', [ProductController::class, 'delete_more'])->name('product.delete_more');
 //    Route::get('/products/export' , [ProductController::class, 'export'])->name('product.export');
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::get('/products/{id}', [ProductController::class, 'show']);
