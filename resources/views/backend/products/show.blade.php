@@ -13,7 +13,7 @@
     <div class="row">
         @include('backend.note')
         <div class="col-md-8">
-            <div class="card">
+            <div class="card ">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">Thông Tin Sản Phẩm</h4>
                 </div>
@@ -66,7 +66,6 @@
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Giá bán:</label>
                                     <span>{{ number_format($data->product_price_sell)}} VNĐ</span>
-
                                 </div>
                             </div>
                         </div>
@@ -98,7 +97,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     <div class="clearfix"></div>
                     </form>
                 </div>
@@ -123,6 +122,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a href="/admin/products/{{$item->product_id}}/edit" class="btn btn-primary mx-2">Sửa</a>
+                <a href="/admin/products" class="btn btn-primary mx-2">Quay lại</a>
             </div>
         </div>
     </div>

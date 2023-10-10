@@ -51,8 +51,7 @@
           </div>
           <button type="submit" class="btn btn-primary pull-right">Xác nhận
           </button>
-            <a href="/admin/categorys" class="btn btn-primary pull-right">Huỷ
-            </a>
+            <a href="/admin/categorys" class="btn btn-primary pull-right">Huỷ</a>
         </div>
       </div>
       </form>

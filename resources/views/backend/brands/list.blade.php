@@ -35,16 +35,19 @@
                                         </td>
 
                                         <td class="text-center align-items-center d-md-flex flex-column flex-md-row p-lg-3">
-                                            <a class="button-common-edit edit mr-2" href="admin/brands/{{$item->brand_id}}/edit">
-                                                <i class="fa-solid fa-marker mr-1"></i> Sửa
-                                            </a>
-                                            <form>
-                                                @csrf
-                                                <a class="button-delete{{ count($item->product) == 0 ? '' : ' disabled' }} button-common delete">
-                                                    <i class="fa-regular fa-trash-can mr-1"></i>
-                                                    <span>Xoá</span>
+                                            <div class="d-flex flex-edit ml-5">
+                                                <a class="button-common-edit edit"
+                                                   href="admin/brands/{{$item->brand_id}}/edit">
+                                                    <i class="fa-solid fa-marker mr-1"></i> Sửa
                                                 </a>
-                                            </form>
+                                                <form>
+                                                    @csrf
+                                                    <a class="button-delete{{ count($item->product) == 0 ? '' : ' disabled' }} button-common-delete delete button-delete-cate">
+                                                        <i class="fa-regular fa-trash-can mr-1"></i>
+                                                        <span>Xoá</span>
+                                                    </a>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -61,10 +64,12 @@
                             </table>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 offset-md-4">
-                        {{ $data->links("pagination::bootstrap-4") }}
+                    <div class="row justify-content-center">
+                        <div class="col-md-3 offset-md-1">
+                            <ul class="pagination ">
+                                {{ $data->links("pagination::bootstrap-4") }}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

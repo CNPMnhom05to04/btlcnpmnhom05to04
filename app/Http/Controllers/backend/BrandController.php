@@ -63,7 +63,7 @@ class BrandController extends Controller
         $data->brand_description = $request->brand_description;
 
         if($data->save()){
-            return redirect()->back()->with('msgSuccess', 'Cập nhật chất lượng trà Thành Công');
+            return redirect('admin/brands')->with('msgSuccess', 'Cập nhật chất lượng trà Thành Công');
         }
         else{
             return redirect()->back()->with('msgSuccess', 'Cập nhật chất lượng trà Thất Bại');
