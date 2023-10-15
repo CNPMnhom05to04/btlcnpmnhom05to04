@@ -26,12 +26,14 @@ class PageController extends Controller
         $priceMin = ProductModel::min('product_price_sell');
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
+        $dataLogo = SlideModel::where('type', 3)->first();
         $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/');
         view()->share([
             'dataCategory' => $dataCategory,
             'dataBrand' => $dataBrand,
             'priceMax' => $priceMax,
             'priceMin' => $priceMin,
+            'dataLogo' => $dataLogo,
             'priceMinFilter' => $priceMin+2000000,
             'priceMaxFilter' => $priceMax-2000000,
             'data_seo' => $this->data_seo,
@@ -60,6 +62,7 @@ class PageController extends Controller
 
     public function shop(){
         $this->data_seo = new SeoHelper('Cửa hàng','Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/shop');
+        $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(4)->get();
         $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(4)->get();
 
         if($this->checkFilter()){

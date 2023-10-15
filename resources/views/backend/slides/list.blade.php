@@ -23,7 +23,7 @@
                         <th>Hình ảnh</th>
                         <th>Target</th>
                         <th>Vị trí</th>
-                        <th>Trạng thái</th>    
+                        <th>Trạng thái</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -36,8 +36,10 @@
                         <td>
                             @if ($item->type == 1)
                                 {{'Slide show'}}
-                            @else
+                            @elseif($item->type == 2)
                                 {{'Banner ngang'}}
+                            @else
+                                {{'Logo chính'}}
                             @endif
                         </td>
                         <td>

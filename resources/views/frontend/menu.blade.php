@@ -1,12 +1,12 @@
 <header id="htc__header" class="htc__header__area header--one">
     <!-- Start Mainmenu Area -->
-    <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
+    <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header" style="background-color: #2b8d06; width: 100%; height: 100px">
         <div class="container">
             <div class="row">
                 <div class="menumenu__container clearfix">
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5"> 
-                        <div class="logo">
-                             <a href="/"><img src="../libs/vinaneon-logo-1.png" alt="logo images"></a>
+                    <div class="col-lg-2 col-md-1">
+                    <div class="logo " style="width: 120px; height: 150px; object-fit: cover">
+                            <a href="/"><img style="margin-bottom: 55px" src="{{$dataLogo->image}}" title="Trà Tân Cương Thái Nguyên Chính Gốc 100%" alt="logo images"></a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
@@ -19,7 +19,9 @@
                                         <li><a class="mega__title" href="/shop">Không Gian</a>
                                             <ul class="mega__item">
                                                 @foreach ($dataBrand as $item)
-                                                <li><a href="/shop/brand/{{$item->brand_id}}-{{Str::slug($item->brand_name, '-')}}.html">{{$item->brand_name}}</a></li>
+                                                    <li>
+                                                        <a href="/shop/brand/{{$item->brand_id}}-{{Str::slug($item->brand_name, '-')}}.html">{{$item->brand_name}}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -28,7 +30,9 @@
                                         <li><a class="mega__title" href="/shop">Loại Sản Phẩm</a>
                                             <ul class="mega__item">
                                                 @foreach ($dataCategory as $item)
-                                                <li><a href="/shop/category/{{$item->category_id}}-{{Str::slug($item->category_name, '-')}}.html">{{$item->category_name}}</a></li>
+                                                    <li>
+                                                        <a href="/shop/category/{{$item->category_id}}-{{Str::slug($item->category_name, '-')}}.html">{{$item->category_name}}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -50,22 +54,22 @@
                                     <li><a href="/contact">Liên Hệ</a></li>
                                 </ul>
                             </nav>
-                        </div>  
+                        </div>
                     </div>
                     <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                         <div class="header__right">
                             <div class="header__search search search__open">
-                                <a href=""><i class="icon-magnifier icons"></i></a>
+                                <a href=""><i class="icon-magnifier icons" style="color: #ffffff"></i></a>
                             </div>
                             <div class="header__account">
-                                <a href="/customer"><i class="icon-user icons"></i></a>
+                                <a href="/customer"><i class="icon-user icons" style="color: #ffffff"></i></a>
                             </div>
                             <div class="htc__shopping__cart">
                                 {{-- <button class="cart__menu" type="button"><i class="icon-handbag icons"></button> --}}
-                                <a class="cart__menu" href="javascript:;"><i class="icon-handbag icons"></i></a>
+                                <a class="cart__menu" href="javascript:;"><i class="icon-handbag icons" style="color: #ffffff"></i></a>
                                 {{-- <a href="#"> --}}
-                                    
-                                    {{-- <span class="htc__qua">{{$countCart}}</span> --}}
+
+                                {{-- <span class="htc__qua">{{$countCart}}</span> --}}
                                 </a>
                             </div>
                         </div>

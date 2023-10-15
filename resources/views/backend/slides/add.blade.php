@@ -43,7 +43,7 @@
                     @error('product_image')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
-                    <br>    
+                    <br>
                     <img src="../libs/image_no.png" id="image" style="width:200px" alt="Ảnh sản phẩm">
                   </div>
                 </div>
@@ -55,6 +55,7 @@
                     <select name="type" class="form-control">
                       <option value="1">Slideshow</option>
                       <option value="2">Banner ngang</option>
+                      <option value="3">Logo chính</option>
                     </select>
                     @error('type')
                         <span class="text-danger">{{$message}}</span>

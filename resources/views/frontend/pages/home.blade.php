@@ -20,11 +20,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
                             <div class="slide__thumb">
                                 <img src="{{$slide->image}}" alt="slider images VINANEON">
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -174,7 +172,7 @@
                         </div>
                         <!-- End Single Category -->
                     @endforeach
-                    
+
                 </div>
             </div>
         </div>
@@ -208,7 +206,7 @@
                                         <li><a style="font-size: 10px" href="/shop/blog/{{$item->id}}-{{Str::slug($item->post_title, '-')}}.html">Ngày đăng:
                                             @php
                                                 $old_date = strtotime($item->created_at);
-                                                $new_date = date('d/m/Y', $old_date);  
+                                                $new_date = date('d/m/Y', $old_date);
                                                 echo $new_date
                                             @endphp
                                         </a></li>
@@ -278,7 +276,7 @@
         $('.handle_wishlist').click(function(){
             var product_id = $(this).data('product_id');
             var _token = $('input[name=_token]').val();
-            
+
             $.ajax({
                 url: 'handle-wishlist',
                 method: 'POST',
@@ -292,4 +290,6 @@
             })
         })
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @endsection

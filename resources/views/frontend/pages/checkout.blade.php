@@ -12,7 +12,7 @@
                                 <div class="accordion__title">
                                     Thông Tin Đặt Hàng
                                 </div>
-                                
+
                                 <div class="accordion__body">
                                     <div class="bilinfo">
                                         <div class="row">
@@ -100,7 +100,7 @@
                                                 <div class="single-input">
                                                     <label for="">Thanh toán khi nhận hàng</label>
                                                     <input type="radio" value="1" name="order_pay_type" checked>
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -109,7 +109,14 @@
                                                     <input type="radio" value="2" name="order_pay_type">
                                                 </div>
                                             </div>
-                                        
+
+                                            <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <label for="">Thanh toán qua Momo</label>
+                                                    <input type="radio" value="3" name="order_pay_type" id="momoPayment">
+                                                </div>
+                                            </div>
+
                                             <br>
                                         </div>
                                         <ul class="payment__btn">
@@ -219,7 +226,7 @@
                                 district_id: district_id,
                             },
                             success: function(data) {
-                                
+
                                 $('#shipping').text(data[0].toLocaleString('ja-JP')+ ''+ ' VNĐ')
                                 $('#cart_totals').text(data[1].toLocaleString('ja-JP')+ ''+ ' VNĐ')
                                 $('input[name=district_id]').val(district_id)

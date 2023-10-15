@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>VINANEON - {{$data_seo->meta_title}}</title>
+    <title>Tâm Trà - Tinh hoa trên từng bups trà - {{$data_seo->meta_title}}</title>
     <!---seo------->
     <meta name="description" content="{{$data_seo->meta_description}}">
     <meta name="keywords" content="{{$data_seo->meta_keyword}}">
@@ -76,7 +76,7 @@
                             <div class="ft__details">
                                 <div class="row">
                                     <div class="col-sm-9">
-                                        <p>VINANEON luôn luôn mong muốn đem đến cho quý khách hàng những sản phẩm uy
+                                        <p>Tâm Trà luôn luôn mong muốn đem đến cho quý khách hàng những sản phẩm uy
                                             tín, chất lượng, giá cả tốt nhất thị trường</p>
                                     </div>
                                 </div>

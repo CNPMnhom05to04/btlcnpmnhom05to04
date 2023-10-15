@@ -693,7 +693,8 @@
   margin-top: 0;
 }
 .owl-carousel .owl-item img {
-  width: auto;
+  width: 85%;
+    height: 100%;
 }
 .brand__list li a img {
   display: block;

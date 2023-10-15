@@ -1,10 +1,10 @@
 <div class="container" style="max-width: 700px;margin: 0 auto; border: 1px solid #c43b68;">
     <div class="header" style="background-color: #c43b68; color: #fff; padding: 15px;">
-        <h3 style="font-size: 20px; text-align: center">ĐẶT HÀNG THÀNH CÔNG TẠI - VINANEON</h3>
+        <h3 style="font-size: 20px; text-align: center">ĐẶT HÀNG THÀNH CÔNG TẠI - TÂM TRÀ</h3>
         <h4>Xin Chào {{$dataUser->user_name}}</h4>
-        <p>Cảm ơn bạn đã đặt hàng ở VINANEON</p>
+        <p>Cảm ơn bạn đã đặt hàng ở TÂM TRÀ</p>
     </div>
-    
+
     <div class="box-infor" style="margin: 0 20px;">
         <h3>Thông tin khách hàng</h3>
         <h4>{{$orderShipping}}
@@ -41,8 +41,8 @@
     <br>
     <br>
     <div class="footer" style="font-size: 15px; text-align: center; background-color: #c43b68; color: #fff; padding: 10px;">
-        <p>Đây là tin nhắn tự động từ VINANEON - Vui lòng không trả lời tin nhắn này</p>
-        <p>Mọi thắc mắc về đơn hàng hãy liên hệ đến VINANEON ở phần liên hệ</p>
-        <p>VINANEON Xin Cảm Ơn Quý Khách Hàng</p>
+        <p>Đây là tin nhắn tự động từ TÂM TRÀ - Vui lòng không trả lời tin nhắn này</p>
+        <p>Mọi thắc mắc về đơn hàng hãy liên hệ đến TÂM TRÀ ở phần liên hệ</p>
+        <p>TÂM TRÀ Xin Cảm Ơn Quý Khách Hàng</p>
     </div>
 </div>

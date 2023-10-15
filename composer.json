@@ -18,7 +18,8 @@
         "maatwebsite/excel": "*",
         "realrashid/sweet-alert": "^4.0",
         "unisharp/laravel-filemanager": "^2.3",
-      "ext-json": "*"
+      "ext-json": "*",
+      "ext-curl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

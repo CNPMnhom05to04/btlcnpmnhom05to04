@@ -54,6 +54,7 @@ Route::get('/cart', [CartController::class, 'cart']);
 Route::get('/checkout', [CartController::class, 'checkout']);
 Route::post('/payment', [CartController::class, 'payment']);
 Route::post('/payment/online', [CartController::class, 'paymentCreate']);
+Route::post('/payment/momo', [CartController::class, 'paymentMomo'])->name('payment.momo');
 Route::get('/payment/return', [CartController::class, 'paymentReturn']);
 Route::post('/add_to_cart', [CartController::class, 'addToCart']);
 Route::post('/update_quantity_cart', [CartController::class, 'updateQuatityCart']);
@@ -104,7 +105,7 @@ Route::post('/admin', [UserController::class, 'postLogin']);
 
 Route::prefix('admin')->middleware('handleLoginAdmin')->group(function () {
     //Route dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('view');
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::post('get-data-chart-line', [DashboardController::class, 'getDataChartLine']);
     Route::post('get-data-chart-line-date', [DashboardController::class, 'getDataChartLineDate']);
     Route::get('get-data-chart-pie-city', [DashboardController::class, 'getChartCityBuy']);

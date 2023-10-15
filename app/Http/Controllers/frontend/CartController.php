@@ -43,6 +43,25 @@ class CartController extends Controller
         view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo]);
     }
 
+    public function execPostRequest($url, $data)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data))
+        );
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        //execute post
+        $result = curl_exec($ch);
+        //close connection
+        curl_close($ch);
+        return $result;
+    }
+
     //Hiện thị cart
     public function cart(){
         $coupon_cart = 0;
@@ -58,8 +77,8 @@ class CartController extends Controller
             $cart_totals = $this->getTotals($cart_total);
 
             return view('frontend.pages.cart', [
-                'cart' => $this->cart, 
-                'cart_total' => $cart_total, 
+                'cart' => $this->cart,
+                'cart_total' => $cart_total,
                 'cart_totals' => $cart_totals,
                 'coupon_cart' => $coupon_cart,
             ]);
@@ -89,8 +108,8 @@ class CartController extends Controller
         $cart_totals = $this->getTotals($cart_total);
 
         return view('frontend.pages.checkout', [
-            'dataCity' => $dataCity, 
-            'dataUser' => $dataUser, 
+            'dataCity' => $dataCity,
+            'dataUser' => $dataUser,
             'cart' => $this->cart,
             'cart_totals' => $cart_totals,
             'cart_total' => $cart_total,
@@ -113,7 +132,6 @@ class CartController extends Controller
             }
         };
 
-        //Thêm id người dùng vào bảng mã giảm giá để xác nhận người dùng đã dùng mã giảm giá
         if($this->coupon){
             $dataCoupon = CouponModel::find($this->coupon['coupon_id']);
             $dataCoupon->user_id = $dataCoupon->user_id . $user_id .',';
@@ -122,12 +140,12 @@ class CartController extends Controller
 
         $cart_total = $this->getTotal($this->cart);
         $priceProduct = 0;
-        
+
         foreach ($this->cart as $product) {
             $priceProductSub = ProductModel::find($product['cart_id'])->product_price_buy * $product['cart_quantity'];
             $priceProduct+= $priceProductSub;
         }
-    
+
         $order_profit = Session::get('totalCart') - $priceProduct;
 
         $dataCity = CityModel::find($request->city_id);
@@ -145,10 +163,14 @@ class CartController extends Controller
 
         Session::put('dataCustomer', $dataCustomerOrder);
         Session::save();
-        if($request->order_pay_type == 2){//Xử lý chuyển view sang thanh toán online
+        if($request->order_pay_type == 2){
             $order_total = Session::get('totalCart');
-            return view('frontend.vnpay.index', ['order_total' => $order_total]);
-        }else {
+            return view('frontend.vnpay.index', ['order_total' => $order_total, 'order_pay_type' => $request->order_pay_type]);
+        } elseif ($request->order_pay_type == 3){
+            $order_total = Session::get('totalCart');
+            return view('frontend.vnpay.index', ['order_total' => $order_total, 'order_pay_type' => $request->order_pay_type]);
+        }
+        else {
             $dataOrder = new OrderModel();
             $dataUser = UserModel::find($user_id);
             $dataCustomerOrderShow = Session::get('dataCustomer');
@@ -161,7 +183,7 @@ class CartController extends Controller
             $dataOrder->order_total = $dataCustomerOrderShow['order_total'];
             $dataOrder->order_status = 1;
             $dataOrder->created_at = $dataCustomerOrderShow['created_at'];
-    
+
             $dataOrder->save();
 
             $order_id = $dataOrder->order_id;//Lấy id order vừa insert vào bảng
@@ -178,23 +200,61 @@ class CartController extends Controller
                 $dataOrderdetail->product_id = $val['cart_id'];
                 $dataOrderdetail->order_detail_quantity = $val['cart_quantity'];
                 $dataOrderdetail->order_detail_price = $val['cart_price_sale'];
-    
+
                 $dataOrderdetail->save();
             }
-    
+
             $this->sendMailOrder($dataUser->user_email, $dataOrder, $dataUser, $dataCustomerOrderShow['order_shipping'], $this->cart, $this->coupon, Session::get('priceShip'));
 
             $this->deleteSession();
-    
+
             return redirect('/')->with('msgSuccess', 'Đặt Hàng Thành Công');
         }
     }
 
+    public function paymentMomo(Request $request){
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+
+        $partnerCode = 'MOMO5RGX20191128';
+        $accessKey = 'M8brj9K6E22vXoDB';
+        $secretKey = 'nqQiVSgDMy809JoPF6OzP5OdBUB550Y4';
+        $orderInfo = "Thanh toán đơn hàng Tâm Tea: " . $request;
+        $amount = $_POST['amount'];
+        $orderId = time() . "";
+        $redirectUrl = "http://127.0.0.1:8000/payment/return";
+        $ipnUrl = "http://127.0.0.1:8000/payment/return";
+        $extraData = "";
+
+            $requestId = time() . "";
+            $requestType = "payWithATM"; // captureMoMoWallet
+
+            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+            $signature = hash_hmac("sha256", $rawHash, $secretKey);
+            $data = array('partnerCode' => $partnerCode,
+                'partnerName' => "Test",
+                "storeId" => "MomoTestStore",
+                'requestId' => $requestId,
+                'amount' => $amount,
+                'orderId' => $orderId,
+                'orderInfo' => $orderInfo,
+                'redirectUrl' => $redirectUrl,
+                'ipnUrl' => $ipnUrl,
+                'lang' => 'vi',
+                'extraData' => $extraData,
+                'requestType' => $requestType,
+                'signature' => $signature);
+            $result = $this->execPostRequest($endpoint, json_encode($data));
+            $jsonResult = json_decode($result, true);
+
+            return redirect()->to( $jsonResult['payUrl']);
+
+    }
+
     //Tạo thanh toán bằng vn pay
     public function paymentCreate(Request $request){
-        $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY 
-        $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
-        $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_TmnCode = "ES8W4TH7"; //Mã website tại VNPAY
+        $vnp_HashSecret = "BYAOHQMNDPHLWRUFHXGJKPLUXWRCMNBW"; //Chuỗi bí mật
+        $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://127.0.0.1:8000/payment/return";
         $vnp_TxnRef = Str::random(10); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
@@ -237,16 +297,14 @@ class CartController extends Controller
 
         $vnp_Url = $vnp_Url . "?" . $query;
         if (isset($vnp_HashSecret)) {
-           // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
             $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
             $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
         }
         return redirect($vnp_Url);
     }
 
-    //Hàm xử lý đơn hàng sau khi nhận đã thanh toán
     public function paymentReturn(Request $request){
-        
+
         if($request->vnp_ResponseCode == "00") {
             $dataOrder = new OrderModel();
             $dataCustomerOrderShow = Session::get('dataCustomer');
@@ -260,7 +318,7 @@ class CartController extends Controller
             $dataOrder->order_total = $dataCustomerOrderShow['order_total'];
             $dataOrder->order_status = 1;
             $dataOrder->created_at = $dataCustomerOrderShow['created_at'];
-    
+
             $dataOrder->save();
 
             $order_id = $dataOrder->order_id;//Lấy id order vừa insert vào bảng
@@ -277,14 +335,14 @@ class CartController extends Controller
                 $dataOrderdetail->product_id = $val['cart_id'];
                 $dataOrderdetail->order_detail_quantity = $val['cart_quantity'];
                 $dataOrderdetail->order_detail_price = $val['cart_price_sale'];
-    
+
                 $dataOrderdetail->save();
             }
-    
+
             $this->sendMailOrder($dataUser->user_email, $dataOrder, $dataUser, $dataCustomerOrderShow['order_shipping'], $this->cart, $this->coupon, Session::get('priceShip'));
 
             $this->deleteSession();
-    
+
             return redirect('/')->with('msgSuccess', 'Đặt Hàng và thanh toán Thành Công');
         }
         return redirect('/')->with('msgError' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
@@ -294,7 +352,7 @@ class CartController extends Controller
     public function sendMailOrder($mail_to, $order,$dataUser, $orderShipping, $orderdetail, $coupon, $ship){
         Mail::to($mail_to)->send((new OrderDone($order,$dataUser, $orderShipping, $orderdetail, $coupon, $ship))->delay(60));
     }
-    
+
     //Hàm xóa session sau khi đặt hàng thành công
     public function deleteSession(){
         Session::forget('cart');
@@ -360,7 +418,7 @@ class CartController extends Controller
         Session::save();
         return response()->json('Thêm giỏ hàng thành công');
     }
-    
+
     //Hàm xử lý tính tổng theo sản phẩmgiỏ hàng
     public function getTotal($cart){
         $cart_total = 0;
@@ -412,9 +470,9 @@ class CartController extends Controller
         Session::put('cart', $this->cart);
 
         $cart_total = $this->getTotal($this->cart);
-        
+
         $cart_totals = $this->getTotals($cart_total);
-        
+
         return $data = [$cart_product_total, $cart_total, $cart_totals, $cart_quantity];
     }
 
@@ -426,11 +484,11 @@ class CartController extends Controller
             }
         }
         Session::put('cart', $this->cart);
-        
+
         $cart_total = $this->getTotal($this->cart);
-        
+
         $cart_totals = $this->getTotals($cart_total);
-        
+
         return $data = [$cart_total, $cart_totals];
     }
 
@@ -441,7 +499,7 @@ class CartController extends Controller
         $today = Carbon::today('Asia/Ho_Chi_Minh');
 
         $cart_total = $this->getTotal($this->cart);
-        
+
         $result = [];
 
         if($data){
@@ -531,11 +589,11 @@ class CartController extends Controller
     public function getShipCheckout(Request $request){
         $check = ShipModel::where('city_id',$request->city_id)->where('district_id',$request->district_id)->count();
         $data = ShipModel::where('city_id',$request->city_id)->where('district_id',$request->district_id)->get();
-        
+
         $cart_price_ship = 0;
 
         $cart_total = $this->getTotal($this->cart);
-        
+
         $cart_totals = $this->getTotals($cart_total);
 
         if($check){

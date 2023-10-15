@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Helpers\SeoHelper;
 use App\Jobs\VerifyCustumer;
+use App\Models\SlideModel;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\CategoryModel;
@@ -28,9 +29,10 @@ class CustomerController extends Controller
 //        $this->middleware(['auth','verified']);
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
+        $dataLogo = SlideModel::where('type', 3)->first();
         $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/customer');
 
-        view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo]);
+        view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo, 'dataLogo' => $dataLogo]);
     }
 
 

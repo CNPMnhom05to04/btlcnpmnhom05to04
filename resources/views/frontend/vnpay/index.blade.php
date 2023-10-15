@@ -11,18 +11,25 @@
         <!-- Bootstrap core CSS -->
         <link href="/vnpay_assets/assets/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
-        <link href="/vnpay_assets/assets/jumbotron-narrow.css" rel="stylesheet">  
+        <link href="/vnpay_assets/assets/jumbotron-narrow.css" rel="stylesheet">
         <script src="/vnpay_assets/assets/jquery-1.11.3.min.js"></script>
     </head>
 
     <body>
         <div class="container">
+            @if($order_pay_type == 2)
             <div class="header clearfix">
                 <h3 class="text-muted">VNPAY DEMO</h3>
             </div>
-            <h3>Tạo mới đơn hàng</h3>
+            @else
+                <div class="header clearfix">
+                    <h3 class="text-muted">MOMO DEMO</h3>
+                </div>
+            @endif
+            <h3>Thông tin đơn hàng</h3>
             <div class="table-responsive">
-                <form action="/payment/online" id="create_form" method="post">       
+                @if($order_pay_type == 2)
+                <form action="/payment/online" id="create_form" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
@@ -66,12 +73,23 @@
                     </div>
                     <button type="submit" class="btn btn-primary" id="btnPopup">Xác nhận thanh toán</button>
                     <button type="submit" name="redirect" id="redirect" class="btn btn-default" onclick="history.back()">Quay lại</button>
-
                 </form>
+                @else
+                    <form action="/payment/momo" id="create_form" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="amount">Số tiền</label>
+                            <input class="form-control" id="amount"
+                                   name="amount" type="number" value="{{$order_total}}"/>
+                        </div>
+                        <button type="submit" name="payUrl" class="btn btn-primary" id="btnPopup">Xác nhận thanh toán</button>
+                        <button type="submit" name="redirect" id="redirect" class="btn btn-default" onclick="history.back()">Quay lại</button>
+                    </form>
+                @endif
             </div>
             <p>
                 &nbsp;
             </p>
-        </div>  
+        </div>
     </body>
 </html>
