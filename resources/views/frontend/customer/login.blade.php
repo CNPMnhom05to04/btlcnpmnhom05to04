@@ -1,11 +1,11 @@
 @extends('frontend.layout')
 
 @section('content')
-    <div class="container" style="margin-top: 50px; margin-bottom: 50px">
+    <div class="container" style="margin-top: 80px; margin-bottom: 100px">
         <div class="row">
            @include('frontend.note')
             <div class="col-md-5">
-                <p style="color: #c43b68; font-size: 2em">Đăng Nhập</p>
+                <p style="color: #0d0d0d; font-size: 4em; margin-bottom: 10px; text-align: center">Đăng Nhập</p>
                 <form action="/customer/login" method="POST">
                     @csrf
                     <div class="form-group">
@@ -22,7 +22,7 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-                    
+
                     <div class="form-group row mb-0">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn">Đăng nhập</button> Hoặc
@@ -34,15 +34,14 @@
 
             <div class="col-md-2">
                 <center>
-                    <div class="or" style="text-align: center; width: 50px; height: 50px; background: #c43b68; color: #fff; border-radius: 50%; line-height: 50px">
-                        OR
+                    <div class="or" style="text-align: center; width: 60px; height: 60px; background: #c43b68; color: #fff; border-radius: 60%; line-height: 60px; margin-top: 120px">
+                        Or
                     </div>
                 </center>
-                
             </div>
 
             <div class="col-md-5">
-                <p style="color: #c43b68; font-size: 2em">Đăng Ký</p>
+                <p style="color: #0d0d0d; font-size: 4em; margin-bottom: 10px; text-align: center">Đăng ký</p>
 
                 <form action="/customer/register" method="post">
                     @csrf

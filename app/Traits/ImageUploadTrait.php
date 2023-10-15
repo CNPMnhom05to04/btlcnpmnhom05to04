@@ -7,26 +7,18 @@ use Illuminate\Support\Facades\Storage;
 
 trait ImageUploadTrait
 {
-    //Xử lý upload 1 ảnh
     public function handleUploadImage($request, $fieldName, $foderName): ?string
     {
-        //Kiểm tra có request fieldName có tồn tại không
         if ($request->hasFile($fieldName)) {
             $image = $request->file($fieldName);
-            //Tạo tên ảnh mới
             $imageName = Str::random(10) . "_" . $image->getClientOriginalName();
-
-            //Upload ảnh vào store với path public/' . $foderName, $imageName
             $path = $request->file($fieldName)->storeAs('public/' . $foderName, $imageName);
-
             $dataPath = Storage::url($path);
-
             return $dataPath;
         }
         return null;
     }
 
-    // Xử lý upload nhiều ảnh
     public function handleUploadImageProduct($request, $fieldName, $foderName): array
     {
         $dataPath = [];

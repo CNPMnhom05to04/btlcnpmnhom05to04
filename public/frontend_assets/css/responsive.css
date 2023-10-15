@@ -184,47 +184,47 @@
 .header--3 .menumenu__container {
   padding-left: 0;
   padding-right: 0;
-}    
-    
+}
+
 .htc__best__pro__thumb {
   margin-right: 15px;
   min-width: 120px;
-}    
+}
 .htc__best__sell__wrap .best__product__action {
   margin-top: 10px;
-}    
+}
 .big__promo__box {
   left: 30px;
   position: absolute;
   top: 83px;
   width: 480px;
-}    
+}
 .promo__align--right .big__promo__box {
   right: 30px;
   top: 111px;
-}    
+}
 .inc__banner--2 .ht__intrac__details h2 {
   font-size: 69px;
-}    
+}
 .inc__banner--2 .ht__intrac__details h6 {
   font-size: 38px;
-}    
+}
 .ht__intrac__details h1 {
   font-size: 52px;
   line-height: 59px;
-}   
+}
 .ht__intrac__btn {
   margin-top: 10px;
-}    
+}
 .slider--5 .slider__inner h1 {
   font-size: 50px;
-}    
+}
 .slider--5 .slider__fixed--height {
   height: 400px;
-}    
+}
 .testimonial__area.testimonial--2 {
   padding: 60px 20px 115px 15px;
-}    
+}
 .service__details h2 {
   font-size: 17px;
   padding: 0 15px 23px;
@@ -235,13 +235,13 @@
 }
 nav.off__canvars--menu ul li {
   padding: 5px 0;
-}    
+}
 .main__menu li.drop ul.dropdown.mega_dropdown {
   left: 100%;
-}    
+}
 .slider__inner h1 {
   font-size: 77px;
-} 
+}
 .pointer__tooltip.pointer--6 {
   left: 57%;
 }
@@ -255,7 +255,7 @@ nav.off__canvars--menu ul li {
 
 }
 
- 
+
 /* Tablet desktop :768px. */
 @media (min-width: 768px) and (max-width: 991px) {
 
@@ -263,7 +263,7 @@ nav.off__canvars--menu ul li {
  Padding Top
 -----------------*/
 .mobile-menu-area .mean-nav ul {
-  height: auto; 
+  height: auto;
   /* overflow-y: auto; */
 }
 .spt-20{
@@ -288,8 +288,8 @@ nav.off__canvars--menu ul li {
   margin-right: 23px;
 }
 .header__top__area, .menumenu__container {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .ht__header__right li + li {
   margin-left: 19px;
@@ -385,65 +385,65 @@ nav.off__canvars--menu ul li {
 }
 .header--3 .mainmenu__wrap {
   padding: 0 15px;
-}    
+}
 .header--3 .header__search {
   height: 100px;
   line-height: 109px;
   display: none;
-}    
+}
 .header--3 .menumenu__container {
   padding-left: 0px;
   padding-right: 0px;
-}    
+}
 .header--3 .htc__shopping__cart {
   margin-right: 55px;
-}    
+}
 .header--3 .mean-container a.meanmenu-reveal {
   margin-top: -68px;
     margin-right: 15px;
-}    
+}
 .slider--3 .slider__inner p {
   letter-spacing: 6px;
   margin-bottom: 12px;
-}    
+}
 .slider--3 .slider__inner h1 {
   font-size: 80px;
 }
-    
+
 .slider--3 .ht__slider__btn {
   margin-top: 18px;
-}    
+}
 .ht__promo__details h4 {
   font-size: 27px;
     display: inline-block;
-}    
-    
+}
+
 .big__promo__box {
   left: 100px;
   position: inherit;
-}    
+}
 .big__promo__box {
   left: 20px;
   margin-right: 40px;
   position: inherit;
   top: 20px;
-} 
+}
 .promo__align--right .big__promo__box {
   left: 20px;
   right: 0;
-}  
+}
 .htc__about__thumb {
   display: none;
-}   
+}
 .three-pro .section__title {
   margin-top: 50px;
 }
 .ht__about__inner h4 {
   font-size: 40px;
-}    
+}
 .ht__about__inner h2 {
   font-size: 30px;
-}    
+}
 .htc__about__thumb {
   position: inherit;
   right: 0;
@@ -477,91 +477,91 @@ nav.off__canvars--menu ul li {
 .ht__promo__details h2 {
   font-size: 35px;
   margin-bottom: 12px;
-}    
+}
 .header--4 .htc__shopping__cart a i {
   color: #fff;
 }
 .header--4 .header__search a i {
   color: #fff;
-}    
+}
 .header--4 .mean-container a.meanmenu-reveal {
   border: 1px solid #fff;
   color: #fff;
     margin-top: -69px;
-}    
+}
 .header--4 .mean-container a.meanmenu-reveal span {
-  background: #fff none repeat scroll 0 0; 
-    
-}    
+  background: #fff none repeat scroll 0 0;
+
+}
 .header--4 .header__search a::before {
   background: #fff none repeat scroll 0 0;
-}    
-    
+}
+
 .header--4 .scroll-header .htc__shopping__cart a i {
   color: #333;
 }
 .header--4 .scroll-header .header__search a i {
   color: #333;
-}    
+}
 .header--4 .scroll-header .mean-container a.meanmenu-reveal {
   border: 1px solid #333;
   color: #333;
     margin-top: -69px;
-}    
+}
 .header--4 .scroll-header .mean-container a.meanmenu-reveal span {
-  background: #333 none repeat scroll 0 0; 
-    
-}    
+  background: #333 none repeat scroll 0 0;
+
+}
 .header--4 .scroll-header .header__search a::before {
   background: #333 none repeat scroll 0 0;
-}    
+}
 .service--2 .service {
   padding: 60px 4px;
-}    
+}
 .banner--2.pos__relative {
   display: none;
-}    
+}
 .htc__best__pro__thumb {
   margin-right: 15px;
   min-width: 160px;
-}    
+}
 .header--5 .htc__header__right {
   margin-right: 20px;
-}    
+}
 .header--5 .mean-container a.meanmenu-reveal {
   margin-top: -71px;
-}    
-   
+}
+
 .slider--5 .slider__fixed--height {
   height: 330px;
-}    
-   
+}
+
 .slider__activation__wrap--5.slick-initialized.slick-slider {
   margin-left: -10px;
   margin-right: -10px;
-}    
+}
 .five-res .activation__style--1.owl-theme .owl-nav {
   margin-top: 0;
-}    
+}
 .service__details h2 {
   font-size: 16px;
   padding: 0 11px 23px;
-}    
+}
 .order-details {
   margin-top: 40px;
-}    
+}
 .ht__pro__details__content {
   padding-bottom: 70px;
-}    
+}
 .product-details-res .activation__style--1.owl-theme .owl-nav {
   margin-top: 0;
 }
 .slider--two .slider__inner {
   margin-right: 50px;
-}  
+}
 .activation__style--1.owl-theme .owl-nav {
   margin-top: 0;
-}     
+}
 .mean-container a.meanmenu-reveal {
   margin-top: -60px;
 }
@@ -599,10 +599,10 @@ nav.off__canvars--menu ul li {
 
 }
 
- 
+
 /* small mobile :320px. */
 @media (max-width: 767px) {
-  
+
 
 /*------------------
  Padding Top
@@ -666,8 +666,8 @@ nav.off__canvars--menu ul li {
   margin-top: 11px;
 }
 .header__top__area, .menumenu__container {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .ht__header__right,
 .ht__header__top__left {
@@ -913,8 +913,8 @@ nav.off__canvars--menu ul li {
 }
 .slider--two .single__slide {
   position: relative;
-}    
- 
+}
+
 .slider--two .single__slide::before {
   background: #fff none repeat scroll 0 0;
   content: "";
@@ -924,30 +924,30 @@ nav.off__canvars--menu ul li {
   top: 0;
   width: 100%;
     opacity: .6;
-}    
+}
 .header--3 .mainmenu__wrap {
   padding: 0 15px;
-}    
+}
 .header--3 .header__search {
   height: 100px;
   line-height: 109px;
   display: none;
-}    
+}
 .header--3 .menumenu__container {
   padding-left: 0px;
   padding-right: 0px;
-}    
+}
 .header--3 .htc__shopping__cart {
   margin-right: 55px;
-}    
+}
 .header--3 .mean-container a.meanmenu-reveal {
   margin-top: -68px;
   margin-right: 15px;
-}   
+}
 .slider--3 .slider__inner p {
   letter-spacing: 6px;
   margin-bottom: 12px;
-}    
+}
 .slider--3 .slider__inner h1 {
   font-size: 32px;
 }
@@ -957,43 +957,43 @@ nav.off__canvars--menu ul li {
   margin: 0 3px;
   padding: 0 6px;
   font-size: 12px;
-}    
+}
 .slider--3 .ht__slider__btn {
   margin-top: 18px;
-}    
+}
 .ht__promo__details h4 {
   font-size: 27px;
     display: inline-block;
-}    
+}
 .big__promo__details h4 span {
   font-size: 50px;
-}    
+}
 .big__promo__box {
   left: 100px;
   position: inherit;
-}    
+}
 .big__promo__box {
   left: 20px;
   margin-right: 40px;
   position: inherit;
   top: 20px;
-} 
+}
 .promo__align--right .big__promo__box {
   right: 0px;
-}    
+}
 .big__promo__details p span {
   font-size: 45px;
   line-height: 45px;
-}   
+}
 .three-pro .section__title {
   margin-top: 50px;
 }
 .ht__about__inner h4 {
   font-size: 40px;
-}    
+}
 .ht__about__inner h2 {
   font-size: 30px;
-}    
+}
 .htc__about__thumb {
   margin: 0px 30px 0;
   position: inherit;
@@ -1025,187 +1025,187 @@ nav.off__canvars--menu ul li {
 .ht__promo__details h2 {
   font-size: 35px;
   margin-bottom: 12px;
-}    
+}
 .header--4 .htc__shopping__cart a i {
   color: #fff;
 }
 .header--4 .header__search a i {
   color: #fff;
-}    
+}
 .header--4 .mean-container a.meanmenu-reveal {
   border: 1px solid #fff;
   color: #fff;
     margin-top: -69px;
-}    
+}
 .header--4 .mean-container a.meanmenu-reveal span {
-  background: #fff none repeat scroll 0 0; 
-    
-}    
+  background: #fff none repeat scroll 0 0;
+
+}
 .header--4 .header__search a::before {
   background: #fff none repeat scroll 0 0;
-}    
-    
+}
+
 .header--4 .scroll-header .htc__shopping__cart a i {
   color: #333;
 }
 .header--4 .scroll-header .header__search a i {
   color: #333;
-}    
+}
 .header--4 .scroll-header .mean-container a.meanmenu-reveal {
   border: 1px solid #333;
   color: #333;
     margin-top: -69px;
-}    
+}
 .header--4 .scroll-header .mean-container a.meanmenu-reveal span {
-  background: #333 none repeat scroll 0 0; 
-    
-}    
+  background: #333 none repeat scroll 0 0;
+
+}
 .header--4 .scroll-header .header__search a::before {
   background: #333 none repeat scroll 0 0;
-}    
+}
 .service--2 .service {
   padding: 60px 4px;
-}    
+}
 .banner--2.pos__relative {
   display: none;
-}    
+}
 .htc__best__pro__thumb {
   margin-right: 15px;
   min-width: 105px;
-}     
+}
 .ht__intrac__details h1 {
   font-size: 32px;
   line-height: 40px;
   margin-top: 62px;
-}  
+}
 .ht__intrac__details h6 {
   display: none;
-}    
+}
 .ht__intrac__btn {
   margin-top: 5px;
-}    
+}
 .header--4 .header__top__area, .header--4 .menumenu__container {
-  padding-right: 25px;
+  padding-right: 20px;
     padding-left: 0px;
-}    
+}
 .header--4 .header__search {
   display: none;
-}    
+}
 .ht__intrac__btn a {
   height: 40px;
   line-height: 40px;
-}    
+}
 .inc__banner--2 .ht__intrac__details h2 {
   font-size: 38px;
   line-height: 70px;
 }
 .mrg-xs{
     margin: 40px 0;
-} 
-    
+}
+
 .service__details h2 {
   padding: 0 20px 23px;
-}    
+}
 .htc__best__sell__wrap .best__product__action {
   margin-top: 10px;
-}    
+}
 .mrg-xs-top{
     margin-top: 40px;
-}    
+}
 .ft__input__box input {
   width: 43%;
 }
-    
+
 .header--5 .htc__header__right {
   margin-right: 20px;
-}    
+}
 .header--5 .mean-container a.meanmenu-reveal {
   margin-top: -71px;
-}    
-   
+}
+
 .slider--5 .slider__fixed--height {
   height: 330px;
-}    
+}
 .slider--5 .slider__inner h1 {
   font-size: 48px;
-}    
+}
 .slider__activation__wrap--5.slick-initialized.slick-slider {
   margin-left: -10px;
   margin-right: -10px;
-}    
+}
 .five-res .activation__style--1.owl-theme .owl-nav {
   margin-top: 0;
-}    
+}
 .service__details h2 {
   font-size: 16px;
   padding: 0 11px 23px;
-}    
+}
 .header--5 .header__search {
   display: none;
-}     
+}
 .header--5 .select__language {
   display: none;
-}    
+}
 .testimonial__area.testimonial--2 {
   padding: 60px 15px 115px 15px;
-}    
+}
 .htc__fashion__icon__inner h2::before {
   width: 70%;
-}    
+}
 .htc__fashion__icon {
   padding: 85px 0;
-}    
+}
 .checkout-method__login {
   margin-top: 25px;
-}    
+}
 .accordion .accordion__title {
   font-size: 15px;
   padding: 0 12px;
-}    
+}
 .order-details {
   margin-top: 30px;
-}    
+}
 .order-details .order-details__item {
   margin: 0 0px;
-} 
+}
 .order-details .order-details__count {
-  margin: 0 23px; 
-}    
+  margin: 0 23px;
+}
 .ht__pro__details__content {
   padding-bottom: 70px;
-}    
+}
 .product-details-res .activation__style--1.owl-theme .owl-nav {
   margin-top: 0;
-}    
+}
 .mobile-menu-area .mean-nav ul {
   height: auto;
   /* overflow-y: auto; */
 }
-    
+
 .slider--one .container-fluid {
   padding-left: 20px;
   padding-right: 20px;
-} 
+}
 .mean-container a.meanmenu-reveal {
   margin-top: -59px;
-}    
+}
 .header__top__area, .menumenu__container {
   padding-left: 0;
   padding-right: 20px;
-} 
+}
 .header__account a {
   font-size: 16px;
   margin-right: 10px;
   padding-right: 10px;
-}  
+}
 .header__search a {
   margin-right: 10px;
   padding-right: 10px;
-}  
+}
 .header__account a::before ,
 .header__search a::before {
   height: 13px;
-}  
+}
 .header__search a i ,
 .htc__shopping__cart a i {
   font-size: 16px;
@@ -1221,7 +1221,7 @@ nav.off__canvars--menu ul li {
 }
 .htc__good__sale .row {
   display: block;
-} 
+}
 .prize__inner {
   margin-top: 34px;
 }
@@ -1251,7 +1251,7 @@ nav.off__canvars--menu ul li {
 
 
 
-    
+
 }
 
 
@@ -1279,9 +1279,9 @@ nav.off__canvars--menu ul li {
 
 
 }
- 
+
 @media (max-width: 455px) {
-  
+
   .address__details {
     padding: 25.5px 5px 17.5px 13px;
   }

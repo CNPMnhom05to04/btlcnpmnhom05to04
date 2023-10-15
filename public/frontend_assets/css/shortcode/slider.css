@@ -34,7 +34,9 @@
 .slider__fixed--height {
   align-items: center;
   display: flex;
-  height: 800px;
+  height: 450px;
+    padding-right: 400px;
+    margin-left: -20px
 }
 .slider--one .slide {
     align-items: center;
@@ -51,13 +53,13 @@
 .slider__inner h1 {
     color: #030303;
     font-family: Old Standard TT;
-    font-size: 89px;
+    font-size: 70px;
     margin-bottom: 14px;
     margin-top: 31px;
     text-transform: uppercase;
 }
 .cr__btn a {
-    background: #c43b68 none repeat scroll 0 0;
+    background: #22b24c none repeat scroll 0 0;
     color: #fff;
     display: inline-block;
     font-family: Poppins;
@@ -70,7 +72,7 @@
     transition: all 0.3s ease 0s;
 }
 .cr__btn a:hover {
-    background: #313131 none repeat scroll 0 0;
+    background: #41d86e none repeat scroll 0 0;
     color: #fff;
 }
 .slide__thumb {
@@ -106,7 +108,7 @@
     position: relative;
 }
 .slider__activation__wrap .owl-nav div {
-    background: #c43b68 none repeat scroll 0 0;
+    background: #22b24c  none repeat scroll 0 0;
     border-radius: 100%;
     color: #fff;
     font-size: 17px;
@@ -133,27 +135,27 @@
 .owl-item.active .single__slide.animation__style01 h2{
   -webkit-animation: 800ms ease-in-out 0s normal none 1 running bounceInDown;
           animation: 800ms ease-in-out 0s normal none 1 running bounceInDown;
-} 
+}
 .owl-item.active .single__slide.animation__style01 h1{
   -webkit-animation: 1000ms ease-in-out 0s normal none 1 running zoomInUp;
           animation: 1000ms ease-in-out 0s normal none 1 running zoomInUp;
-} 
+}
 
 .owl-item.active .single__slide.animation__style01 .cr__btn{
   -webkit-animation: 1600ms ease-in-out 0s normal none 1 running bounceInDown;
           animation: 1600ms ease-in-out 0s normal none 1 running bounceInDown;
-} 
+}
 
 
 .owl-item.active .single__slide.animation__style01 p{
   -webkit-animation: 1200ms ease-in-out 0s normal none 1 running zoomInUp;
           animation: 1200ms ease-in-out 0s normal none 1 running zoomInUp;
-} 
+}
 
 .owl-item.active .single__slide.animation__style01 .slide__thumb{
     -webkit-animation: 1900ms ease-in-out 0s normal none 1 running bounceInRight;
             animation: 1900ms ease-in-out 0s normal none 1 running bounceInRight;
-} 
+}
 
 
 

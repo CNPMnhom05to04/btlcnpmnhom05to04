@@ -1683,6 +1683,13 @@ pre code {
   }
 }
 
+.vertical-divider {
+    border-right: 2px solid #c43b68; /* Độ rộng và màu sắc của thanh chia */
+    height: 100%; /* Chiều cao của thanh chia (bằng chiều cao của cột) */
+    margin-right: -2px; /* Điều chỉnh khoảng cách giữa thanh chia và các cột */
+}
+
+
 @media (min-width: 992px) {
   .col-lg {
     flex-basis: 0;
@@ -5487,6 +5494,23 @@ body {
     x2: 44;
     y2: 44;
     stroke-width: 3;
+}
+
+#CarouselSlider {
+    max-height: 100vh;
+    overflow: hidden;
+}
+.carousel-caption {
+    right: initial;
+    top: 35%;
+    bottom: initial;
+    padding-bottom: 1.25rem;
+    text-align: left;
+}
+.carousel-caption {
+    background-color: rgb(0 0 0 / 22%);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 #results {
