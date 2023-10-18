@@ -55,6 +55,7 @@ Route::get('/checkout', [CartController::class, 'checkout']);
 Route::post('/payment', [CartController::class, 'payment']);
 Route::post('/payment/online', [CartController::class, 'paymentCreate']);
 Route::post('/payment/momo', [CartController::class, 'paymentMomo'])->name('payment.momo');
+Route::post('/payment/napas', [CartController::class, 'paymentNapas'])->name('payment.napas');
 Route::get('/payment/return', [CartController::class, 'paymentReturn']);
 Route::post('/add_to_cart', [CartController::class, 'addToCart']);
 Route::post('/update_quantity_cart', [CartController::class, 'updateQuatityCart']);

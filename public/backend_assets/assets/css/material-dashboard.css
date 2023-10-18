@@ -979,6 +979,20 @@ pre {
   color: #212529;
 }
 
+.button-con {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-con .btn-primary,
+.button-con .btn-default {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+
 pre code {
   font-size: inherit;
   color: inherit;
