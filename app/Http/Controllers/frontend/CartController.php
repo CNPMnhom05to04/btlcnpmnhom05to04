@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Requests\CheckoutRequest;
 use App\Helpers\SeoHelper;
 use App\Http\Controllers\Controller;
+use App\Models\SlideModel;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\CategoryModel;
@@ -17,6 +18,7 @@ use App\Models\Ship\CityModel;
 use App\Models\Ship\DistrictModel;
 use App\Models\Ship\ShipModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Session;
 use Carbon\Carbon;
 use Mail;
@@ -34,13 +36,14 @@ class CartController extends Controller
         $this->cartService = $cartService;
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
+        $dataLogo = SlideModel::where('type', 3)->first();
         $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/cart');
         $this->middleware(function ($request, $next) {
             $this->cart = Session::get('cart');
             $this->coupon = Session::get('coupon');
             return $next($request);
         });
-        view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo]);
+        view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo, 'dataLogo' => $dataLogo]);
     }
 
     public function execPostRequest($url, $data)
@@ -139,6 +142,8 @@ class CartController extends Controller
         }
 
         $cart_total = $this->getTotal($this->cart);
+
+        $cart_totals = $this->getTotals($cart_total);
         $priceProduct = 0;
 
         foreach ($this->cart as $product) {
@@ -165,8 +170,25 @@ class CartController extends Controller
         Session::save();
         if($request->order_pay_type == 2){
             $order_total = Session::get('totalCart');
-            return view('frontend.vnpay.index', ['order_total' => $order_total, 'order_pay_type' => $request->order_pay_type]);
+            return view('frontend.vnpay.index', [
+                'order_total' => $order_total,
+                'order_pay_type' => $request->order_pay_type,
+                'dataCustomerOrder' => Session::get('dataCustomer'),
+                'cart' => $this->cart,
+                'cart_totals' => $cart_totals,
+                'cart_total' => $cart_total,
+            ]);
         } elseif ($request->order_pay_type == 3){
+            $order_total = Session::get('totalCart');
+            return view('frontend.vnpay.index', [
+                'order_total' => $order_total,
+                'order_pay_type' => $request->order_pay_type,
+                'dataCustomerOrder' => Session::get('dataCustomer'),
+                'cart' => $this->cart,
+                'cart_totals' => $cart_totals,
+                'cart_total' => $cart_total,
+            ]);
+        }elseif ($request->order_pay_type == 4){
             $order_total = Session::get('totalCart');
             return view('frontend.vnpay.index', ['order_total' => $order_total, 'order_pay_type' => $request->order_pay_type]);
         }
@@ -218,7 +240,7 @@ class CartController extends Controller
         $partnerCode = 'MOMO5RGX20191128';
         $accessKey = 'M8brj9K6E22vXoDB';
         $secretKey = 'nqQiVSgDMy809JoPF6OzP5OdBUB550Y4';
-        $orderInfo = "Thanh toán đơn hàng Tâm Tea: " . $request;
+        $orderInfo = Str::random(10);
         $amount = $_POST['amount'];
         $orderId = time() . "";
         $redirectUrl = "http://127.0.0.1:8000/payment/return";
@@ -252,11 +274,11 @@ class CartController extends Controller
 
     //Tạo thanh toán bằng vn pay
     public function paymentCreate(Request $request){
-        $vnp_TmnCode = "ES8W4TH7"; //Mã website tại VNPAY
-        $vnp_HashSecret = "BYAOHQMNDPHLWRUFHXGJKPLUXWRCMNBW"; //Chuỗi bí mật
+        $vnp_TmnCode = "ES8W4TH7";
+        $vnp_HashSecret = "BYAOHQMNDPHLWRUFHXGJKPLUXWRCMNBW";
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
         $vnp_Returnurl = "http://127.0.0.1:8000/payment/return";
-        $vnp_TxnRef = Str::random(10); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_TxnRef = rand(1,10000);
         $vnp_OrderInfo = "Thanh toán hóa đơn phí dich vụ";
         $vnp_OrderType = 'billpayment';
         $vnp_Amount = $request->input('amount') * 100;
@@ -264,7 +286,7 @@ class CartController extends Controller
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
 
         $inputData = array(
-            "vnp_Version" => "2.0.0",
+            "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
             "vnp_Amount" => $vnp_Amount,
             "vnp_Command" => "pay",
@@ -281,15 +303,16 @@ class CartController extends Controller
         if (isset($vnp_BankCode) && $vnp_BankCode != "") {
             $inputData['vnp_BankCode'] = $vnp_BankCode;
         }
+
         ksort($inputData);
         $query = "";
         $i = 0;
         $hashdata = "";
         foreach ($inputData as $key => $value) {
             if ($i == 1) {
-                $hashdata .= '&' . $key . "=" . $value;
+                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
             } else {
-                $hashdata .= $key . "=" . $value;
+                $hashdata .= urlencode($key) . "=" . urlencode($value);
                 $i = 1;
             }
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
@@ -345,7 +368,7 @@ class CartController extends Controller
 
             return redirect('/')->with('msgSuccess', 'Đặt Hàng và thanh toán Thành Công');
         }
-        return redirect('/')->with('msgError' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
+        return redirect('/')->with('msgError' ,'Thanh toán đã bị huỷ, hãy kiểm tra giỏ hàng để thanh toán cho lần tiếp theo');
     }
 
     //Hàm gửi mail sau khi đặt hàng thành công
@@ -416,7 +439,7 @@ class CartController extends Controller
         }
         Session::put('cart', $this->cart);
         Session::save();
-        return response()->json('Thêm giỏ hàng thành công');
+        return response()->json('Thêm sản phẩm giỏ hàng thành công');
     }
 
     //Hàm xử lý tính tổng theo sản phẩmgiỏ hàng
@@ -605,9 +628,9 @@ class CartController extends Controller
             }
         }
         else{
-            $cart_price_ship = 20000;
+            $cart_price_ship = 10000;
             Session::put('priceShip', $cart_price_ship);
-            $cart_totals = $cart_totals + 20000;
+            $cart_totals = $cart_totals + 10000;
             Session::put('totalCart', $cart_totals);
         }
 
