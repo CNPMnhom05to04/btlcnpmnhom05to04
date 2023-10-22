@@ -24,6 +24,7 @@ use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\frontend\CustomerController;
 use App\Http\Controllers\backend\RequirementController;
+use App\Http\Controllers\ChatController;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -69,6 +70,11 @@ Route::post('/get_ship_checkout', [CartController::class, 'getShipCheckout']);
 //Login Google
 Route::get('/auth/redirect/{provider}', [SocialController::class, 'redirect']);
 Route::get('/callback/{provider}', [SocialController::class, 'callback']);
+
+//Route Chatrealtime
+Route::get('/chat', [ChatController::class, 'index'])->name('chat.home');
+Route::get('/message/{id}',[ChatController::class, 'getMessage'])->name('chat.message');
+Route::post('message', [ChatController::class, 'sendMessage']);
 
 //Route gửi lời nhắn
 Route::post('/contact/send', [\App\Http\Controllers\frontend\RequirementController::class, 'send']);
@@ -226,10 +232,6 @@ Route::get('/linkstorage', function () {
 Route::get('/optimize', function () {
     Artisan::call('optimize');
     echo "Optimize done !";
-});
-
-Route::get('/chat', function () {
-    return view('welcome');
 });
 
 Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);

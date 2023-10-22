@@ -60,7 +60,7 @@
                                                 </div>
                                             </form>
 
-                                            <form action="/payment" method="POST">
+                                            <form id="paymentForm" action="/payment" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="city_id"
                                                        value="{{$dataUser->user_city}}">
@@ -153,7 +153,6 @@
                                                     </div>
 
                                                 </div>
-                                                <br>
                                             </form>
                                         </div>
                                     </div>
@@ -199,7 +198,7 @@
                         </div>
                     </div>
 
-                    <ul class="payment__btn">
+                    <ul id="payment_btn" class="payment__btn">
                         <li class="active">
                             <button type="submit" class="form-control">Thanh toán
                             </button>
@@ -296,5 +295,14 @@
                 }
             })
         })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#payment_btn").on("click", function(event) {
+                event.preventDefault();
+                $("#paymentForm").submit();
+            });
+        });
     </script>
 @endsection

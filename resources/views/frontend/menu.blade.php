@@ -4,9 +4,9 @@
         <div class="container">
             <div class="row">
                 <div class="menumenu__container clearfix">
-                    <div class="col-lg-2 col-md-1">
-                    <div class="logo " style="width: 120px; height: 150px; object-fit: cover">
-                            <a href="/"><img style="margin-bottom: 55px" src="{{$dataLogo->image}}" title="Trà Tân Cương Thái Nguyên Chính Gốc 100%" alt="logo images"></a>
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                        <div class="logo">
+                            <a href="/"><img src="{{$dataLogo->image}}" title="Trà Tân Cương Thái Nguyên Chính Gốc 100%" alt="logo images"></a>
                         </div>
                     </div>
                     <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
