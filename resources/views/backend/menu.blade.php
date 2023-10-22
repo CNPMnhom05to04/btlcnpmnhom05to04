@@ -71,6 +71,14 @@
             <p>Hóa Đơn</p>
           </a>
         </li>
+{{--          Chat realtime--}}
+          <li class="nav-item">
+              <a class="nav-link" href="/chat">
+                  <i class="material-icons">content_paste</i>
+                  <p>Tin nhắn</p>
+              </a>
+          </li>
+
         <li class="nav-item @php
               if(isset($activeComment))
               echo $activeComment;

@@ -32,11 +32,9 @@
   height: 100vh;
 }
 .slider__fixed--height {
-  align-items: center;
-  display: flex;
-  height: 450px;
-    padding-right: 400px;
-    margin-left: -20px
+    align-items: center;
+    display: flex;
+    height: 500px;
 }
 .slider--one .slide {
     align-items: center;
@@ -53,7 +51,7 @@
 .slider__inner h1 {
     color: #030303;
     font-family: Old Standard TT;
-    font-size: 70px;
+    font-size: 89px;
     margin-bottom: 14px;
     margin-top: 31px;
     text-transform: uppercase;

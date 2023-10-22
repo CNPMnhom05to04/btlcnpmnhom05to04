@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Tâm Trà - Tinh hoa trên từng bups trà - {{$data_seo->meta_title}}</title>
+    <title>Tâm Trà - Tinh hoa trên từng búp trà - {{$data_seo->meta_title}}</title>
     <!---seo------->
     <meta name="description" content="{{$data_seo->meta_description}}">
     <meta name="keywords" content="{{$data_seo->meta_keyword}}">
@@ -143,14 +143,155 @@
                 </div>
             </div>
         </div>
-        <script>
-            var botmanWidget = {
-                aboutText: 'ssdsd',
-                introMessage: "✋ Hi! Chào mừng bạn đến với chatbot tự động của Tâm trà ",
-                customLauncherSelector: '.your-custom-launcher-element'
-            };
-        </script>
-        <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+        <style>
+            @keyframes pulse {
+                from,
+                to {
+                    -webkit-transform: scale3d(1, 1, 1);
+                    transform: scale3d(1, 1, 1);
+                }
+                50% {
+                    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+                    transform: scale3d(1.05, 1.05, 1.05);
+                }
+            }
+            @-webkit-keyframes zoomIn {
+                from {
+                    opacity: 0;
+                    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+                    transform: scale3d(0.3, 0.3, 0.3);
+                }
+                50% {
+                    opacity: 1;
+                }
+            }
+            @keyframes zoomIn {
+                from {
+                    opacity: 0;
+                    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+                    transform: scale3d(0.3, 0.3, 0.3);
+                }
+                50% {
+                    opacity: 1;
+                }
+            }
+            .cta-lptech {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                z-index: 999;
+                position: fixed;
+                bottom: 36px;
+                left: 15px;
+                width: 50px;
+            }
+            .cta-lptech li {
+                width: 50px;
+                float: left;
+                margin-bottom: 10px;
+            }
+            .cta-lptech li a {
+                height: 50px;
+                line-height: 50px;
+                background-color: #ff2a28;
+                box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+            }
+            .cta-lptech li a i {
+                font-size: 27px;
+                color: #fff;
+                padding: 12px;
+            }
+            .cta-lptech li a,
+            .cta-lptech li a img {
+                width: 50px;
+                border-radius: 100%;
+            }
+            .cta-lptech li,
+            .cta-lptech li a {
+                display: inline-block;
+            }
+            .cta-lptech li a.zalo {
+                background-color: #0180c7;
+            }
+            .animated.infinite {
+                -webkit-animation-iteration-count: infinite;
+                animation-iteration-count: infinite;
+            }
+            .mypage-alo-ph-circle,
+            .mypage-alo-phone:hover .mypage-alo-ph-circle {
+                border-color: #ffd53b !important;
+            }
+            .mypage-alo-ph-circle-fill,
+            .mypage-alo-ph-img-circle,
+            .mypage-alo-phone:hover .mypage-alo-ph-circle-fill,
+            .mypage-alo-phone:hover .mypage-alo-ph-img-circle {
+                background-color: rgba(244, 68, 56, 0.5);
+            }
+            .mypage-alo-ph-circle-fill {
+                width: 60px;
+                height: 60px;
+                top: 56px;
+                left: -5px;
+                position: absolute;
+                -ms-transition: all 0.2s ease-in-out;
+                border-radius: 100%;
+                border: 2px solid transparent;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+                opacity: 0.4 !important;
+            }
+            .animated {
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+            }
+            .zoomIn {
+                -webkit-animation-name: zoomIn;
+                animation-name: zoomIn;
+            }
+            .mypage-alo-ph-circle {
+                width: 80px;
+                height: 80px;
+                top: 45px;
+                left: -16px;
+                position: absolute;
+                background-color: #774d4d00;
+                border-radius: 100%;
+                border: 2px solid rgba(30, 30, 30, 0.4);
+                opacity: 0.1;
+                opacity: 0.5;
+            }
+        </style>
+        <ul class="cta-lptech">
+            <li>
+                <a href="https://www.facebook.com/profile.php?id=100004954485807" title="Nhắn ngay cho Tâm trà" rel="noopener" class="zalo" aria-label="Nhắn ngay cho Tâm trà">
+                    <img src="https://webkhoinghiep.net/wp-content/uploads/2022/06/widget_icon_messenger.svg" alt="message" />
+                </a>
+
+            </li>
+
+            <li>
+                <a aria-label="gọi điện thoại cho LPTech" href="tel:0943 206 425" title="Liên hệ với chúng tôi " rel="noopener">
+                    <img src="https://webkhoinghiep.net/wp-content/uploads/2020/12/call.png" alt="gọi điện thoại cho chúng tôi" />
+                    <div class="animated infinite zoomIn mypage-alo-ph-circle"></div>
+                    <div class="animated infinite pulse mypage-alo-ph-circle-fill"></div>
+                </a>
+            </li>
+            <li>
+                <a href="https://zalo.me/0943206425" title="Chat zalo cho Tâm trà" rel="noopener" class="zalo" aria-label="gọi zalo cho Tâm trà"><img src="https://webkhoinghiep.net/wp-content/uploads/2020/12/zalo.png" alt="zalo" /></a>
+            </li>
+        </ul>
+            <script>
+                var botmanWidget = {
+                    aboutText: 'ssdsd',
+                    introMessage: "✋ Hi! Chào mừng bạn đến với chatbot tự động của Tâm trà ",
+                    customLauncherSelector: '.your-custom-launcher-element'
+                };
+            </script>
+            <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
         <!-- End Footer Widget -->
     </footer>
     <!-- Messenger Plugin chat Code -->
