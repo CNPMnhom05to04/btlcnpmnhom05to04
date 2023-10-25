@@ -40,7 +40,7 @@ class ChatController extends Controller
 
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('from', $user_id)->where('to', $my_id);
-        })->oRwhere(function ($query) use ($user_id, $my_id) {
+        })->orWhere(function ($query) use ($user_id, $my_id) {
             $query->where('from', $my_id)->where('to', $user_id);
         })->get();
 

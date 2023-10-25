@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -55,7 +50,7 @@
         }
 
         .user-wrapper {
-            height: 600px;
+            height: 538px;
         }
 
         .user {
@@ -100,10 +95,31 @@
             margin: 6px 0;
         }
 
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .user-wrapper {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        /*.message-wrapper {*/
+        /*    flex: 1;*/
+        /*    flex: 1;*/
+        /*    overflow-y: auto;*/
+        /*}*/
+
+        .message {
+            margin-bottom: 50px;
+        }
+
         .message-wrapper {
-            padding: 10px;
+            /*padding: 10px;*/
             height: 536px;
             background: #eeeeee;
+            width: auto;
         }
 
         .messages .message {
@@ -161,7 +177,9 @@
 </head>
 <body>
 <div id="app">
+    <main class="py-4">
         @yield('content')
+    </main>
 </div>
 
 <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
