@@ -1,16 +1,30 @@
-<div class="message-wrapper">
-    <ul class="messages">
+<div class="mesgs">
+    <div class="msg_history">
         @foreach($messages as $message)
-            <li class="message clearfix">
-                <div class="{{ ($message->from == Auth::id()) ? 'sent' : 'received' }}">
-                    <p>{{ $message->message }}</p>
-                    <p class="date">{{ date('d M y, h:i a', strtotime($message->created_at)) }}</p>
+            @if($message->from !== Auth::id())
+                <div class="incoming_msg">
+                    <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                    <div class="received_msg">
+                        <div class="received_withd_msg">
+                            <p>{{ $message->message }}</p>
+                            <span class="time_date">{{ date('d M y, h:i a', strtotime($message->created_at)) }}</span></div>
+                    </div>
                 </div>
-            </li>
+            @else
+                <div class="outgoing_msg">
+                    <div class="sent_msg">
+                        <p>{{ $message->message }}</p>
+                        <span class="time_date">{{ date('d M y, h:i a', strtotime($message->created_at)) }}</span></div>
+                </div>
+            @endif
         @endforeach
-    </ul>
+    </div>
+    <div class="type_msg input-text">
+        <div class="input_msg_write">
+            <input type="text" name="message" class="submit write_msg" placeholder="Type a message"/>
+            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        </div>
+    </div>
 </div>
-
-<div class="input-text">
-    <input type="text" name="message" class="submit">
 </div>

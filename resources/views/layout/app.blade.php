@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -11,7 +6,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -20,148 +14,239 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        /* width */
-        ::-webkit-scrollbar {
-            width: 7px;
+        .container {
+            max-width: 1170px;
+            margin: auto;
         }
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+        img {
+            max-width: 100%;
         }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #a7a7a7;
+        .inbox_people {
+            background: #f8f8f8 none repeat scroll 0 0;
+            float: left;
+            overflow: hidden;
+            width: 40%;
+            border-right: 1px solid #c4c4c4;
         }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #929292;
+        .inbox_msg {
+            border: 1px solid #c4c4c4;
+            clear: both;
+            overflow: hidden;
         }
 
-        ul {
-            margin: 0;
+        .top_spac {
+            margin: 20px 0 0;
+        }
+
+
+        .recent_heading {
+            float: left;
+            width: 40%;
+        }
+
+        .srch_bar {
+            display: inline-block;
+            text-align: right;
+            width: 60%;
+        }
+
+        .headind_srch {
+            padding: 10px 29px 10px 20px;
+            overflow: hidden;
+            border-bottom: 1px solid #c4c4c4;
+        }
+
+        .recent_heading h4 {
+            color: #05728f;
+            font-size: 21px;
+            margin: auto;
+        }
+
+        .srch_bar input {
+            border: 1px solid #cdcdcd;
+            border-width: 0 0 1px 0;
+            width: 80%;
+            padding: 2px 0 4px 6px;
+            background: none;
+        }
+
+        .srch_bar .input-group-addon button {
+            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            border: medium none;
             padding: 0;
+            color: #707070;
+            font-size: 18px;
         }
 
-        li {
-            list-style: none;
+        .srch_bar .input-group-addon {
+            margin: 0 0 0 -27px;
         }
 
-        .user-wrapper, .message-wrapper {
-            border: 1px solid #dddddd;
-            overflow-y: auto;
+        .chat_ib h5 {
+            font-size: 15px;
+            color: #464646;
+            margin: 0 0 8px 0;
         }
 
-        .user-wrapper {
-            height: 600px;
+        .chat_ib h5 span {
+            font-size: 13px;
+            float: right;
         }
 
-        .user {
-            cursor: pointer;
-            padding: 5px 0;
+        .chat_ib p {
+            font-size: 14px;
+            color: #2e0303;
+            margin: auto;
+            font-weight: 800;
+        }
+
+        .chat_img {
+            float: left;
+            width: 11%;
+        }
+
+        .chat_ib {
+            float: left;
+            padding: 0 0 0 15px;
+            width: 88%;
+        }
+
+        .chat_people {
+            overflow: hidden;
+            clear: both;
+        }
+
+        .chat_list {
+            border-bottom: 1px solid #c4c4c4;
+            margin: 0;
+            padding: 18px 16px 10px;
+        }
+
+        .inbox_chat {
+            height: 550px;
+            overflow-y: scroll;
+        }
+
+        .active_chat {
+            background: #ebebeb;
+        }
+
+        .incoming_msg_img {
+            display: inline-block;
+            width: 6%;
+        }
+
+        .received_msg {
+            display: inline-block;
+            padding: 0 0 0 10px;
+            vertical-align: top;
+            width: 92%;
+        }
+
+        .received_withd_msg p {
+            background: #ebebeb none repeat scroll 0 0;
+            border-radius: 10px;
+            color: #646464;
+            font-size: 14px;
+            margin: 0;
+            padding: 5px 10px 5px 12px;
+            width: 100%;
+        }
+
+        .time_date {
+            color: #747474;
+            display: block;
+            font-size: 12px;
+            margin: 8px 0 0;
+        }
+
+        .received_withd_msg {
+            width: 57%;
+        }
+
+        .mesgs {
+            float: left;
+            padding: 30px 15px 0 25px;
+            width: 60%;
+        }
+
+        .sent_msg p {
+            background: #05728f none repeat scroll 0 0;
+            border-radius: 10px;
+            font-size: 14px;
+            margin: 0;
+            color: #fff;
+            padding: 5px 10px 5px 12px;
+            width: 100%;
+        }
+
+        .outgoing_msg {
+            overflow: hidden;
+            margin: 26px 0 26px;
+        }
+
+        .sent_msg {
+            float: right;
+            width: 46%;
+        }
+
+        .input_msg_write input {
+            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            border: medium none;
+            color: #4c4c4c;
+            font-size: 15px;
+            min-height: 48px;
+            width: 100%;
+        }
+
+        .type_msg {
+            border-top: 1px solid #c4c4c4;
             position: relative;
         }
 
-        .user:hover {
-            background: #eeeeee;
-        }
-
-        .user:last-child {
-            margin-bottom: 0;
-        }
-
-        .pending {
-            position: absolute;
-            left: 13px;
-            top: 9px;
-            background: #b600ff;
-            margin: 0;
+        .msg_send_btn {
+            background: #05728f none repeat scroll 0 0;
+            border: medium none;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            line-height: 18px;
-            padding-left: 5px;
-            color: #ffffff;
-            font-size: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 17px;
+            height: 33px;
+            position: absolute;
+            right: 0;
+            top: 11px;
+            width: 33px;
         }
 
-        .media-left {
-            margin: 0 10px;
+        .messaging {
+            padding: 0 0 50px 0;
         }
 
-        .media-left img {
-            width: 64px;
-            border-radius: 64px;
+        .msg_history {
+            height: 516px;
+            overflow-y: auto;
         }
-
-        .media-body p {
-            margin: 6px 0;
-        }
-
-        .message-wrapper {
-            padding: 10px;
-            height: 536px;
-            background: #eeeeee;
-        }
-
-        .messages .message {
-            margin-bottom: 15px;
-        }
-
-        .messages .message:last-child {
-            margin-bottom: 0;
-        }
-
-        .received, .sent {
-            width: 45%;
-            padding: 3px 10px;
-            border-radius: 10px;
-        }
-
-        .received {
-            background: #ffffff;
-        }
-
-        .sent {
-            background: #3bebff;
-            float: right;
-            text-align: right;
-        }
-
-        .message p {
-            margin: 5px 0;
-        }
-
-        .date {
-            color: #777777;
-            font-size: 12px;
-        }
-
-        .active {
-            background: #eeeeee;
-        }
-
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 15px 0 0 0;
-            display: inline-block;
-            border-radius: 4px;
-            box-sizing: border-box;
-            outline: none;
-            border: 1px solid #cccccc;
-        }
-
-        input[type=text]:focus {
-            border: 1px solid #aaaaaa;
+        body,html{
+            height: 100%;
+            margin: 0;
+            background: #7F7FD5;
+            background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+            background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
         }
     </style>
 </head>
 <body>
-<div id="app">
-        @yield('content')
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
+      rel="stylesheet">
+<div class="container">
+    <h3 class=" text-center">Chat Tâm Trà</h3>
+                @yield('content')
 </div>
 
 <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
@@ -251,8 +336,8 @@
     });
 
     function scrollToBottomFunc() {
-        $('.message-wrapper').animate({
-            scrollTop: $('.message-wrapper').get(0).scrollHeight
+        $('.mesgs').animate({
+            scrollTop: $('.mesgs').get(0).scrollHeight
         }, 50);
     }
 </script>

@@ -25,8 +25,9 @@ class ChatController extends Controller
                     ->where('messages.to', '=', Auth::id());
             })
             ->where('users.user_id', '!=', Auth::id())
+            ->whereNotNull('users.last_seen')
             ->groupBy('users.user_id', 'users.user_name', 'users.user_email')
-            ->select('users.user_id', 'users.user_name', 'users.user_email', DB::raw('COUNT(messages.is_read) as unread'))
+            ->select('users.user_id', 'users.user_name', 'users.user_email', 'users.last_seen', 'users.role_id', DB::raw('COUNT(messages.is_read) as unread'))
             ->get();
 
         return view('home', ['users' => $users]);
@@ -40,7 +41,7 @@ class ChatController extends Controller
 
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('from', $user_id)->where('to', $my_id);
-        })->oRwhere(function ($query) use ($user_id, $my_id) {
+        })->orWhere(function ($query) use ($user_id, $my_id) {
             $query->where('from', $my_id)->where('to', $user_id);
         })->get();
 
