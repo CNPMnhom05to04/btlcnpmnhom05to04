@@ -18,7 +18,7 @@ class UserModel extends Authenticatable implements MustVerifyEmail
     protected $table = 'users';
 
     protected $fillable = [
-        'user_name', 'user_email', 'user_password', 'user_phone', 'user_addres', 'user_district', 'user_city', 'provider', 'provider_id','role_id',
+        'user_name', 'user_email', 'user_password', 'user_phone', 'user_addres', 'user_district', 'user_city', 'provider', 'provider_id','role_id', 'last_seen'
     ];
 
     protected $hidden = [

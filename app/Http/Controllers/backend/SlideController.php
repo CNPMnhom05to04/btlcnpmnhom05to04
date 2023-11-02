@@ -32,7 +32,12 @@ class SlideController extends Controller
     public function store(SlideRequest $request){
         $data = new SlideModel;
 
-        $data->image = $this->handleUploadImage($request, 'product_image', 'images_slide');
+        if($request->type == 3){
+            $data->image = $this->handleUploadImageLogo($request, 'product_image', 'images_slide');
+
+        }else{
+            $data->image = $this->handleUploadImage($request, 'product_image', 'images_slide');
+        }
         $data->slide_title = $request->slide_title;
         $data->target = $request->target;
         $data->type = $request->type;
@@ -57,12 +62,12 @@ class SlideController extends Controller
     public function update(SlideUpdateRequest $request, $id)
     {
         $data = SlideModel::find($id);
-        
+
         $dataImage = $this->handleUploadImage($request, 'product_image', 'images_slide');
 
         if ($dataImage != null) {
             $image_path = public_path() . '/' . $data->image;
-    
+
             if (file_exists(public_path('/' . $data->image))) unlink($image_path);
 
             $data->image = $dataImage;
