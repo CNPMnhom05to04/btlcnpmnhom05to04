@@ -236,6 +236,21 @@
             background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
             background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
         }
+        .backpage {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            float: right;
+            border-radius: 15px;
+        }
+
+        .backpage:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -245,7 +260,11 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
       rel="stylesheet">
 <div class="container">
-    <h3 class=" text-center">Chat Tâm Trà</h3>
+    <h3 class="text-center">Chat Tâm Trà
+        <a class="backpage" href="{{ auth()->user()->role_id == 1 || auth()->user()->role_id == 2 ? 'http://127.0.0.1:8000/admin/dashboard' : 'http://127.0.0.1:8000/' }}">
+            <i class="fa-solid fa-marker mr-1"></i> Quay lại
+        </a>
+    </h3>
                 @yield('content')
 </div>
 

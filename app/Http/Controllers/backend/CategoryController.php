@@ -90,6 +90,7 @@ class CategoryController extends Controller
         $error = false;
         $message_error = '';
 
+        DB::beginTransaction();
         foreach ($ids as $id) {
             if (!DB::table('categorys')
                 ->where('category_id', $id)
@@ -111,6 +112,7 @@ class CategoryController extends Controller
                 ->whereIn('category_id', $ids)
                 ->delete();
         }
+        Db::commit();
         return response()->json(['msgSuccess' => 'Xóa Loại sản phẩm thành công']);
     }
 
