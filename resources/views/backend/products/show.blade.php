@@ -3,7 +3,8 @@
     <style>
         span{
             font-size: 15px;
-            color: #9124a3;
+            font-weight: 400;
+            color: #020002;
         }
     </style>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\UserRequest;
 use App\Http\Requests\Admin\Users\UserUpdateProfileRequest;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\UserModel;
@@ -82,6 +83,7 @@ class UserController extends Controller
     {
         $data = UserModel::find($id);
         $dataOrder = OrderModel::where('user_id', $id)->get();
+        Message::where('from', $id)->orWhere('to', $id)->delete();
         foreach($dataOrder as $item){
             $dataOrderdetail = OrderdetailModel::where('order_id', $item->order_id)->get();
             foreach($dataOrderdetail as $val){
@@ -110,7 +112,7 @@ class UserController extends Controller
         }
         else{
             return redirect('admin')->with('msgError', 'Đăng nhập thất bại </br> Tài khoản hoặc mật khẩu không đúng');
-        };
+        }
     }
 
     //Xử lý đăng xuất

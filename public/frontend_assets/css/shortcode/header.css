@@ -234,7 +234,7 @@ nav.off__canvars--menu ul li ul li a:hover {
     font-size: 19px;
 }
 .htc__shopping__cart  span.htc__qua {
-  background: #c43b68;
+  background: #2b8d06;
   border-radius: 100%;
   color: #fff;
   font-size: 9px;
@@ -484,7 +484,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 }
 
 .select__language > li:hover > a , .select__language > li > ul > li > a:hover , .htc__contact a:hover{
-    color: #c43b68;
+    color: #2b8d06;
 }
 .htc__contact a {
     color: #333333;
@@ -501,7 +501,7 @@ nav.off__canvars--menu ul li ul li a:hover {
     transition: 0.4s;
 }
 .ht__header__right li a:hover{
-    color: #c43b68;
+    color: #2b8d06;
 }
 .ht__header__right {
     align-items: center;
@@ -517,7 +517,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 }
 
 .htc__contact a i {
-    color: #c43b68;
+    color: #2b8d06;
     padding-right: 8px;
 }
 .ht__header__right li + li {
@@ -642,7 +642,7 @@ nav.off__canvars--menu ul li ul li a:hover {
   transition: 0.3s;
 }
 .search__area .search__inner form button:hover {
-  background: #c43b68 none repeat scroll 0 0;
+  background: #2b8d06 none repeat scroll 0 0;
 }
 .search__area .search__inner form button:hover::before {
   color: #fff;
@@ -668,7 +668,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 .search__close__btn .search__close__btn_icon:hover i {
     -webkit-transform: scale(2) rotate(180deg);
             transform: scale(2) rotate(180deg);
-    color: #c43b68;
+    color: #2b8d06;
 }
 .search__box__show__hide .search__area {
   -webkit-transform: translateY(0px);
@@ -726,7 +726,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 
 }
 .offsetmenu {
-  background: #c43b68;
+  background: #2b8d06;
   box-shadow: 0 0 85px rgba(0, 0, 0, 0.2);
   display: block;
   height: 100vh;
@@ -769,7 +769,7 @@ nav.off__canvars--menu ul li ul li a:hover {
     transition: all 0.3s ease 0s;
 }
 .offsetmenu__close__btn a:hover i{
-    color: #c43b68;
+    color: #2b8d06;
 }
 .offset__widget {
     display: flex;
@@ -795,7 +795,7 @@ h4.offset__title {
 }
 
 .offset__single ul li a:hover {
-    color: #c43b68;
+    color: #2b8d06;
 }
 .off__contact p {
     color: #303030;
@@ -852,7 +852,7 @@ h4.offset__title {
     width: 100%;
 }
 .sidebar__thumd > li a::before {
-    background: #c43b68  none repeat scroll 0 0;
+    background: #2b8d06  none repeat scroll 0 0;
     content: "";
     height: 100%;
     opacity: 0;
@@ -910,7 +910,7 @@ h4.offset__title {
     text-transform: capitalize;
 }
 .shp__pro__details .shp__price {
-    color: #c43b68;
+    color: #2b8d06;
     display: block;
 }
 
@@ -919,7 +919,7 @@ h4.offset__title {
     font-weight: 400;
 }
 .shoping__total .total__price {
-    color: #c43b68;
+    color: #2b8d06;
     float: right;
 }
 .shopping__btn li a {
@@ -938,8 +938,8 @@ h4.offset__title {
     display: block;
 }
 .shopping__btn li a:hover{
-    background: #c43b68;
-    border: 1px solid #c43b68;
+    background: #2b8d06;
+    border: 1px solid #2b8d06;
     color: #fff;
 }
 .shopping__btn .shp__checkout a{
@@ -986,7 +986,7 @@ h4.offset__title {
     transition: all 0.5s ease 0s;
 }
 .remove__btn a:hover i, .remove__btn button:hover i {
-    color: #c43b68;
+    color: #2b8d06;
     -webkit-transform: rotate(180deg);
             transform: rotate(180deg);
 }

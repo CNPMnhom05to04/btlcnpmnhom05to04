@@ -54,7 +54,9 @@
                                                href="admin/categorys/{{$item->category_id}}/edit">
                                                 <i class="fa-solid fa-marker mr-1"></i> Sửa
                                             </a>
-                                            <a class=" button-delete{{ count($item->product) == 0 ? '' : ' disabled' }} button-common-delete delete button-delete-cate" onclick="deleteSelected()">
+                                            <a class=" button-delete{{ count($item->product) == 0 ? '' : ' disabled' }}
+                                            button-common-delete delete button-delete-cate"
+                                               onclick="deleteSelected()">
                                                 <i class="fa-regular fa-trash-can mr-1"></i>
                                                 <span>Xoá </span>
                                             </a>
@@ -96,7 +98,7 @@
 
                                                     <div
                                                         class="d-md-flex flex-column flex-md-row justify-content-md-end">
-                                                        <a class="button-common delete mb-2 mt-2 mr-2 disable-hover button-delete-cate"
+                                                        <a class="button-common delete mb-2 mt-2 mr-2 disable-hover"
                                                            onclick="deleteSelected()">
                                                             <i class="fa-regular fa-trash-can mr-1"></i>
                                                             <span>Xoá nhiều</span>
@@ -137,6 +139,7 @@
                 return;
             }
             var token = $('input[name=_token]').val();
+            console.log(selectedIDs);
             swal({
                 title: "Bạn có chắc sẽ xóa không gian decor này?",
                 icon: "warning",
@@ -162,9 +165,21 @@
         }
 
         $(document).ready(function () {
-            $("#select_all").change(function () {
-                $("input[name='select[]']:enabled").prop('checked', $(this).prop("checked"));
+            $("input[name='select[]']").change(function () {
+                var anyUncheckedEnabledCheckbox = $("input[name='select[]']:not(:checked):not(:disabled)");
+                $("#select_all").prop("checked", !anyUncheckedEnabledCheckbox);
+                $(".button-common.delete").toggleClass("disable-hover", !anyUncheckedEnabledCheckbox);
             });
+            $("#select_all").change(function () {
+                var selectAllChecked = $(this).prop("checked");
+                $("input[name='select[]']:not(:disabled)").prop("checked", selectAllChecked);
+                updateSelectAllState();
+            });
+            function updateSelectAllState() {
+                var anyUncheckedEnabledCheckbox = $("input[name='select[]']:not(:checked):not(:disabled)").length > 0;
+                $("#select_all").prop("checked", !anyUncheckedEnabledCheckbox);
+                $(".button-common.delete").toggleClass("disable-hover", !anyUncheckedEnabledCheckbox);
+            }
         });
     </script>
 

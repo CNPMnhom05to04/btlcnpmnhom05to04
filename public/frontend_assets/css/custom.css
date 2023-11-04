@@ -6,7 +6,7 @@
 ---------------------------------------------------------------*/
 
 /* ----------------------------------------------------
-	You can put your custom css code here: 
+	You can put your custom css code here:
 -------------------------------------------------------*/
 /* .mean-nav{
   height: 80vh;
@@ -45,18 +45,18 @@
   width: 70px;
   height: 30px;
   top: 10px;
-  background-color: #c43b68;
+  background-color: #6DB646;
   color: white;
   text-align: center;
   line-height: 30px;
 }
 
 .pagination .active{
-  background-color: #c43b68;
+  background-color: #6DB646;
 }
 
 .text-success{
-  color: #c43b68;
+  color: #6DB646;
 }
 
 /* rating */
@@ -66,7 +66,7 @@ div.stars {
   background-color: whitesmoke;
   padding: 10px;
 }
-/* 
+/*
 .mt-200 {
   margin-top: 200px
 } */

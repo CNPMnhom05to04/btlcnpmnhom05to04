@@ -67,11 +67,14 @@
                                                    href="admin/products/{{$item->product_id}}/edit">
                                                     <i class="fa-solid fa-marker mr-1"></i> Sửa
                                                 </a>
-                                                <a class=" button-common-delete delete button-delete-cate"
-                                                   onclick="deleteSelected()">
-                                                    <i class="fa-regular fa-trash-can mr-1"></i>
-                                                    <span>Xoá </span>
-                                                </a>
+                                                <form>
+                                                    @csrf
+                                                    <a class=" button-common-delete delete button-delete-cate"
+                                                       onclick="deleteSelected()">
+                                                        <i class="fa-regular fa-trash-can mr-1"></i>
+                                                        <span>Xoá </span>
+                                                    </a>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -120,7 +123,8 @@
                                                             <path class="particle plus"/>
                                                         </g>
                                                     </svg>
-                                                    <input type="search" name="search" id="searchInput" placeholder="Type to Search...">
+                                                    <input type="search" name="search" id="searchInput"
+                                                           placeholder="Type to Search...">
                                                 </form>
                                             </div>
                                             <div id="results">
@@ -140,14 +144,16 @@
                                                     <i class="fa-solid fa-plus fa-lg mr-1"></i>Thêm loại sản phẩm
                                                 </a>
                                             </div>
-
-                                            <div class="d-inline-block mb-2 mt-2 mr-2">
-                                                <a class="button-common delete disable-hover button-delete-cate"
-                                                   onclick="deleteSelected()">
-                                                    <i class="fa-regular fa-trash-can mr-1"></i>
-                                                    <span>Xoá nhiều</span>
-                                                </a>
-                                            </div>
+                                            <form>
+                                                @csrf
+                                                <div class="d-inline-block mb-2 mt-2 mr-2">
+                                                    <a class="button-common delete disable-hover "
+                                                       onclick="deleteSelected()">
+                                                        <i class="fa-regular fa-trash-can mr-1"></i>
+                                                        <span>Xoá nhiều</span>
+                                                    </a>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -177,7 +183,7 @@
             if (selectedIDs.length === 0) {
                 return;
             }
-            var token = $('input[name=_token]').val();
+            var token = $('input[name=_token]').val();console.log(selectedIDs);
             swal({
                 title: "Bạn có chắc sẽ xóa không gian decor này?",
                 icon: "warning",
@@ -203,8 +209,16 @@
         }
 
         $(document).ready(function () {
+            $("input[name='select[]']").change(function () {
+                var anyCheckboxChecked = $("input[name='select[]']:checked").length > 0;
+                $("#select_all").prop("checked", !anyCheckboxChecked);
+                $(".button-common.delete").toggleClass("disable-hover", !anyCheckboxChecked);
+            });
+
             $("#select_all").change(function () {
-                $("input[name='select[]']:enabled").prop('checked', $(this).prop("checked"));
+                var selectAllChecked = $(this).prop("checked");
+                $("input[name='select[]']").prop("checked", selectAllChecked);
+                $(".button-common.delete").toggleClass("disable-hover", !selectAllChecked);
             });
         });
     </script>

@@ -177,8 +177,8 @@ class ProductController extends Controller
         $error = false;
         $message_error = '';
 
+        DB::beginTransaction();
         foreach ($ids as $id) {
-            DB::beginTransaction();
             if (!DB::table('products')
                     ->where('product_id', $id)
                 ->first()) {
@@ -209,7 +209,6 @@ class ProductController extends Controller
             if (file_exists(public_path('/' . $dataImage->image_name))) unlink(public_path() . '/' . $dataImage->image_name);
             $dataImage->delete();
         }
-        $data->delete();
         DB::commit();
         return response()->json(['msgSuccess' => 'Xóa sản phẩm thành công']);
     }

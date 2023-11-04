@@ -112,11 +112,9 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
-                                <tr class="text-primary">
+                                <thead class="text-primary">
                                     <th>Tên khách hàng</th>
                                     <th>Đã Chi</th>
-                                </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($dataUserTop as $item)
@@ -140,7 +138,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <ul class="nav nav-tabs" style="background: #9c27b0;" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs" style="background: #2b8d06;" id="myTab" role="tablist">
                         <li class="nav-item text-center" style="width:33%;">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                aria-controls="home" aria-selected="true">Sản phẩm tồn kho</a>
@@ -159,13 +157,10 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
-                                        <thead>
-                                        <tr class="text-primary">
-
+                                        <thead class="text-primary">
                                             <th>Sản phẩm</th>
                                             <th>Tồn kho</th>
                                             <th>Hình ảnh</th>
-                                        </tr>
                                         </thead>
                                         @if ($dataTagNav[0] != null)
                                             <tbody>
@@ -187,14 +182,12 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
-                                        <thead>
-                                        <tr class="text-primary">
+                                        <thead class="text-primary">
                                             <th>Sản phẩm</th>
                                             <th>Số lượt mua</th>
                                             <th>Giá mua</th>
                                             <th>Giá bán</th>
                                             <th>Hình ảnh</th>
-                                        </tr>
                                         </thead>
                                         @if ($dataTagNav[1] != null)
                                             <tbody>
@@ -218,12 +211,10 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
-                                        <thead>
-                                        <tr class="text-primary">
+                                        <thead class="text-primary">
                                             <th>Sản phẩm</th>
                                             <th>Số lượt yêu thích</th>
                                             <th>Hình ảnh</th>
-                                        </tr>
                                         </thead>
                                         @if ($dataTagNav[2] != null)
                                             <tbody>

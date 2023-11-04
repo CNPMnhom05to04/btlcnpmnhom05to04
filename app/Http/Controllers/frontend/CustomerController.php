@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Helpers\SeoHelper;
 use App\Jobs\VerifyCustumer;
+use App\Models\Message;
 use App\Models\SlideModel;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
@@ -18,6 +19,7 @@ use App\Models\OrderdetailModel;
 use App\Models\WishlistModel;
 use App\Models\Ship\CityModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -79,7 +81,7 @@ class CustomerController extends Controller
             'user_name.min' => 'Họ tên quá ngắn phải lớn hơn 5 kí tự',
             'user_name.max' => 'Họ tên quá dài phải nhỏ hơn 50 kí tự',
             'user_email.email' => 'Email không đúng định dạng',
-//            'user_email.unique' => 'Email đã được sử dụng',
+            'user_email.unique' => 'Email đã được sử dụng',
             'user_email.max' => 'Email quá dài',
             'user_password.min' => 'Mật khẩu quá ngắn phải lớn hơn 5 kí tự',
             'user_password.max' => 'Mật khẩu quá dài phải nhỏ hơn 20 kí tự',
@@ -93,6 +95,19 @@ class CustomerController extends Controller
         $data->role_id = 3;
         $data->verification_code = sha1(time());
         $data->save();
+
+        $userRoles = UserModel::where('role_id', 2)->get();
+
+        foreach ($userRoles as $userRole) {
+            $dataMessage = [
+                'from' => $data->user_id,
+                'to' => $userRole->user_id,
+                'message' => null,
+                'is_read' => 0,
+            ];
+
+            DB::table('messages')->insert($dataMessage);
+        }
 
         if ($data != null) {
             dispatch(new VerifyCustumer($data));
@@ -295,15 +310,15 @@ class CustomerController extends Controller
         echo $output;
     }
 
-    public function verify(Request $request){
-        $verify_code = Request::get('code');
-        $user = UserModel::where('verification_code', $verify_code )->first();
-        if ($user != null){
-            $user->is_verify = 1;
-            $user->save();
-            return redirect('customer')->with('msgSuccess', 'Xác nhận thông tin thành công. Bạn có thể đnăg nhập để sử dụng dịch vụ của chúng tôi');
-        } else {
-            return redirect()->with('msgError', 'Xác nhận thất bại');
-        }
-    }
+//    public function verify(Request $request){
+//        $verify_code = Request::get('code');
+//        $user = UserModel::where('verification_code', $verify_code )->first();
+//        if ($user != null){
+//            $user->is_verify = 1;
+//            $user->save();
+//            return redirect('customer')->with('msgSuccess', 'Xác nhận thông tin thành công. Bạn có thể đnăg nhập để sử dụng dịch vụ của chúng tôi');
+//        } else {
+//            return redirect()->with('msgError', 'Xác nhận thất bại');
+//        }
+//    }
 }
