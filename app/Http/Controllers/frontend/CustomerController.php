@@ -32,9 +32,15 @@ class CustomerController extends Controller
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
         $dataLogo = SlideModel::where('type', 3)->first();
+        $dataLogoFooter = SlideModel::where('type', 4)->first();
         $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/customer');
 
-        view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo, 'dataLogo' => $dataLogo]);
+        view()->share(['dataCategory' => $dataCategory,
+            'dataBrand' => $dataBrand,
+            'data_seo' => $this->data_seo,
+            'dataLogo' => $dataLogo,
+            'dataLogoFooter' => $dataLogoFooter
+        ]);
     }
 
 

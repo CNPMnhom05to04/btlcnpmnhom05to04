@@ -7,7 +7,7 @@
                 <div class="card">
 
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Phân loại chất lượng</h4>
+                        <h4 class="card-title ">Phân loại Khối Lượng</h4>
                     </div>
 
                     @include('backend.note')
@@ -57,7 +57,7 @@
                                     <div class="d-md-flex flex-column flex-md-row justify-content-md-end mb-2">
                                         <a href="{{ route('brand.create') }}"
                                            class="button-common-add add  mb-2 mt-2 mr-2">
-                                            <i class="fa-solid fa-plus fa-lg mr-1"></i> Thêm loại chất lượng
+                                            <i class="fa-solid fa-plus fa-lg mr-1"></i> Thêm loại khối lượng
                                         </a>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
             var token = $('input[name=_token]').val();
 
             swal({
-                title: "Bạn có chắc sẽ xóa loại chất lượng trà này ?",
+                title: "Bạn có chắc sẽ xóa loại khối lượng trà này ?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

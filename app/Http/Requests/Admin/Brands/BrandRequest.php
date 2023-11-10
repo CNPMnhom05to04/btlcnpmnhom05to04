@@ -33,11 +33,11 @@ class BrandRequest extends FormRequest
     public function messages()
     {
         return [
-            'brand_name.required' => 'Tên không gian decor không được để trống',
-            'brand_name.max' => 'Tên không gian decor không được ngắn hơn 5 kí tự và không được dài hơn 50 kí tự',
-            'brand_name.min' => 'Tên không gian decor không được ngắn hơn 5 kí tự và không được dài hơn 50 kí tự',
-            'brand_keyword.required' => 'Từ khóa không gian decor không được để trống',
-            'brand_description.required' => 'Mô tả không gian decor không được để trống',
+            'brand_name.required' => 'Tên khối lượng không được để trống',
+            'brand_name.max' => 'Tên khối lượng không được ngắn hơn 5 kí tự và không được dài hơn 50 kí tự',
+            'brand_name.min' => 'Tên khối lượng không được ngắn hơn 5 kí tự và không được dài hơn 50 kí tự',
+            'brand_keyword.required' => 'Từ khóa khối lượng không được để trống',
+            'brand_description.required' => 'Mô tả khối lượng không được để trống',
         ];
     }
 }

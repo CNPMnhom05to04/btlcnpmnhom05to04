@@ -1,7 +1,7 @@
 <div class="container" style="max-width: 700px;margin: 0 auto; border: 1px solid #2b8d06;">
     <div class="header" style="background-color: #2b8d06; color: #fff; padding: 15px;">
         <h3 style="font-size: 20px; text-align: center">ĐẶT HÀNG THÀNH CÔNG TẠI - TÂM TRÀ</h3>
-        <h4>Xin Chào {{$dataUser->user_name}}</h4>
+        <h4>Xin Chào {{$data['user_name'}}</h4>
         <p>Cảm ơn bạn đã đặt hàng ở TÂM TRÀ</p>
     </div>
 

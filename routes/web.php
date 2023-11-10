@@ -1,33 +1,28 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-
-use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\backend\PDFController;
-use App\Http\Controllers\BotManController;
-use App\Http\Controllers\backend\PostController;
-use App\Http\Controllers\backend\ShipController;
-use App\Http\Controllers\backend\UserController;
 use App\Http\Controllers\backend\BrandController;
+use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\CommentController;
+use App\Http\Controllers\backend\CouponController;
+use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\backend\PDFController;
+use App\Http\Controllers\backend\PostController;
+use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\RequirementController;
+use App\Http\Controllers\backend\ShipController;
 use App\Http\Controllers\backend\SlideController;
+use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\BotManController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\frontend\BlogController;
 use App\Http\Controllers\frontend\CartController;
-use App\Http\Controllers\frontend\PageController;
-use App\Http\Controllers\backend\CouponController;
-use App\Http\Controllers\backend\CommentController;
-use App\Http\Controllers\backend\ProductController;
-use App\Http\Controllers\frontend\FilterController;
-use App\Http\Controllers\frontend\SocialController;
-use App\Http\Controllers\backend\CategoryController;
-use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\frontend\CustomerController;
-use App\Http\Controllers\backend\RequirementController;
-use App\Http\Controllers\ChatController;
-use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
+use App\Http\Controllers\frontend\FilterController;
+use App\Http\Controllers\frontend\PageController;
+use App\Http\Controllers\frontend\SocialController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +51,6 @@ Route::get('/checkout', [CartController::class, 'checkout']);
 Route::post('/payment', [CartController::class, 'payment']);
 Route::post('/payment/online', [CartController::class, 'paymentCreate']);
 Route::post('/payment/momo', [CartController::class, 'paymentMomo'])->name('payment.momo');
-Route::post('/payment/napas', [CartController::class, 'paymentNapas'])->name('payment.napas');
 Route::get('/payment/return', [CartController::class, 'paymentReturn']);
 Route::post('/add_to_cart', [CartController::class, 'addToCart']);
 Route::post('/update_quantity_cart', [CartController::class, 'updateQuatityCart']);
@@ -235,3 +229,6 @@ Route::get('/optimize', function () {
 });
 
 Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);
+
+Route::post('/ghtk', [CartController::class, 'getInformatioOrder'])->name('ghtk.getInformatioOrder');
+Route::post('/ghtk/shipping_fee', [CartController::class, 'getShippingPrice'])->name('ghtk.getShippingPrice');

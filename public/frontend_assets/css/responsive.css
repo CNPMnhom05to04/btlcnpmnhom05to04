@@ -240,7 +240,7 @@ nav.off__canvars--menu ul li {
   left: 100%;
 }
 .slider__inner h1 {
-  font-size: 77px;
+  font-size: 45px;
 }
 .pointer__tooltip.pointer--6 {
   left: 57%;
@@ -566,7 +566,7 @@ nav.off__canvars--menu ul li {
   margin-top: -60px;
 }
 .slider__inner h1 {
-  font-size: 58px;
+  font-size: 45px;
 }
 .pointer__tooltip.pointer--6 ,
 .pointer__tooltip.pointer--7 {
@@ -1292,5 +1292,142 @@ nav.off__canvars--menu ul li {
 
 
 
+.bootstrap-select.open > .dropdown-menu{
+    /*display: block;*/
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    -webkit-transform: scale(1) translateY(0);
+    -ms-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+}
+.bootstrap-select > .dropdown-menu{
+    /*display: none;*/
+    opacity: 0;
+    max-height: 330px !important;
+    visibility: hidden;
+    overflow: hidden;
+    -webkit-transform-origin: 50% 0;
+    -ms-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transform: scale(0.85) translateY(-5px);
+    -ms-transform: scale(0.85) translateY(-5px);
+    transform: scale(0.85) translateY(-5px);
+    -webkit-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+}
+
+.box{
+    width: 120px;
+    height: 100px;
+    position: absolute;
+    margin: auto;
+    left: 220px;
+    right: 0;
+    bottom: 0;
+    top: 80px;
+}
+h2{
+    text-align: center;
+}
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    width: 100%;
+}
+.bootstrap-select>.dropdown-toggle{
+    background: #EDF2F5;
+    border: 0;
+    width: 100%;
+    display: block;
+    padding: 16px 15px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.030em;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+}
+.bootstrap-select>.dropdown-toggle.bs-placeholder, .bootstrap-select>.dropdown-toggle.bs-placeholder:active, .bootstrap-select>.dropdown-toggle.bs-placeholder:focus, .bootstrap-select>.dropdown-toggle.bs-placeholder:hover{
+    color: #000;
+}
+.dropdown-toggle::after {
+    content: "";
+    position: absolute;
+    border-top: .5em solid;
+    border-right: .5em solid transparent;
+    border-bottom: 0;
+    border-left: .5em solid transparent;
+    right: 10px;
+    top: 48%;
+}
+.dropdown-menu{
+    box-shadow: 0px 0px 15px rgba(60, 76, 150, 0.1);
+    -webkit-box-shadow: 0px 0px 15px rgba(60, 76, 150, 0.1);
+    -moz-box-shadow: 0px 0px 15px rgba(60, 76, 150, 0.1);
+    position: absolute;
+    left: 0;
+    background: #fff;
+    min-width: 100% !important;
+    width: 100% !important;
+}
+.bootstrap-select .dropdown-menu a{
+    display: block;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.030em;
+}
 
 
+
+.starrating > input {display: none;}  /* Remove radio buttons */
+
+.starrating > label:before {
+    content: "\f005"; /* Star */
+    margin: 2px;
+    font-size: 1.5em;
+    font-family: FontAwesome;
+    display: inline-block;
+}
+
+.starrating > label
+{
+    color: #222222; /* Start color when not clicked */
+}
+
+.starrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.starrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */
+
+.product-price span.pro-sale {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-right: 10px;
+    background: #ededed;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    color: #f94c43;
+}
+
+.product-price span.pro-price {
+    font-size: 19px;
+    opacity: .92;
+    font-weight: bold;
+    color: red;
+}
+
+.product-price del {
+    font-size: 14px;
+    color: #777a7b;
+    padding-left: 10px;
+    font-weight: 500;
+}
+
+.details-product .details-pro .inventory_quantity .a-stock {
+    color: #30a43b;
+}

@@ -24,12 +24,12 @@
                     <td colspan="2">
                       <div class="form-group">
                         <select name="order_status" class="form-control">
-                            <option value="1" 
+                            <option value="1"
                               @if ($dataOrder->order_status == 1)
                                   selected
                               @endif
                             >Đang chờ xác nhận</option>
-                            <option value="2" 
+                            <option value="2"
                             @if ($dataOrder->order_status == 2)
                                   selected
                               @endif
@@ -39,7 +39,7 @@
                                   selected
                               @endif
                             >Đã đóng gói và gửi đến đơn vị vận chuyển</option>
-                            <option value="4" 
+                            <option value="4"
                             @if ($dataOrder->order_status == 4)
                                   selected
                               @endif
@@ -49,7 +49,7 @@
                                   selected
                               @endif
                             >Giao hàng thành công</option>
-                            <option value="6" 
+                            <option value="6"
                             @if ($dataOrder->order_status == 6)
                                   selected
                               @endif
@@ -93,7 +93,7 @@
                   @endforeach
                   </tbody>
               </table>
-              
+
               </div>
             </div>
           </div>

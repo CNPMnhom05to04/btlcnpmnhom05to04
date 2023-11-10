@@ -3,7 +3,7 @@
 @section('content')
     <!-- Start Product Grid -->
     <section class="htc__product__grid bg__white ptb--100">
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-lg-push-3 col-md-9 col-md-push-3 col-sm-12 col-xs-12">
@@ -25,7 +25,7 @@
                         @if (count($data) <= 0)
                             <h5 class="text-center text-primary">Sản phẩm trống !!!</h5>
                         @endif
-                        
+
                         <!-- Start Product View -->
                         <div class="row">
                             <div class="shop__grid__view__wrap">
@@ -69,7 +69,7 @@
                                                 <div class="price--output" style="width: 100%">
                                                     <input type="text" id="amount" readonly>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="price--filter">
@@ -92,7 +92,7 @@
                         <!-- End Category Area -->
                         <!-- Start Category Area -->
                         <div class="htc__category">
-                            <h4 class="title__line--4">Không Gian</h4>
+                            <h4 class="title__line--4">Khối Lượng</h4>
                             <ul class="ht__cat__list">
                                 @foreach ($dataBrand as $item)
                                 <li><a href="/shop/brand/{{$item->brand_id}}">{{$item->brand_name}}</a></li>
@@ -124,7 +124,7 @@
                                 </div>
                                 <!-- End Single Product -->
                                 @endforeach
-                                
+
                             </div>
                         </div>
                         <!-- End Best Sell Area -->
@@ -203,7 +203,7 @@
         $('.handle_wishlist').click(function(){
             var product_id = $(this).data('product_id');
             var _token = $('input[name=_token]').val();
-            
+
             $.ajax({
                 url: 'handle-wishlist',
                 method: 'POST',

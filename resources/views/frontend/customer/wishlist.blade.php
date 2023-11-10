@@ -19,19 +19,19 @@
                 <div class="row">
                     <div class="product__wrap clearfix">
                         @foreach ($data as $item)
-                        
+
                             <!-- Start Single Category -->
                         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 prd-{{$item->product->product_id}}" style="max-height: 380px">
                             <div class="category">
                                 <div class="ht__cat__thumb">
                                     @if ($item->product->product_sale != 0)
-                                    <span class="sale-span">-{{$item->product->product_sale}}%</span>
+                                        <span class="sale-span">-{{ $item->product->product_sale }}%</span>
                                     @endif
                                     @if ($item->product->product_amount == 0)
-                                    <span class="sale-span">Hết Hàng</span>
-                                    @endif
+                                            <span class="sale-span" style="background-color: red;">Hết Hàng</span>
+                                        @endif
                                     <a href="product-details.html">
-                                        <img style="max-width: 260px; height: 260px" src="{{$item->product->product_image}}" alt="product images">
+                                        <img style="max-width: 260px; height: 260px" src="{{ $item->product->product_image }}" alt="product images">
                                     </a>
                                 </div>
                                 <div class="fr__hover__info">
@@ -70,7 +70,7 @@
                         </div>
                         <!-- End Single Category -->
                         @endforeach
-                        
+
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@
         $('.handle_wishlist').click(function(){
             var product_id = $(this).data('product_id');
             var _token = $('input[name=_token]').val();
-            
+
             $.ajax({
                 url: 'handle-wishlist',
                 method: 'POST',

@@ -3,7 +3,7 @@
 @section('content')
     <!-- Start Product Grid -->
     <section class="htc__product__grid bg__white ptb--50">
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -26,7 +26,7 @@
                                                         <li><a style="font-size: 10px" href="/shop/blog/{{$item->id}}-{{Str::slug($item->post_title, '-')}}.html">Ngày đăng:
                                                             @php
                                                                 $old_date = strtotime($item->created_at);
-                                                                $new_date = date('d/m/Y', $old_date);  
+                                                                $new_date = date('d/m/Y', $old_date);
                                                                 echo $new_date
                                                             @endphp
                                                         </a></li>

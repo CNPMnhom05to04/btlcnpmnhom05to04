@@ -512,7 +512,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 .logo {
     align-items: center;
     display: flex;
-    height: 80px;
+    height: 90px;
     justify-content: flex-start;
 }
 
@@ -764,7 +764,7 @@ nav.off__canvars--menu ul li ul li a:hover {
     z-index: 10;
 }
 .offsetmenu__close__btn a i {
-    color: #666666;
+    color: #363f4d;
     font-size: 36px;
     transition: all 0.3s ease 0s;
 }

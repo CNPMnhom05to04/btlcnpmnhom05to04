@@ -30,12 +30,12 @@ class OrderController extends Controller
     public function show($id){
         $dataOrder = OrderModel::find($id);
         $dataOrderdetail = OrderdetailModel::where('order_id', $id)->get();
-        return view('backend.orders.show', [    
+        return view('backend.orders.show', [
             'dataOrder' => $dataOrder,
             'dataOrderdetail' => $dataOrderdetail,
         ]);
     }
-    
+
     //Cập nhật trạng thái
     public function update(Request $request, $id){
         $data = OrderModel::find($id);

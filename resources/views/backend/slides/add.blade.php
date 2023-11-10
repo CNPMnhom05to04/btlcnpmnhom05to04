@@ -56,6 +56,7 @@
                       <option value="1">Slideshow</option>
                       <option value="2">Banner ngang</option>
                       <option value="3">Logo chính</option>
+                      <option value="4">Logo footer</option>
                     </select>
                     @error('type')
                         <span class="text-danger">{{$message}}</span>
