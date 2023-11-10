@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <form action="#">               
+                    <form action="#">
                         <div class="table-content table-responsive">
                             <table>
                                 <thead>
@@ -45,7 +45,7 @@
                                     @else
                                         <span class="text-danger">Giỏ Hàng Hiện Tại Đang Trống</span>
                                     @endif
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -96,22 +96,22 @@
                                         </ul>
                                     </div>
                                     <div class="cart__total">
-                                        <span>Tổng: </span>
+                                        <span>Tổng (Chưa phí vận chuyển): </span>
                                         <span id="cart_totals">{{number_format($cart_totals)}} VNĐ</span>
                                     </div>
                                     <ul class="payment__btn">
                                         <li class="active"><a href="/checkout">thanh toán</a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         @endif
-                        @else 
+                        @else
                         <span class="text-danger">Bạn cần đăng nhập để thanh toán*</span>
                         {{-- <a href="/customer"><button type="button" class="btn btn-primary"> ---Đăng nhập---</button></a> --}}
                         @endif
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>
@@ -154,7 +154,7 @@
 
                 success: function (data) {
                     $('.tr-'+id).remove()
-                    
+
                     $('#cart_total').text(data[0].toLocaleString('ja-JP')+ ''+ ' VNĐ');
                     $('#cart_totals').text(data[1].toLocaleString('ja-JP')+ ''+ ' VNĐ')
                 }

@@ -16,7 +16,7 @@
                                 <li class="drop"><a href="/shop">Cửa Hàng</a>
                                     <ul class="dropdown mega_dropdown">
                                         <!-- Start Single Mega MEnu -->
-                                        <li><a class="mega__title" href="/shop">Không Gian</a>
+                                        <li><a class="mega__title" href="/shop">Khối Lượng</a>
                                             <ul class="mega__item">
                                                 @foreach ($dataBrand as $item)
                                                     <li>

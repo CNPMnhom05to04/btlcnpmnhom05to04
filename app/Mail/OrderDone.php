@@ -10,25 +10,20 @@ use Illuminate\Queue\SerializesModels;
 class OrderDone extends Mailable
 {
     use Queueable, SerializesModels;
-    public $order;
-    public $orderdetail;
-    public $coupon;
-    public $ship;
-    public $dataUser;
-    public $orderShipping;
+    /**
+     * @var mixed|null
+     */
+    private $data;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order, $dataUser, $orderShipping, $orderdetail, $coupon, $ship)
+    public function __construct($data = null)
     {
-        $this->order = $order;
-        $this->dataUser = $dataUser;
-        $this->orderShipping = $orderShipping;
-        $this->orderdetail = $orderdetail;
-        $this->coupon = $coupon;
-        $this->ship = $ship;
+        $this->data = $data;
+        dd($this->data);
     }
 
     /**
@@ -38,6 +33,8 @@ class OrderDone extends Mailable
      */
     public function build()
     {
-        return $this->subject('Đặt Hàng Thành Công')->view('mail.orderdone');
+        return $this->from('pvc2000atk@gmail.com', 'Tâm Trà')
+            ->subject("Đặt Hàng Thành Công")
+            ->view('mail.orderdone', ['data' => $this->data]);
     }
 }

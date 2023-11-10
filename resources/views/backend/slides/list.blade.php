@@ -38,8 +38,10 @@
                                 {{'Slide show'}}
                             @elseif($item->type == 2)
                                 {{'Banner ngang'}}
-                            @else
+                            @elseif($item->type == 3)
                                 {{'Logo chính'}}
+                            @else
+                                {{'Logo Footer'}}
                             @endif
                         </td>
                         <td>

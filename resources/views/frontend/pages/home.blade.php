@@ -14,15 +14,15 @@
                                 <div class="slide">
                                     <div class="slider__inner">
                                         <h1>{{$slide->slide_title}}</h1>
-                                        <div class="cr__btn">
-                                            <a href="{{$slide->target}}">View Now</a>
+                                        <div class="fr__product__inner">
+                                            <p>{{$slide->target}}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
+                            <div class="col-md-7 col-sm-7 col-xs-12 col-lg-6">
                                 <div class="slide__thumb">
-                                    <img src="{{$slide->image}}" alt="slider images VINANEON">
+                                    <img src="{{$slide->image}}" style="width: 75%; height: 100%" alt="slider images VINANEON">
                                 </div>
                             </div>
                         </div>

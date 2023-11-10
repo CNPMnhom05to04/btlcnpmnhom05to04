@@ -5550,9 +5550,18 @@ a.button-common-detail.detail {
     border: 1px solid #0cd24f;
 }
 
+a.a.button-common-export-pdf.export-pdf {
+    border: 1px solid #f65f00;
+}
+
 a.button-common-detail.detail {
     color: #0cd24f;
 }
+
+a.button-common-export-pdf.export-pdf {
+    color: #f65f00;
+}
+
 a.button-common.delete:hover i.fa-regular.fa-trash-can,
 a.button-common.delete:hover span {
     color: #FFFFFF;
@@ -5565,6 +5574,11 @@ a.button-common-edit.edit:hover span {
 
 a.button-common-delete.delete:hover i.fa-regular.fa-trash-can,
 a.button-common-delete.delete:hover span {
+    color: #FFFFFF;
+}
+
+a.button-common-export-pdf.export-pdf:hover i.fa-solid.fa-file-pdf,
+a.button-common-export-pdf.export-pdf:hover span {
     color: #FFFFFF;
 }
 
@@ -5581,6 +5595,11 @@ a.button-common-delete.delete:hover {
 a.button-common-detail.detail:hover {
     background-color: #0cd24f;
     border: 1px solid #0cd24f;
+}
+
+a.button-common-export-pdf.export-pdf:hover {
+    background-color: #f65f00;
+    border: 1px solid #f65f00;
 }
 
 
@@ -5606,6 +5625,12 @@ a.add:hover {
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
     background-color: #1890ff;
+}
+
+a.export-pdf:hover {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    background-color: #f65f00;
 }
 
 a.detail:hover {
@@ -5703,6 +5728,25 @@ a.button-common-detail {
     border: 1px solid #0cd24f;
     font-weight: 200;
     margin-left: 1rem;
+}
+
+a.button-common-export-pdf {
+    border-width: 2px;
+    padding: 4px 6px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 5px;
+    font-size: 1rem;
+    line-height: 1rem;
+    border: 1px solid #f65f00;
+    font-weight: 200;
+    margin-left: 1rem;
+}
+
+a.button-common-export-pdf {
+    width: 105px;
+    height: 38px;
 }
 
 a.button-common-detail {

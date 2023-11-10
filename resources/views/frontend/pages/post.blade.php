@@ -12,18 +12,18 @@
                         <br>
                         <h5>Tác giả: {{$data->user->user_name}}</h5>
                         <br>
-                        <h6>Ngày đăng: 
+                        <h6>Ngày đăng:
                             @php
                                 $old_date = strtotime($data->created_at);
-                                $new_date = date('d/m/Y', $old_date);  
+                                $new_date = date('d/m/Y', $old_date);
                                 echo $new_date
                             @endphp
                         </h6>
                         <br>
                         <hr>
-                        <center>
-                            <img src="{{$data->post_image}}" alt="" style="width: 80%">
-                        </center>
+                        <div style="text-align: center;">
+                            <img src="{{$data->post_image}}" alt="" style="width: 25%">
+                        </div>
                         <br>
                         {!! $data->post_content !!}
                     </div>
@@ -42,7 +42,7 @@
         <!-- End Product Details Top -->
     </section>
     <!-- End Product Details Area -->
-    
+
     <!-- Start Product Area -->
     <section class="htc__product__area--2 pb--100 product-details-res">
         <div class="container">
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="row">
-                
+
                 <div class="product__wrap clearfix">
                     @foreach ($dataBlog as $item)
                     <!-- Start Single Product -->
@@ -72,7 +72,7 @@
                                     <li><a style="font-size: 10px" href="/shop/blog/{{$item->id}}-{{Str::slug($item->post_title, '-')}}.html">Ngày đăng:
                                         @php
                                             $old_date = strtotime($item->created_at);
-                                            $new_date = date('d/m/Y', $old_date);  
+                                            $new_date = date('d/m/Y', $old_date);
                                             echo $new_date
                                         @endphp
                                     </a></li>
@@ -98,7 +98,7 @@
                     </div>
                     <!-- End Single Product -->
                     @endforeach
-                    
+
                 </div>
             </div>
         </div>

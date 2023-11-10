@@ -117,13 +117,13 @@
 
                                                 <div class="col-md-12" style="margin-top: 5px">
                                                     <div class="col-md-3 text-center">
-                                                        <label for="paymentCash" class="payment-option" onclick="selectPaymentOption(event)">
+                                                        <label for="paymentCash" class="payment-option " onclick="selectPaymentOption(event)">
                                                             <div class="image-container">
                                                                 <img src="https://nascoexpress.com/getattachment/b8a25cce-6779-4eda-9409-f7912ee05660/dich-vu-cod-tai-nasco-express-(1).jpg.html" alt="Cash Payment" class="img-fluid">
                                                             </div>
                                                             Thanh toán khi nhận hàng
                                                         </label>
-                                                        <input type="radio" id="paymentCash" name="order_pay_type" value="1" style="display: none;">
+                                                        <input class="type_payment" type="radio" id="paymentCash" name="order_pay_type" value="1" style="display: none;">
                                                     </div>
 
                                                     <div class="col-md-3 text-center">
@@ -134,7 +134,7 @@
                                                             </div>
                                                             Thanh toán qua VNPay
                                                         </label>
-                                                        <input type="radio" id="paymentVNPAY"
+                                                        <input class="type_payment" type="radio" id="paymentVNPAY"
                                                                name="order_pay_type" value="2"
                                                                style="display: none;">
                                                     </div>
@@ -147,11 +147,10 @@
                                                             </div>
                                                             Thanh toán qua MoMo
                                                         </label>
-                                                        <input type="radio" id="paymentMomo"
+                                                        <input class="type_payment" type="radio" id="paymentMomo"
                                                                name="order_pay_type" value="3"
                                                                style="display: none;">
                                                     </div>
-
                                                 </div>
                                             </form>
                                         </div>
@@ -183,13 +182,27 @@
                                 <h5>Giá sản phẩm</h5>
                                 <span class="price" id="cart_total">{{number_format($cart_total)}}</span>
                             </div>
+                            <div id="orderDetailsDiv" class="order-details__count__single" style="display: none;">
+                                <h5>Vận chuyển</h5>
+                                <span>
+                                    <div class="box">
+                                        <select class="selectpicker" data-size="4">
+                                           <option value="" disabled selected hidden class="text-muted"
+                                                   style="color: gray; opacity: 0.5;">Lựa chọn
+                                                            </option>
+                                            <option value="none">Nhanh</option>
+                                            <option value="xteam">Hoả tốc</option>
+                                        </select>
+                                    </div>
+                                </span>
+                            </div>
                             <div class="order-details__count__single">
                                 <h5>Mã giảm giá</h5>
                                 <span class="price" id="coupon_cart">{{$coupon_cart}}</span>
                             </div>
                             <div class="order-details__count__single">
                                 <h5>Phí Vận Chuyển</h5>
-                                <span class="price" id="shipping">0</span>
+                                <span class="price" id="shipping"></span>
                             </div>
                         </div>
                         <div class="ordre-details__total">
@@ -214,6 +227,27 @@
 @section('script')
 
     <script>
+        $('.type_payment').on('change', function() {
+            var formData = {
+                city_id: $('#city_id').val(),
+                district_id: $('#district_id').val(),
+                order_name: $('input[name="order_name"]').val(),
+                order_email: $('input[name="order_email"]').val(),
+                order_phone: $('input[name="order_phone"]').val(),
+                order_addres: $('input[name="order_addres"]').val(),
+                order_note: $('input[name="order_note"]').val(),
+                order_city: $('#city_id option:selected').text(),
+                order_district: $('#district_id option:selected').text(),
+            };
+            $.post('{{ route('ghtk.getInformatioOrder') }}', {
+                _token: '{{ @csrf_token() }}',
+                formData: formData
+            }, function(data) {
+            });
+        });
+    </script>
+
+    <script>
         function selectPaymentOption(event) {
             const paymentOptions = document.querySelectorAll('.payment-option');
             paymentOptions.forEach(option => {
@@ -227,6 +261,10 @@
             if (radioButton) {
                 radioButton.checked = true;
             }
+
+            const orderDetails = document.getElementById('orderDetailsDiv');
+            const selectElement = orderDetails.querySelector('select');
+            selectElement.selectedIndex = 0;
         }
     </script>
 
@@ -234,20 +272,24 @@
         getShip()
 
         function getShip() {
-            var city_id = $('input[name=city_id]').val();
-            var district_id = $('input[name=district_id]').val();
+            var formData = {
+                city_id: $('#city_id').val(),
+                district_id: $('#district_id').val(),
+                order_phone: $('input[name="order_phone"]').val(),
+                order_addres: $('input[name="order_addres"]').val(),
+                option_trans: $('input[name="order_addres"]').val(),
+            };
             var _token = $('input[name=_token]').val();
             $.ajax({
                 url: 'get_ship_checkout',
                 method: 'POST',
                 data: {
                     _token: _token,
-                    city_id: city_id,
-                    district_id: district_id,
+                    formData: formData,
                 },
                 success: function (data) {
-                    $('#shipping').text(data[0].toLocaleString('ja-JP') + '' + ' VNĐ')
-                    $('#cart_totals').text(data[1].toLocaleString('ja-JP') + '' + ' VNĐ')
+                    // $('#shipping').text(data[0].toLocaleString('ja-JP') + '' + ' VNĐ')
+                    // $('#cart_totals').text(data[1].toLocaleString('ja-JP') + '' + ' VNĐ')
                 }
             })
         }
@@ -284,11 +326,7 @@
                                 district_id: district_id,
                             },
                             success: function (data) {
-
-                                $('#shipping').text(data[0].toLocaleString('ja-JP') + '' + ' VNĐ')
-                                $('#cart_totals').text(data[1].toLocaleString('ja-JP') + '' + ' VNĐ')
                                 $('input[name=district_id]').val(district_id)
-
                             }
                         })
                     })
@@ -302,6 +340,54 @@
             $("#payment_btn").on("click", function(event) {
                 event.preventDefault();
                 $("#paymentForm").submit();
+            });
+        });
+    </script>
+
+    <script>
+        $('select.selectpicker').change(function() {
+            var paymentType = $('input[name="order_pay_type"]:checked').val();
+            var selectedShippingOption = $(this).val();
+
+            sendShippingFeeRequest(paymentType, selectedShippingOption);
+        });
+
+        function sendShippingFeeRequest(paymentType, selectedShippingOption) {
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{ route('ghtk.getShippingPrice') }}',
+                type: 'POST',
+                data: {
+                    _token: _token,
+                    payment_type: paymentType,
+                    selected_shipping_option: selectedShippingOption
+                },
+                success: function(data) {
+                    $('#shipping').text(data[2].toLocaleString('ja-JP') + '' + ' đ')
+                    $('#cart_totals').text(data[1].toLocaleString('ja-JP') + '' + ' đ')
+                },
+                error: function(xhr, status, error) {
+                    // Xử lý lỗi ở đây
+                    console.error(error);
+                }
+            });
+        }
+    </script>
+    <script>
+        document.querySelectorAll('.type_payment').forEach(input => {
+            input.addEventListener('change', function(event) {
+                const selectedOption = event.target.closest('.payment-option');
+                const orderDetailsDiv = document.getElementById("orderDetailsDiv");
+
+                if (event.target.id === "paymentCash" || event.target.id === "paymentVNPAY" || event.target.id === "paymentMomo"
+                    && event.target.checked) {
+                    orderDetailsDiv.style.display = "block";
+                } else {
+                    orderDetailsDiv.style.display = "none";
+                }
             });
         });
     </script>

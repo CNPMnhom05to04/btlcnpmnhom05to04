@@ -28,7 +28,7 @@
           @endphp">
           <a class="nav-link" href="admin/brands">
               <i class="fa-solid fa-certificate"></i>
-              <p>Phân Loại chất lượng</p>
+              <p>Phân Loại Khối Lượng</p>
           </a>
         </li>
         <li class="nav-item @php

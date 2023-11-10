@@ -10,13 +10,13 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title">Thêm Loại Chất Lượng</h4>
+              <h4 class="card-title">Thêm Loại Khối Lượng</h4>
             </div>
             <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Tên Chất Lượng</label>
+                      <label class="bmd-label-floating">Tên Khối Lượng</label>
                       <input type="text" value="{{ old('brand_name') }}" name="brand_name" class="form-control">
                       @error('brand_name')
                           <span class="text-danger">{{$message}}</span>

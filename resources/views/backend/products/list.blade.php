@@ -25,7 +25,7 @@
                                     sản phẩm
                                 </th>
                                 <th style="width: 100px;font-weight: bold; font-size: 16px;"
-                                    class="text-center product-count">Loại chất lượng
+                                    class="text-center product-count">Loại khối lượng
                                 </th>
                                 <th style="width: 150px;font-weight: bold; font-size: 16px;" class="text-center">Ảnh
                                 </th>
@@ -185,7 +185,7 @@
             }
             var token = $('input[name=_token]').val();console.log(selectedIDs);
             swal({
-                title: "Bạn có chắc sẽ xóa không gian decor này?",
+                title: "Bạn có chắc sẽ xóa khối lượng này?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

@@ -7,8 +7,7 @@
         <div class="row">
             <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div class="map-contacts--2">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.007319903309!2d108.15554591416989!3d16.06510994381712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219268a720e49%3A0x47d852a1a08a8eae!2zMzQgQ2jGoW4gVMOibSAxMSwgSG_DoCBNaW5oLCBMacOqbiBDaGnhu4N1LCDEkMOgIE7hurVuZyA1NTAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1638545287742!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.2926381717452!2d105.78486297494075!3d20.980903480656455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accdd8a1ad71%3A0xa2f9b16036648187!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNow61uaCB2aeG7hW4gdGjDtG5n!5e0!3m2!1svi!2s!4v1699585950181!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                </div>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
                 <h2 class="title__line--6">LIÊN HỆ</h2>
@@ -18,7 +17,7 @@
                     </div>
                     <div class="address__details">
                         <h2 class="ct__title">Địa Chỉ</h2>
-                        <p>34 Chơn Tâm 11, Hòa Minh, Liên Chiểu, Đà Nẵng</p>
+                        <p>Km10 Đường Nguyễn Trãi, Mộ Lao, Hà Đông, Hà Nội</p>
                     </div>
                 </div>
                 <div class="address">
@@ -27,7 +26,7 @@
                     </div>
                     <div class="address__details">
                         <h2 class="ct__title">Số Điện Thoại</h2>
-                        <p>038 737 3837</p>
+                        <p>0943206425</p>
                     </div>
                 </div>
             </div>

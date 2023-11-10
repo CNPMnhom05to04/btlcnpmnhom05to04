@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Http\Controllers\GhtkController;
 use App\Http\Requests\CheckoutRequest;
 use App\Helpers\SeoHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\NotifyOrder;
 use App\Models\SlideModel;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
@@ -18,10 +20,10 @@ use App\Models\Ship\CityModel;
 use App\Models\Ship\DistrictModel;
 use App\Models\Ship\ShipModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 use Carbon\Carbon;
-use Mail;
 use App\Mail\OrderDone;
 use Illuminate\Support\Str;
 use App\Http\Services\CartService;
@@ -32,18 +34,25 @@ class CartController extends Controller
     public $coupon;
     public $cartService;
 
-    public function __construct(CartService $cartService){
+    public function __construct(CartService $cartService, Request $request){
         $this->cartService = $cartService;
+        $this->request = $request;
         $dataCategory = CategoryModel::all();
         $dataBrand = BrandModel::all();
         $dataLogo = SlideModel::where('type', 3)->first();
+        $dataLogoFooter = SlideModel::where('type', 4)->first();
         $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/cart');
         $this->middleware(function ($request, $next) {
             $this->cart = Session::get('cart');
             $this->coupon = Session::get('coupon');
             return $next($request);
         });
-        view()->share(['dataCategory' => $dataCategory, 'dataBrand' => $dataBrand, 'data_seo' => $this->data_seo, 'dataLogo' => $dataLogo]);
+        view()->share(['dataCategory' => $dataCategory,
+            'dataBrand' => $dataBrand,
+            'data_seo' => $this->data_seo,
+            'dataLogo' => $dataLogo,
+            'dataLogoFooter' => $dataLogoFooter
+        ]);
     }
 
     public function execPostRequest($url, $data)
@@ -155,10 +164,18 @@ class CartController extends Controller
 
         $dataCity = CityModel::find($request->city_id);
         $dataDistrict = DistrictModel::find($request->district_id);
+        $coupon = $this->coupon;
+        $priceShip = Session::get('priceShip');
         $dataCustomerOrder = [
             'user_id' => $user_id,
             'order_note' => $request->order_note,
-            'order_shipping' => "Tên người nhận: ".$request->order_name . " - Email: " . $request->order_email. " - Số điện thoại: " . $request->order_phone. " - Địa chỉ: " . $request->order_addres. " - " . $dataDistrict->district_name. " - " . $dataCity->city_name,
+            'order_shipping' =>
+                "Tên người nhận: ".$request->order_name .
+                " - Email: " . $request->order_email.
+                " - Số điện thoại: " . $request->order_phone.
+                " - Địa chỉ: " . $request->order_addres.
+                " - " . $dataDistrict->district_name.
+                " - " . $dataCity->city_name,
             'order_pay_type' => $request->order_pay_type,
             'order_profit' => $order_profit,
             'order_total' => Session::get('totalCart'),
@@ -177,6 +194,8 @@ class CartController extends Controller
                 'cart' => $this->cart,
                 'cart_totals' => $cart_totals,
                 'cart_total' => $cart_total,
+                'priceShip' => $priceShip,
+                'coupon' => $coupon,
             ]);
         } elseif ($request->order_pay_type == 3){
             $order_total = Session::get('totalCart');
@@ -187,10 +206,17 @@ class CartController extends Controller
                 'cart' => $this->cart,
                 'cart_totals' => $cart_totals,
                 'cart_total' => $cart_total,
+                'priceShip' => $priceShip,
+                'coupon' => $coupon,
             ]);
         }elseif ($request->order_pay_type == 4){
             $order_total = Session::get('totalCart');
-            return view('frontend.vnpay.index', ['order_total' => $order_total, 'order_pay_type' => $request->order_pay_type]);
+            return view('frontend.vnpay.index', [
+                'order_total' => $order_total,
+                'order_pay_type' => $request->order_pay_type,
+                'priceShip' => $priceShip,
+                'coupon' => $coupon,
+            ]);
         }
         else {
             $dataOrder = new OrderModel();
@@ -206,7 +232,7 @@ class CartController extends Controller
             $dataOrder->order_status = 1;
             $dataOrder->created_at = $dataCustomerOrderShow['created_at'];
 
-            $dataOrder->save();
+//            $dataOrder->save();
 
             $order_id = $dataOrder->order_id;//Lấy id order vừa insert vào bảng
 
@@ -222,11 +248,10 @@ class CartController extends Controller
                 $dataOrderdetail->product_id = $val['cart_id'];
                 $dataOrderdetail->order_detail_quantity = $val['cart_quantity'];
                 $dataOrderdetail->order_detail_price = $val['cart_price_sale'];
-
                 $dataOrderdetail->save();
             }
 
-            $this->sendMailOrder($dataUser->user_email, $dataOrder, $dataUser, $dataCustomerOrderShow['order_shipping'], $this->cart, $this->coupon, Session::get('priceShip'));
+//            $this->sendMailOrder($request->order_email, $dataOrder, $dataUser, $dataCustomerOrderShow['order_shipping'], $this->cart, $this->coupon, Session::get('priceShip'));
 
             $this->deleteSession();
 
@@ -240,15 +265,15 @@ class CartController extends Controller
         $partnerCode = 'MOMO5RGX20191128';
         $accessKey = 'M8brj9K6E22vXoDB';
         $secretKey = 'nqQiVSgDMy809JoPF6OzP5OdBUB550Y4';
-        $orderInfo = Str::random(10);
-        $amount = $_POST['amount'];
-        $orderId = time() . "";
+        $orderInfo = "Thanh toán đơn hàng".' '. $request->orderInfo;
+        $amount = str_replace(",", "", $request->amount);
+        $orderId = time() ."";
         $redirectUrl = "http://127.0.0.1:8000/payment/return";
         $ipnUrl = "http://127.0.0.1:8000/payment/return";
         $extraData = "";
 
             $requestId = time() . "";
-            $requestType = "payWithATM"; // captureMoMoWallet
+            $requestType = "payWithATM"; // captureMoMoWallet payWithATM
 
             $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
             $signature = hash_hmac("sha256", $rawHash, $secretKey);
@@ -266,6 +291,7 @@ class CartController extends Controller
                 'requestType' => $requestType,
                 'signature' => $signature);
             $result = $this->execPostRequest($endpoint, json_encode($data));
+            dd($result);
             $jsonResult = json_decode($result, true);
 
             return redirect()->to( $jsonResult['payUrl']);
@@ -362,7 +388,7 @@ class CartController extends Controller
                 $dataOrderdetail->save();
             }
 
-            $this->sendMailOrder($dataUser->user_email, $dataOrder, $dataUser, $dataCustomerOrderShow['order_shipping'], $this->cart, $this->coupon, Session::get('priceShip'));
+//            $this->sendMailOrder($dataUser->user_email, $dataOrder, $dataUser, $dataCustomerOrderShow['order_shipping'], $this->cart, $this->coupon, Session::get('priceShip'));
 
             $this->deleteSession();
 
@@ -372,8 +398,9 @@ class CartController extends Controller
     }
 
     //Hàm gửi mail sau khi đặt hàng thành công
-    public function sendMailOrder($mail_to, $order,$dataUser, $orderShipping, $orderdetail, $coupon, $ship){
-        Mail::to($mail_to)->send((new OrderDone($order,$dataUser, $orderShipping, $orderdetail, $coupon, $ship))->delay(60));
+    public function sendMailOrder($email, $dataOrder, $dataUser, $shipping, $cart, $coupon, $priceShip)
+    {
+        dispatch(new NotifyOrder($email, $dataOrder, $dataUser, $shipping, $cart, $coupon, $priceShip));
     }
 
     //Hàm xóa session sau khi đặt hàng thành công
@@ -610,30 +637,152 @@ class CartController extends Controller
 
     //Hàm xử lý phí vận chuyển
     public function getShipCheckout(Request $request){
-        $check = ShipModel::where('city_id',$request->city_id)->where('district_id',$request->district_id)->count();
-        $data = ShipModel::where('city_id',$request->city_id)->where('district_id',$request->district_id)->get();
-
         $cart_price_ship = 0;
 
         $cart_total = $this->getTotal($this->cart);
 
         $cart_totals = $this->getTotals($cart_total);
 
-        if($check){
-            foreach($data as $val){
-                $cart_price_ship = $val->ship_price;
-                Session::put('priceShip', $cart_price_ship);
-                $cart_totals = $cart_totals + $cart_price_ship;
-                Session::put('totalCart', $cart_totals);
-            }
-        }
-        else{
             $cart_price_ship = 10000;
             Session::put('priceShip', $cart_price_ship);
             $cart_totals = $cart_totals + 10000;
             Session::put('totalCart', $cart_totals);
-        }
 
         return $result = [$cart_price_ship, $cart_totals];
     }
+
+
+    public function getInformatioOrder(): array
+    {
+        $data_shipping = $this->request->input('formData');
+        try {
+            $carts = $this->cart;
+            $products = [];
+            if ($carts && count($carts) > 0) {
+                foreach ($carts as $key => $cartItem) {
+                    $products[] = $cartItem;
+                }
+            }
+            $ghtkController = new GhtkController();
+            $cart_total = $this->getTotal($carts);
+            $cart_totals = $this->getTotals($cart_total);
+            $address_seller = $ghtkController->getAddressPickUp();
+            //form order
+            $payload = [
+                "order" => [
+                    "id" => "5555",
+                    "pick_name" => "HCM-nội thành",
+                    "pick_address" => "590 CMT8 P.11",
+                    "pick_province" => "TP. Hồ Chí Minh",
+                    "pick_district" => "Quận 3",
+                    "pick_ward" => "Phường 1",
+                    "pick_tel" => "0911222333",
+                    "tel" => "0911222123",
+
+                    "name" => "GHTK - HCM - Noi Thanh",
+                    "address" => "123 nguyễn chí thanh",
+                    "province" => "TP. Hồ Chí Minh",
+                    "district" => "Quận 1",
+                    "ward" => "Phường Bến Nghé",
+                    "hamlet" => "Khác",
+
+                    "is_freeship" => "1",
+                    "pick_date" => "2016-09-30",
+                    "pick_money" => 47000,
+                    "note" => "Khối lượng tính cước tối đa: 1.00 kg",
+                    "value" => 3000000,
+                    "pick_option" => "cod",
+                    "tags" => [1]
+//                    "id" => "a4",
+//                    "pick_name"=> $address_seller['data'][0]['pick_name'],
+//                    "pick_address_id" => $address_seller['data'][0]['pick_address_id'],
+//                    "pick_tel"=> $address_seller['data'][0]['pick_tel'],
+//                    "pick_address" => "590 CMT8 P.11",
+//                    "pick_province" => "TP. Hồ Chí Minh",
+//                    "pick_district" => "Quận 3",
+//                    "pick_ward " => "Phường 1",
+//
+//                    "tel"=> $shipping_info->phone,
+//                    "name"=> Auth::user()->name,
+//                    "address"=> $shipping_info->address,
+//                    "province"=> optional($shipping_info->state)->name,
+//                    "district"=> optional($shipping_info->city)->name,
+//                    "ward"=> optional($shipping_info->city)->name,
+//                    "email"=> Auth::user()->email,
+//
+//                    "is_freeship"=> "1",  // is_freeship = `1` COD = `pick_money`, `0` COD=`pick_money` + `phí ship của đơn hàng`
+//                    "pick_date"=> now(), // ngày lấy hàng
+//                    "pick_money"=> 47000, // Tiền khi COD giao tới (0: thanh toán onl - VND: COD)
+//                    "value"=> $subtotal,  // Giá trị hàng hóa
+//                    "pick_option"=>"cod",
+//                    "tags" => [ 1] //Phụ phí hàng
+                ],
+                "products" => $products
+            ];
+            // tính phí thử
+            $fee = [
+                "pick_address_id" => $address_seller['data'][0]['pick_address_id'],
+                "pick_address" => $address_seller['data'][0]['address'],
+                "address" => $data_shipping['order_addres'],
+                "province" => $data_shipping['order_city'],
+                "district" => $data_shipping['order_district'],
+                "weight" => 5,
+                "value" => $cart_totals,
+                "deliver_option" => "none",
+                "tags" => [7]
+            ];
+            // check dịch vụ xfast
+            $address_check_xfast = [
+                "customer_district" => "Quận Ba Đình",
+                "customer_province" => "Hà Nội",
+                "customer_ward" => "Phường Đội Cấn",
+//                "customer_first_address" => $data_shipping['order_addres'],
+                "pick_province" => "Hà Nội",
+                "pick_district" => "Quận Ba Đình",
+                "pick_ward" => "Quận Ba Đình"
+            ];
+            $data = [
+                'fee' => $fee,
+                'products' => $products,
+                'payload' => $payload,
+                'address_seller' => $address_seller,
+                'address_check_xfast' => $address_check_xfast
+            ];
+
+            Session::put('data', $data);
+            return $data;
+        } catch (\Exception $e) {
+            return [
+                'status' => false,
+                'message' => $e
+            ];
+        }
+    }
+
+    public function getShippingPrice()
+    {
+        $shippingPrice = false;
+        $data_fee = Session::get('data');
+        $option_transfer = $this->request->selected_shipping_option;
+        $data_fee['fee']['deliver_option'] = $option_transfer;
+        $ghtkController = new GhtkController();
+        if (isset($data_fee['fee']) && $data_fee['fee'] !== null) {
+            $esimate = $ghtkController->estimateShipping($data_fee['fee']);
+            if ($esimate['success']) {
+                $shippingPrice = $esimate['fee']['fee'];
+            }else{
+                return redirect()->back()->with('msgError', $esimate['message']);
+            }
+        }
+        $cart_price_ship = 0;
+        $cart_total = $this->getTotal($this->cart);
+        $cart_totals = $this->getTotals($cart_total);
+
+            Session::put('priceShip', $shippingPrice);
+                $cart_totals = $cart_totals + $shippingPrice;
+            Session::put('totalCart', $cart_totals);
+
+        return $result = [$cart_price_ship, number_format($cart_totals), $shippingPrice];
+    }
+
 }

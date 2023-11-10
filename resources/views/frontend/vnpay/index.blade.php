@@ -38,19 +38,24 @@
                                 <address>
                                     <strong>Tâm Trà Thái Nguyên</strong>
                                     <br>
-                                    2135 Sunset Blvd
+                                    Số 10, Trần Phú, HĐ, HN
                                     <br>
-                                    Los Angeles, CA 90026
+                                    Chi nhánh Phía Bắc
                                     <br>
-                                    <abbr title="Phone">P:</abbr> (213) 484-6829
+                                    <abbr title="Phone">Phone:</abbr> 0943206425
                                 </address>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                                 <p>
-                                    <em>Date: 1st November, 2013</em>
+                                    <em id="current-date"></em>
                                 </p>
                                 <p>
-                                    <em>Receipt #: 34522677W</em>
+                                    <input class="form-control"
+                                           id="orderInfo"
+                                           name="orderInfo"
+                                           type="hidden"
+                                           value="tâm trà {{auth()->user()->user_id}}" />
+                                    <em>Mã đơn hàng: Tâm Trà {{auth()->user()->user_id}}</em>
                                 </p>
                             </div>
                         </div>
@@ -81,6 +86,24 @@
                                 <tr>
                                     <td>
                                         <p>
+                                            <strong>Mã giảm giá</strong>
+                                        </p>
+                                    </td>
+                                    <td>  </td>
+                                    <td class="text-center">
+                                        <p>
+                                            <strong id="shipping">{{$coupon['coupon_show']}}</strong>
+                                        </p>
+                                    </td>
+                                    <td class="text-center">
+                                        <p>
+                                            <strong id="shipping">{{number_format($cart_totals)}}</strong>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
                                             <strong>Phí vận chuyển</strong>
                                         </p>
                                     </td>
@@ -88,7 +111,7 @@
                                     <td>  </td>
                                     <td class="text-center">
                                         <p>
-                                            <strong id="shipping">{{number_format(10000)}}</strong>
+                                            <strong id="shipping">{{number_format($priceShip)}}</strong>
                                         </p>
                                     </td>
                                 </tr>
@@ -98,9 +121,10 @@
                                     <td>  </td>
                                     <td class="text-danger"><h4>
                                             <input class="form-control" id="amount"
-                                                   name="amount" type="hidden" value="{{$order_total}}"/>
-                                            <strong>{{number_format($order_total)}} VNĐ</strong></h4>
+                                                   name="amount" type="hidden" value="{{number_format($order_total)}}"/>
+                                            <strong>{{number_format($order_total)}}</strong></h4>
                                     </td>
+
                                 </tr>
                                 </tbody>
                             </table>
@@ -124,3 +148,15 @@
 </div>
 </body>
 </html>
+
+<script>
+    var currentDate = new Date();
+
+    // Lấy ngày, tháng và năm
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+
+    // Hiển thị ngày tháng năm trong thẻ <em></em>
+    document.getElementById("current-date").innerText = "Ngày " + day + "/" + month + "/" + year;
+</script>
