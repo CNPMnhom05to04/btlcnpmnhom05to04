@@ -74,7 +74,7 @@
                         <div class="footer">
                             <div class="ft__details">
                                 <div class="row">
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 elementor-widget-image">
                                             <a class="main_logo_footer mb-1" href="/">
                                                 <img style="max-width: 50%; margin-bottom: 5px" src="{{$dataLogoFooter->image}}" title="" alt="logo images"></a>
                                         <p style="text-align: justify; font-family: 'sans-serif', sans-serif; font-style: normal;font-weight: 400;" >
