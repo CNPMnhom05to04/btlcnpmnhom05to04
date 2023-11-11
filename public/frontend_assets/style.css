@@ -131,7 +131,8 @@
 
 .section__title--2 h2 {
     color: #313131;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Mazzard Soft H", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 40px;
     font-weight: 700;
 }
@@ -3638,5 +3639,115 @@ ul.htc__instagram__posts.owl-carousel li img {
     outline: none;
 }
 
+.custom-order-process {
+    background-color: #f7f7f7;
+    padding: 40px 0;
+}
 
+.custom-order-process .container {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
 
+.custom-order-process h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.custom-order-process .process-steps {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-order-process .step {
+    flex: 1;
+}
+
+.custom-order-process .step-icon {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    line-height: 60px;
+    font-size: 24px;
+    color: #333;
+}
+
+.custom-order-process .step p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.order-with-us .info-container {
+    background-color: #347c14;
+    padding: 20px;
+    text-align: center;
+    opacity: 1;
+}
+
+.order-with-us .info-column {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+}
+
+.order-with-us .icon-box {
+    margin-bottom: 20px;
+}
+
+.order-with-us .icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.order-with-us .order-icon-box,
+.order-with-us .email-icon-box {
+    color: #BAC34E;
+}
+
+.order-with-us .delivery-heading{
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1.2em;
+    letter-spacing: 0px;
+}
+
+.order-with-us .order-heading {
+    color: #000000;
+    font-size: 22px;
+    line-height: 1.2em;
+    letter-spacing: 0px;
+}
+
+.order-with-us .email-heading {
+    color: #000000;
+    font-size: 22px;
+    line-height: 1.2em;
+    letter-spacing: 0px;
+}
+
+.order-with-us .email-contact,
+.order-with-us .order-contact {
+    color: #ffef03;
+    font-size: 20px;
+    line-height: 1.2em;
+    letter-spacing: 0px;
+}
+.order-heading .delivery-heading .email-heading {
+    font-family: "Mazzard Soft H", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .order-with-us .info-column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.home-testimonial{background-color: #6cec97;height: 380px}  .home-testimonial-bottom{background-color: #f8f8f8;transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top: 20px;margin-bottom: 0px;position: relative;height: 130px;top: 190px}  .home-testimonial h3{color: var(--orange);font-size: 14px;font-weight: 500;text-transform: uppercase}  .home-testimonial h2{color: white;font-size: 28px;font-weight: 700}  .testimonial-inner{position: relative;top: -174px}  .testimonial-pos{position: relative;top: 24px}  .testimonial-inner .tour-desc{border-radius: 5px;padding: 40px}  .color-grey-3{font-family: "Montserrat", Sans-serif;font-size: 14px;color: #6c83a2}  .testimonial-inner img.tm-people{width: 60px;height: 60px;-webkit-border-radius: 50%;border-radius: 50%;-o-object-fit: cover;object-fit: cover;max-width: none}  .link-name{font-family: "Montserrat", Sans-serif;font-size: 14px;color: #6c83a2}  .link-position{font-family: "Montserrat", Sans-serif;font-size: 12px;color: #6c83a2}
+.bg-white {
+    background-color: #fff!important;
+}

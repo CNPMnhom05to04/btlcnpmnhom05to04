@@ -151,7 +151,7 @@
     text-transform: uppercase;
 }
 .footer .ft__details p {
-    color: #ffffff;
+    color: #000000;
     font-size: 16px;
     line-height: 22px;
 }
@@ -169,7 +169,7 @@
     margin-top: 22px;
 }
 .ft__list li a {
-    color: #ffffff;
+    color: #000000;
     font-size: 16px;
     transition: all 0.4s ease 0s;
 }
@@ -302,7 +302,7 @@ footer h6 {
     font-family: 'Playfair Display', serif;
     margin-bottom: 40px;
     position: relative;
-    color: #f3f3f3;
+    color: #000000;
     font-size: 22px;
 }
 

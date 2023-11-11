@@ -34,7 +34,7 @@
     </div>
     <!-- Start Slider Area -->
     <!-- Start Product new Area -->
-    <section class="htc__category__area ptb--100">
+    <section class="htc__category__area ptb--80">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -95,28 +95,30 @@
     </section>
     <!-- End Product sale Area -->
     <!-- Start Comment Area -->
-    <section class="htc__testimonial__area bg__cat--4">
-        <div class="container">
-            <div class="row">
-                <div class="ht__testimonial__activation clearfix">
-                    @foreach ($dataComment as $item)
-                    <!-- Start Single Testimonial -->
-                    <div class="col-lg-6 col-md-6 single__tes">
-                        <div class="testimonial">
-                            <div class="testimonial__thumb">
-                                <img style="width:90px" src="{{$item->product->product_image}}" alt="{{$item->product->product_name}}">
-                            </div>
-                            <div class="testimonial__details">
-                                <h4><a href="/shop/product/{{$item->product_id}}-{{Str::slug($item->product->product_name)}}">{{$item->user->user_name}}</a></h4>
-                                <p>{{$item->comment_customer}} </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Testimonial -->
-                    @endforeach
+    <section class="home-testimonial">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center testimonial-pos">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <h2>Bình luận về sản phẩm</h2>
                 </div>
             </div>
-        </div>
+            <section class="home-testimonial-bottom">
+                <div class="container testimonial-inner">
+                    <div class="row d-flex justify-content-center">
+                        @foreach($dataComment->take(3) as $item)
+                        <div class="col-md-4 style-3">
+                            <div class="tour-item ">
+                                <div class="tour-desc bg-white">
+                                    <div class="tour-text color-grey-3 text-center">&ldquo;{{ $item->comment_customer }}</div>
+                                    <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="{{ $item->product->product_image}}" alt=""></div>
+                                    <div class="link-name d-flex justify-content-center">{{ $item->user->user_name }}</div>
+                                    <div class="link-position d-flex justify-content-center">Student</div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+            </section>
     </section>
     <!-- End Comment Area -->
     <!-- Start Top Rated Area -->
@@ -182,7 +184,7 @@
     @endif
     <!-- End Top Rated Area -->
     <!-- Start Blog Area -->
-    <section class="ftr__product__area ptb--100">
+    <section class="ftr__product__area .ptb--80">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -239,6 +241,71 @@
         </div>
     </section>
     <!-- End Blog Area -->
+    <section class="order-process custom-order-process">
+        <div class="container">
+            <h2>Quy trình đặt hàng tại Tâm Trà</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <p>Bước 1: Đặt hàng</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <p>Bước 2: Xác nhận</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <p>Bước 3: Vận chuyển</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <p>Bước 4: Giao hàng</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fa fa-check-circle"></i>
+                    </div>
+                    <p>Bước 5: Hoàn thành</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="order-with-us">
+        <div class="info-container">
+            <div class="info-column">
+                <div class="icon-box order-icon-box">
+                    <div class="icon">&#x1F6D2;</div>
+                    <h3 class="order-heading">Đặt Hàng 24/7</h3>
+                    <p class="order-contact">0943206425</p>
+                </div>
+            </div>
+
+            <div class="info-column delivery-column">
+                <div class="icon">&#x1F69A;</div>
+                <h3 class="delivery-heading">Giao Hàng Tận Nơi
+                <br>TRÀ SẠCH - TRÀ CHÍNH GỐC - TRÀ MỚI
+                </h3>
+            </div>
+
+            <div class="info-column">
+                <div class="icon-box email-icon-box">
+                    <div class="icon">&#x1F4E7;</div>
+                    <h3 class="email-heading">Email</h3>
+                    <p class="email-contact">tamtra@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
 @endsection
 
 @section('script')
