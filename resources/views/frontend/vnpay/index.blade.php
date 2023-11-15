@@ -92,7 +92,7 @@
                                     <td>  </td>
                                     <td class="text-center">
                                         <p>
-                                            <strong id="shipping">{{$coupon['coupon_show']}}</strong>
+                                            <strong id="shipping"></strong>
                                         </p>
                                     </td>
                                     <td class="text-center">

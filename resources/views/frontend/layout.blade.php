@@ -292,7 +292,7 @@
         </ul>
         <script>
             var botmanWidget = {
-                aboutText: 'ssdsd',
+                aboutText: 'Tâm trà xin chào quý khách',
                 introMessage: "✋ Hi! Chào mừng bạn đến với chatbot tự động của Tâm trà ",
                 customLauncherSelector: '.your-custom-launcher-element'
             };

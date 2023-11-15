@@ -1403,6 +1403,14 @@ h2{
 .starrating > input:hover ~ label
 { color: #ffca08 ;  } /* Set yellow color when star hover */
 
+.risingstar input[type="radio"]:checked + label {
+    color: gold;
+}
+
+.risingstar input[type="radio"]:checked + label ~ label {
+    color: #ccc;
+}
+
 .product-price span.pro-sale {
     display: inline-block;
     padding: 5px 15px;

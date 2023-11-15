@@ -21,7 +21,7 @@
                         @foreach ($data as $item)
 
                             <!-- Start Single Category -->
-                        <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 prd-{{$item->product->product_id}}" style="max-height: 380px">
+                        <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6 prd-{{$item->product->product_id}}" style="max-height: 380px">
                             <div class="category">
                                 <div class="ht__cat__thumb">
                                     @if ($item->product->product_sale != 0)

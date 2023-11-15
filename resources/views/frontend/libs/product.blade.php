@@ -37,9 +37,9 @@
         <h4><a href="/shop/product/{{$item->product_id}}-{{Str::slug($item->product_name, '-')}}.html">{{$item->product_name}}</a></h4>
         <ul class="fr__pro__prize">
             @if ($item->product_sale != 0)
-            <li class="old__prize">{{number_format($item->product_price_sell)}} VNĐ</li>
+            <li class="old__prize">{{number_format($item->product_price_sell)}}đ</li>
             @endif
-            <li>{{number_format($product_price_sale)}} VNĐ</li>
+            <li>{{number_format($product_price_sale)}}đ</li>
         </ul>
     </div>
 </div>
