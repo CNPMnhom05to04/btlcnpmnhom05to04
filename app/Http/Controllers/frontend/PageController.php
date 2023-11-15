@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Enums\Constant;
 use App\Http\Controllers\Controller;
 use App\Helpers\SeoHelper;
 use Illuminate\Http\Request;
@@ -43,11 +44,11 @@ class PageController extends Controller
     }
 
     public function index(){
-        $dataProductNews = ProductModel::orderBy('product_id', 'DESC')->paginate(8);
-        $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(8)->get();
-        $dataProductSell = OrderdetailModel::groupBy('product_id')->select('product_id')->limit(4)->get();
+        $dataProductNews = ProductModel::orderBy('product_id', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
+        $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(Constant::NUMBER_PRODUCT)->get();
+        $dataProductSell = OrderdetailModel::groupBy('product_id')->select('product_id')->limit(Constant::NUMBER_PRODUCT)->get();
         $dataComment = CommentModel::where('comment_status', 3)->limit(4)->get();
-        $dataSilde = SlideModel::where('active', 1)->where('type', 1)->orderBy('id', 'DESC')->limit(4)->get();
+        $dataSilde = SlideModel::where('active', 1)->where('type', 1)->orderBy('id', 'DESC')->limit(Constant::NUMBER_PRODUCT)->get();
         $dataBanner = SlideModel::where('active', 1)->where('type', 2)->orderBy('id', 'DESC')->first();
         $dataPost = PostModel::orderBy('id', 'DESC')->limit(4)->get();
 
@@ -64,13 +65,12 @@ class PageController extends Controller
 
     public function shop(){
         $this->data_seo = new SeoHelper('Cửa hàng','Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/shop');
-        $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(4)->get();
-        $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(4)->get();
+        $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(Constant::NUMBER_PRODUCT)->get();
 
         if($this->checkFilter()){
             $price_start = $_GET['price_start'];
             $price_end = $_GET['price_end'];
-            $data = ProductModel::whereBetween('product_price_sell', [$price_start, $price_end])->orderBy('product_id', 'DESC')->paginate(9);
+            $data = ProductModel::whereBetween('product_price_sell', [$price_start, $price_end])->orderBy('product_id', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($this->checkSort()){
             $sortBy = $_GET['sort_by'];
@@ -78,10 +78,10 @@ class PageController extends Controller
         }
         else if($this->checkSearch()){
             $keyword = $_GET['search_keyword'];
-            $data = ProductModel::where('product_name', 'LIKE', '%'.$keyword.'%')->paginate(9);
+            $data = ProductModel::where('product_name', 'LIKE', '%'.$keyword.'%')->paginate(Constant::NUMBER_PRODUCT);
         }
         else{
-            $data = ProductModel::orderBy('product_id', 'DESC')->paginate(9);
+            $data = ProductModel::orderBy('product_id', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         return view('frontend.pages.shop',[
             'data' => $data,
@@ -98,14 +98,14 @@ class PageController extends Controller
             // echo $id;
             $price_start = $_GET['price_start'];
             $price_end = $_GET['price_end'];
-            $data = ProductModel::where('category_id', $id)->whereBetween('product_price_sell', [$price_start, $price_end])->orderBy('product_id', 'DESC')->paginate(9);
+            $data = ProductModel::where('category_id', $id)->whereBetween('product_price_sell', [$price_start, $price_end])->orderBy('product_id', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($this->checkSort()){
             $sortBy = $_GET['sort_by'];
             $data = $this->sortByCategory($sortBy, $id);
         }
         else{
-            $data = ProductModel::where('category_id', $id)->orderBy('product_id', 'DESC')->paginate(9);
+            $data = ProductModel::where('category_id', $id)->orderBy('product_id', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         return view('frontend.pages.shop',[
             'data' => $data,
@@ -121,14 +121,14 @@ class PageController extends Controller
         if($this->checkFilter()){
             $price_start = $_GET['price_start'];
             $price_end = $_GET['price_end'];
-            $data = ProductModel::where('brand_id', $id)->whereBetween('product_price_sell', [$price_start, $price_end])->orderBy('product_id', 'DESC')->paginate(9);
+            $data = ProductModel::where('brand_id', $id)->whereBetween('product_price_sell', [$price_start, $price_end])->orderBy('product_id', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($this->checkSort()){
             $sortBy = $_GET['sort_by'];
             $data = $this->sortByBrand($sortBy, $id);
         }
         else{
-            $data = ProductModel::where('brand_id', $id)->orderBy('product_id', 'DESC')->paginate(9);
+            $data = ProductModel::where('brand_id', $id)->orderBy('product_id', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         return view('frontend.pages.shop',[
             'data' => $data,
@@ -142,7 +142,7 @@ class PageController extends Controller
         $id = substr($id, 0, $pos);//Cắt lấy id theo cái - đầu
 
         $data = ProductModel::find($id);
-        $dataProductCategory = ProductModel::where('product_id', '!=', $id)->where('category_id', $data->category_id)->orderBy('product_sale', 'DESC')->limit(4)->get();
+        $dataProductCategory = ProductModel::where('product_id', '!=', $id)->where('category_id', $data->category_id)->orderBy('product_sale', 'DESC')->limit(Constant::NUMBER_PRODUCT)->get();
         $dataProductImages = ImageModel::where('product_id', $id)->get();
         $dataComment = CommentModel::where('product_id', $id)->orderBy('comment_id', 'DESC')->limit(3)->get();
         $rating = CommentModel::where('product_id', $id)->avg('comment_rating');
@@ -219,46 +219,46 @@ class PageController extends Controller
 
     public function sortByShop($sortBy){
         if($sortBy == 'tang_dan'){
-            return $data = ProductModel::orderBy('product_price_sell', 'ASC')->paginate(9);
+            return $data = ProductModel::orderBy('product_price_sell', 'ASC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($sortBy == 'giam_dan'){
-            return $data = ProductModel::orderBy('product_price_sell', 'DESC')->paginate(9);
+            return $data = ProductModel::orderBy('product_price_sell', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($sortBy == 'kitu_az'){
-            return $data = ProductModel::orderBy('product_name', 'ASC')->paginate(9);
+            return $data = ProductModel::orderBy('product_name', 'ASC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else {
-            return $data = ProductModel::orderBy('product_name', 'DESC')->paginate(9);
+            return $data = ProductModel::orderBy('product_name', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
     }
 
     public function sortByCategory($sortBy, $id){
         if($sortBy == 'tang_dan'){
-            return $data = ProductModel::where('category_id', $id)->orderBy('product_price_sell', 'ASC')->paginate(9);
+            return $data = ProductModel::where('category_id', $id)->orderBy('product_price_sell', 'ASC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($sortBy == 'giam_dan'){
-            return $data = ProductModel::where('category_id', $id)->orderBy('product_price_sell', 'DESC')->paginate(9);
+            return $data = ProductModel::where('category_id', $id)->orderBy('product_price_sell', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($sortBy == 'kitu_az'){
-            return $data = ProductModel::where('category_id', $id)->orderBy('product_name', 'ASC')->paginate(9);
+            return $data = ProductModel::where('category_id', $id)->orderBy('product_name', 'ASC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else {
-            return $data = ProductModel::where('category_id', $id)->orderBy('product_name', 'DESC')->paginate(9);
+            return $data = ProductModel::where('category_id', $id)->orderBy('product_name', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
     }
 
     public function sortByBrand($sortBy, $id){
         if($sortBy == 'tang_dan'){
-            return $data = ProductModel::where('brand_id', $id)->orderBy('product_price_sell', 'ASC')->paginate(9);
+            return $data = ProductModel::where('brand_id', $id)->orderBy('product_price_sell', 'ASC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($sortBy == 'giam_dan'){
-            return $data = ProductModel::where('brand_id', $id)->orderBy('product_price_sell', 'DESC')->paginate(9);
+            return $data = ProductModel::where('brand_id', $id)->orderBy('product_price_sell', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else if($sortBy == 'kitu_az'){
-            return $data = ProductModel::where('brand_id', $id)->orderBy('product_name', 'ASC')->paginate(9);
+            return $data = ProductModel::where('brand_id', $id)->orderBy('product_name', 'ASC')->paginate(Constant::NUMBER_PRODUCT);
         }
         else {
-            return $data = ProductModel::where('brand_id', $id)->orderBy('product_name', 'DESC')->paginate(9);
+            return $data = ProductModel::where('brand_id', $id)->orderBy('product_name', 'DESC')->paginate(Constant::NUMBER_PRODUCT);
         }
     }
 }

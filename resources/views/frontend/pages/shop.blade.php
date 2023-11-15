@@ -45,8 +45,8 @@
                     <!-- Start Pagenation -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <ul class="htc__pagenation">
-                                {{$data->render()}}
+                            <ul class="product_pagenation" >
+                                {{ $data->links("pagination::bootstrap-4") }}
                             </ul>
                         </div>
                     </div>

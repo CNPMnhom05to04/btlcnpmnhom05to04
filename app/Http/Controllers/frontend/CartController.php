@@ -291,7 +291,6 @@ class CartController extends Controller
                 'requestType' => $requestType,
                 'signature' => $signature);
             $result = $this->execPostRequest($endpoint, json_encode($data));
-            dd($result);
             $jsonResult = json_decode($result, true);
 
             return redirect()->to( $jsonResult['payUrl']);
