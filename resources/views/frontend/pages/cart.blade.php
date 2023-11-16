@@ -12,21 +12,26 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th class="product-thumbnail">products</th>
-                                        <th class="product-name">name of products</th>
-                                        <th class="product-price">Price</th>
-                                        <th class="product-quantity">Quantity</th>
-                                        <th class="product-subtotal">Total</th>
-                                        <th class="product-remove">Remove</th>
+                                        <th class="product-thumbnail">Sản phẩm</th>
+                                        <th class="product-name">Tên sản phẩm</th>
+                                        <th class="product-price">Giá</th>
+                                        <th class="product-price">Khối lượng</th>
+                                        <th class="product-quantity">Số lượng</th>
+                                        <th class="product-subtotal">Tổng giá</th>
+                                        <th class="product-remove">XoÁ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (Session::get('cart'))
                                         @foreach ($cart as $item)
+                                            <?php
+                                                $weight = \App\Helpers\CommonHelper::get_data_weight($item['cart_weight'])
+                                            ?>
                                         <tr class="tr-{{$item['cart_id']}}">
                                             <td class="product-thumbnail"><a href="/shop/product/{{$item['cart_id']}}-{{Str::slug($item['cart_product'], '-')}}.html"><img style="width: 100px; height: 120px" src="{{$item['cart_image']}}" alt="product img" /></a></td>
                                             <td class="product-name"><a href="/shop/product/{{$item['cart_id']}}-{{Str::slug($item['cart_product'], '-')}}.html">{{$item['cart_product']}}</a></td>
                                             <td class="product-price"><span class="amount">{{number_format($item['cart_price_sale'])}}</span></td>
+                                            <td class="product-price"><span class="product-brand">{{ $weight }} kg</span></td>
                                             <form>
                                                 @csrf
                                             <td class="product-quantity"><input class="get_qty" name="qty_{{$item['cart_id']}}" data-id="{{$item['cart_id']}}" type="number" value="{{$item['cart_quantity']}}" /></td>
@@ -88,7 +93,7 @@
                                             <li>Giảm giá</li>
                                         </ul>
                                         <ul class="cart__price">
-                                            <li id="cart_total">{{number_format($cart_total)}} VNĐ</li>
+                                            <li id="cart_total">{{number_format($cart_total)}} đ</li>
                                             <li id="cart_coupon">
                                                 <span id="cart_coupon_status"></span>
                                                 {{$coupon_cart}}
@@ -97,7 +102,7 @@
                                     </div>
                                     <div class="cart__total">
                                         <span>Tổng (Chưa phí vận chuyển): </span>
-                                        <span id="cart_totals">{{number_format($cart_totals)}} VNĐ</span>
+                                        <span id="cart_totals">{{number_format($cart_totals)}} đ</span>
                                     </div>
                                     <ul class="payment__btn">
                                         <li class="active"><a href="/checkout">thanh toán</a></li>

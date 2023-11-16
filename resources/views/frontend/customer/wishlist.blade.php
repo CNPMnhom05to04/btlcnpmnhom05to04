@@ -43,6 +43,7 @@
                                         <input type="hidden" class="cart_product_{{$item->product->product_id}}" value="{{$item->product->product_name}}">
                                         <input type="hidden" class="cart_price_{{$item->product->product_id}}" value="{{$item->product->product_price_buy}}">
                                         <input type="hidden" class="cart_price_sale_{{$item->product->product_id}}" value="{{$product_price_sale}}">
+                                        <input type="hidden" class="cart_brand_{{$item->product->product_id}}" value="{{$item->product->brand_name}}">
                                         <input type="hidden" class="cart_amount_{{$item->product->product_id}}" value="{{$item->product->product_amount}}">
                                         <input type="hidden" class="cart_quantity_{{$item->product->product_id}}" value="1">
                                         <input type="hidden" class="cart_image_{{$item->product->product_id}}" value="{{$item->product->product_image}}">
@@ -90,7 +91,7 @@
             var cart_amount = $('.cart_amount_' + id).val();
             var cart_quantity = $('.cart_quantity_' + id).val();
             var cart_image = $('.cart_image_' + id).val();
-
+            var cart_brand = $('.cart_brand_' + id).val();
             $.ajax({
                 url: 'add_to_cart',
                 method: 'POST',
@@ -103,6 +104,7 @@
                     cart_amount: cart_amount,
                     cart_quantity: cart_quantity,
                     cart_image: cart_image,
+                    cart_brand: cart_brand,
                 },
                 success: function () {
                     //

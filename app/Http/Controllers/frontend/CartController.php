@@ -177,6 +177,8 @@ class CartController extends Controller
                 " - " . $dataDistrict->district_name.
                 " - " . $dataCity->city_name,
             'order_pay_type' => $request->order_pay_type,
+            'order_address' => $request->order_addres,
+            'order_ward' => $request->order_addres,
             'order_profit' => $order_profit,
             'order_total' => Session::get('totalCart'),
             'order_status' => 1,
@@ -226,13 +228,15 @@ class CartController extends Controller
             $dataOrder->user_id = $dataCustomerOrderShow['user_id'];
             $dataOrder->order_note = $dataCustomerOrderShow['order_note'];
             $dataOrder->order_shipping = $dataCustomerOrderShow['order_shipping'];
+            $dataOrder->address = $dataCustomerOrderShow['order_address'];
+            $dataOrder->ward = $dataCustomerOrderShow['order_ward'];
             $dataOrder->order_pay_type = $dataCustomerOrderShow['order_pay_type'];
             $dataOrder->order_profit = $dataCustomerOrderShow['order_profit'];
             $dataOrder->order_total = $dataCustomerOrderShow['order_total'];
             $dataOrder->order_status = 1;
             $dataOrder->created_at = $dataCustomerOrderShow['created_at'];
 
-//            $dataOrder->save();
+            $dataOrder->save();
 
             $order_id = $dataOrder->order_id;//Lấy id order vừa insert vào bảng
 
@@ -248,6 +252,7 @@ class CartController extends Controller
                 $dataOrderdetail->product_id = $val['cart_id'];
                 $dataOrderdetail->order_detail_quantity = $val['cart_quantity'];
                 $dataOrderdetail->order_detail_price = $val['cart_price_sale'];
+                $dataOrderdetail->weight_product = $val['cart_weight'];
                 $dataOrderdetail->save();
             }
 
@@ -361,6 +366,8 @@ class CartController extends Controller
             $dataOrder->user_id = $dataCustomerOrderShow['user_id'];
             $dataOrder->order_note = $dataCustomerOrderShow['order_note'];
             $dataOrder->order_shipping = $dataCustomerOrderShow['order_shipping'];
+            $dataOrder->address = $dataCustomerOrderShow['order_address'];
+            $dataOrder->ward = $dataCustomerOrderShow['order_ward'];
             $dataOrder->order_pay_type = $dataCustomerOrderShow['order_pay_type'];
             $dataOrder->order_profit = $dataCustomerOrderShow['order_profit'];
             $dataOrder->order_total = $dataCustomerOrderShow['order_total'];
@@ -383,6 +390,7 @@ class CartController extends Controller
                 $dataOrderdetail->product_id = $val['cart_id'];
                 $dataOrderdetail->order_detail_quantity = $val['cart_quantity'];
                 $dataOrderdetail->order_detail_price = $val['cart_price_sale'];
+                $dataOrderdetail->weight_product = $val['cart_weight'];
 
                 $dataOrderdetail->save();
             }
@@ -436,6 +444,7 @@ class CartController extends Controller
                         'cart_id' => $cart_id,
                         'cart_product' => $request->cart_product,
                         'cart_price' => $request->cart_price,
+                        'cart_weight' => $request->cart_brand,
                         'cart_price_sale' => $request->cart_price_sale,
                         'cart_amount' => $request->cart_amount,
                         'cart_quantity' => $request->cart_quantity,
@@ -453,6 +462,7 @@ class CartController extends Controller
                     'cart_id' => $cart_id,
                     'cart_product' => $request->cart_product,
                     'cart_price' => $request->cart_price,
+                    'cart_weight' => $request->cart_brand,
                     'cart_price_sale' => $request->cart_price_sale,
                     'cart_amount' => $request->cart_amount,
                     'cart_quantity' => $request->cart_quantity,
@@ -666,59 +676,6 @@ class CartController extends Controller
             $cart_total = $this->getTotal($carts);
             $cart_totals = $this->getTotals($cart_total);
             $address_seller = $ghtkController->getAddressPickUp();
-            //form order
-            $payload = [
-                "order" => [
-                    "id" => "5555",
-                    "pick_name" => "HCM-nội thành",
-                    "pick_address" => "590 CMT8 P.11",
-                    "pick_province" => "TP. Hồ Chí Minh",
-                    "pick_district" => "Quận 3",
-                    "pick_ward" => "Phường 1",
-                    "pick_tel" => "0911222333",
-                    "tel" => "0911222123",
-
-                    "name" => "GHTK - HCM - Noi Thanh",
-                    "address" => "123 nguyễn chí thanh",
-                    "province" => "TP. Hồ Chí Minh",
-                    "district" => "Quận 1",
-                    "ward" => "Phường Bến Nghé",
-                    "hamlet" => "Khác",
-
-                    "is_freeship" => "1",
-                    "pick_date" => "2016-09-30",
-                    "pick_money" => 47000,
-                    "note" => "Khối lượng tính cước tối đa: 1.00 kg",
-                    "value" => 3000000,
-                    "pick_option" => "cod",
-                    "tags" => [1]
-//                    "id" => "a4",
-//                    "pick_name"=> $address_seller['data'][0]['pick_name'],
-//                    "pick_address_id" => $address_seller['data'][0]['pick_address_id'],
-//                    "pick_tel"=> $address_seller['data'][0]['pick_tel'],
-//                    "pick_address" => "590 CMT8 P.11",
-//                    "pick_province" => "TP. Hồ Chí Minh",
-//                    "pick_district" => "Quận 3",
-//                    "pick_ward " => "Phường 1",
-//
-//                    "tel"=> $shipping_info->phone,
-//                    "name"=> Auth::user()->name,
-//                    "address"=> $shipping_info->address,
-//                    "province"=> optional($shipping_info->state)->name,
-//                    "district"=> optional($shipping_info->city)->name,
-//                    "ward"=> optional($shipping_info->city)->name,
-//                    "email"=> Auth::user()->email,
-//
-//                    "is_freeship"=> "1",  // is_freeship = `1` COD = `pick_money`, `0` COD=`pick_money` + `phí ship của đơn hàng`
-//                    "pick_date"=> now(), // ngày lấy hàng
-//                    "pick_money"=> 47000, // Tiền khi COD giao tới (0: thanh toán onl - VND: COD)
-//                    "value"=> $subtotal,  // Giá trị hàng hóa
-//                    "pick_option"=>"cod",
-//                    "tags" => [ 1] //Phụ phí hàng
-                ],
-                "products" => $products
-            ];
-            // tính phí thử
             $fee = [
                 "pick_address_id" => $address_seller['data'][0]['pick_address_id'],
                 "pick_address" => $address_seller['data'][0]['address'],
@@ -743,7 +700,6 @@ class CartController extends Controller
             $data = [
                 'fee' => $fee,
                 'products' => $products,
-                'payload' => $payload,
                 'address_seller' => $address_seller,
                 'address_check_xfast' => $address_check_xfast
             ];
