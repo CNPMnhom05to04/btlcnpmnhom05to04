@@ -28,7 +28,7 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <input type="hidden" value="{{$item->brand_id}}" class="id_delete">
-                                        <td>{{$item->brand_name}}</td>
+                                        <td>{{$item->brand_keyword}}</td>
                                         <td>{{count($item->product)}}</td>
                                         <td>Từ khóa: {{$item->brand_keyword}} <br>
                                             Mô tả: {{$item->brand_description}}
@@ -42,7 +42,8 @@
                                                 </a>
                                                 <form>
                                                     @csrf
-                                                    <a class="button-delete{{ count($item->product) == 0 ? '' : ' disabled' }} button-common-delete delete button-delete-cate">
+                                                    <a class="button-delete{{ count($item->product) == 0 ? '' : ' disabled' }} button-common-delete delete button-delete-cate"
+                                                       onclick="deleteSelected()">
                                                         <i class="fa-regular fa-trash-can mr-1"></i>
                                                         <span>Xoá</span>
                                                     </a>

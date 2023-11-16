@@ -177,6 +177,7 @@
             var cart_amount = $('.cart_amount_' + id).val();
             var cart_quantity = $('.cart_quantity_' + id).val();
             var cart_image = $('.cart_image_' + id).val();
+            var cart_brand = $('.cart_brand_' + id).val();
 
             $.ajax({
                 url: 'add_to_cart',
@@ -190,6 +191,7 @@
                     cart_amount: cart_amount,
                     cart_quantity: cart_quantity,
                     cart_image: cart_image,
+                    cart_brand: cart_brand,
                 },
                 success: function () {
                     //

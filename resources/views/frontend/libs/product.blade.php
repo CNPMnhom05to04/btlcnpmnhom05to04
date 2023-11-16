@@ -19,6 +19,7 @@
             <input type="hidden" class="cart_product_{{$item->product_id}}" value="{{$item->product_name}}">
             <input type="hidden" class="cart_price_{{$item->product_id}}" value="{{$item->product_price_sell}}">
             <input type="hidden" class="cart_price_sale_{{$item->product_id}}" value="{{$product_price_sale}}">
+            <input type="hidden" class="cart_brand_{{$item->product_id}}" value="{{$item->brand_id}}">
             <input type="hidden" class="cart_amount_{{$item->product_id}}" value="{{$item->product_amount}}">
             <input type="hidden" class="cart_quantity_{{$item->product_id}}" value="1">
             <input type="hidden" class="cart_image_{{$item->product_id}}" value="{{$item->product_image}}">

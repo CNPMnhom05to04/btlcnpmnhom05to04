@@ -48,4 +48,12 @@ class ProductModel extends Model
     {
         return $this->belongsTo(BrandModel::class, 'brand_id', 'brand_id');
     }
+
+    /**
+     * @return BelongsTo
+     */
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(OrderdetailModel::class, 'product_id');
+    }
 }

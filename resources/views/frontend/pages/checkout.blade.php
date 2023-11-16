@@ -172,7 +172,7 @@
                                     <div class="single-item__content">
                                         <a href="/shop/product/{{$item['cart_id']}}-{{Str::slug($item['cart_product'], '-')}}.html">{{$item['cart_product']}}
                                             x{{$item['cart_quantity']}}</a>
-                                        <span class="price">{{number_format($item['cart_price_sale'])}}</span>
+                                        <span class="price">{{number_format($item['cart_price_sale'])}} - {{ \App\Helpers\CommonHelper::get_data_weight($item['cart_weight'])}} kg</span>
                                     </div>
                                 </div>
                             @endforeach
