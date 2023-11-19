@@ -32,7 +32,7 @@ return [
     'google' => [
         'client_id' => '478679473802-n81rm8u24i3krf0lq7ec5na7p6bf6aao.apps.googleusercontent.com',
         'client_secret' => '8gaTAfM5D0Zhbm3EA54SNQ5O',
-        'redirect' => 'http://127.0.0.1:8000/callback/google',
-    ], 
+        'redirect' => 'https://devlife.io.vn/callback/google',
+    ],
 
 ];

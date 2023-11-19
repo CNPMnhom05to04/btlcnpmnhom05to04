@@ -115,41 +115,52 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12" style="margin-top: 5px">
-                                                    <div class="col-md-3 text-center">
-                                                        <label for="paymentCash" class="payment-option " onclick="selectPaymentOption(event)">
-                                                            <div class="image-container">
-                                                                <img src="https://nascoexpress.com/getattachment/b8a25cce-6779-4eda-9409-f7912ee05660/dich-vu-cod-tai-nasco-express-(1).jpg.html" alt="Cash Payment" class="img-fluid">
-                                                            </div>
-                                                            Thanh toán khi nhận hàng
-                                                        </label>
-                                                        <input class="type_payment" type="radio" id="paymentCash" name="order_pay_type" value="1" style="display: none;">
-                                                    </div>
+                                                <div class="row text-center">
+                                                    <div class="col-md-9" style="margin-top: 5px">
+                                                        <div class="col-3 col-sm-3 text-center">
+                                                            <label for="paymentCash" class="payment-option"
+                                                                   onclick="selectPaymentOption(event)">
+                                                                <div class="image-container">
+                                                                    <img
+                                                                        src="https://nascoexpress.com/getattachment/b8a25cce-6779-4eda-9409-f7912ee05660/dich-vu-cod-tai-nasco-express-(1).jpg.html"
+                                                                        alt="Cash Payment" class="img-fluid">
+                                                                </div>
+                                                                Thanh toán khi nhận hàng
+                                                            </label>
+                                                            <input class="type_payment" type="radio" id="paymentCash"
+                                                                   name="order_pay_type" value="1"
+                                                                   style="display: none;">
+                                                        </div>
 
-                                                    <div class="col-md-3 text-center">
-                                                        <label for="paymentVNPAY" class="payment-option"
-                                                               onclick="selectPaymentOption(event)">
-                                                            <div class="image-container">
-                                                                <img src="https://play-lh.googleusercontent.com/o-_z132f10zwrco4NXk4sFqmGylqXBjfcwR8-wK0lO1Wk4gzRXi4IZJdhwVlEAtpyQ=w240-h480-rw" alt="Cash Payment" class="img-fluid">
-                                                            </div>
-                                                            Thanh toán qua VNPay
-                                                        </label>
-                                                        <input class="type_payment" type="radio" id="paymentVNPAY"
-                                                               name="order_pay_type" value="2"
-                                                               style="display: none;">
-                                                    </div>
+                                                        <div class="col-3 col-sm-3">
+                                                            <label for="paymentVNPAY" class="payment-option"
+                                                                   onclick="selectPaymentOption(event)">
+                                                                <div class="image-container">
+                                                                    <img
+                                                                        src="https://play-lh.googleusercontent.com/o-_z132f10zwrco4NXk4sFqmGylqXBjfcwR8-wK0lO1Wk4gzRXi4IZJdhwVlEAtpyQ=w240-h480-rw"
+                                                                        alt="VNPay" class="img-fluid">
+                                                                </div>
+                                                                Thanh toán qua VNPay
+                                                            </label>
+                                                            <input class="type_payment" type="radio" id="paymentVNPAY"
+                                                                   name="order_pay_type" value="2"
+                                                                   style="display: none;">
+                                                        </div>
 
-                                                    <div class="col-md-3 text-center">
-                                                        <label for="paymentMomo" class="payment-option"
-                                                               onclick="selectPaymentOption(event)">
-                                                            <div class="image-container">
-                                                                <img src="https://play-lh.googleusercontent.com/dQbjuW6Jrwzavx7UCwvGzA_sleZe3-Km1KISpMLGVf1Be5N6hN6-tdKxE5RDQvOiGRg=w240-h480-rw" alt="Cash Payment" class="img-fluid">
-                                                            </div>
-                                                            Thanh toán qua MoMo
-                                                        </label>
-                                                        <input class="type_payment" type="radio" id="paymentMomo"
-                                                               name="order_pay_type" value="3"
-                                                               style="display: none;">
+                                                        <div class="col-3 col-sm-3">
+                                                            <label for="paymentMomo" class="payment-option"
+                                                                   onclick="selectPaymentOption(event)">
+                                                                <div class="image-container">
+                                                                    <img
+                                                                        src="https://play-lh.googleusercontent.com/dQbjuW6Jrwzavx7UCwvGzA_sleZe3-Km1KISpMLGVf1Be5N6hN6-tdKxE5RDQvOiGRg=w240-h480-rw"
+                                                                        alt="MoMo" class="img-fluid">
+                                                                </div>
+                                                                Thanh toán qua MoMo
+                                                            </label>
+                                                            <input class="type_payment" type="radio" id="paymentMomo"
+                                                                   name="order_pay_type" value="3"
+                                                                   style="display: none;">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
@@ -182,20 +193,29 @@
                                 <h5>Giá sản phẩm</h5>
                                 <span class="price" id="cart_total">{{number_format($cart_total)}}</span>
                             </div>
-                            <div id="orderDetailsDiv" class="order-details__count__single" style="display: none;">
-                                <h5>Vận chuyển</h5>
-                                <span>
-                                    <div class="box">
-                                        <select class="selectpicker" data-size="4">
-                                           <option value="" disabled selected hidden class="text-muted"
-                                                   style="color: gray; opacity: 0.5;">Lựa chọn
-                                                            </option>
-                                            <option value="none">Nhanh</option>
-                                            <option value="xteam">Hoả tốc</option>
-                                        </select>
+                        </div>
+                        <div class="order-details__count">
+                            <div class="order-details__count__single mb--55">
+                                <div id="orderDetailsDiv" class="order-details__count__single" style="display: none;">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-7">
+                                            <h5 class="nowrap">Vận chuyển</h5>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="box">
+                                                <select class="selectpicker" data-size="4">
+                                                    <option value="" disabled selected hidden class="text-muted"
+                                                            style="color: gray; opacity: 0.5;">Lựa chọn
+                                                    </option>
+                                                    <option value="none">Nhanh</option>
+                                                    <option value="xteam">Hoả tốc</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </span>
+                                </div>
                             </div>
+
                             <div class="order-details__count__single">
                                 <h5>Mã giảm giá</h5>
                                 <span class="price" id="coupon_cart">{{$coupon_cart}}</span>
@@ -210,16 +230,26 @@
                             <span class="price" id="cart_totals">{{number_format($cart_totals)}}</span>
                         </div>
                     </div>
-
-                    <ul id="payment_btn" class="payment__btn">
-                        <li class="active">
-                            <button type="submit" class="form-control">Thanh toán
-                            </button>
-                        </li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 mb--10">
+                            <ul id="payment_btn" class="payment__btn">
+                                <li class="active">
+                                    <button type="submit" class="form-control">Thanh toán</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                            <div class="buttons-cart--inner">
+                                <div class="buttons-cart" style="width: 100%;">
+                                    <a href="/cart">Quay lại giỏ hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- cart-main-area end -->
 @endsection
@@ -227,7 +257,7 @@
 @section('script')
 
     <script>
-        $('.type_payment').on('change', function() {
+        $('.type_payment').on('change', function () {
             var formData = {
                 city_id: $('#city_id').val(),
                 district_id: $('#district_id').val(),
@@ -242,7 +272,7 @@
             $.post('{{ route('ghtk.getInformatioOrder') }}', {
                 _token: '{{ @csrf_token() }}',
                 formData: formData
-            }, function(data) {
+            }, function (data) {
             });
         });
     </script>
@@ -336,8 +366,8 @@
     </script>
 
     <script>
-        $(document).ready(function() {
-            $("#payment_btn").on("click", function(event) {
+        $(document).ready(function () {
+            $("#payment_btn").on("click", function (event) {
                 event.preventDefault();
                 $("#paymentForm").submit();
             });
@@ -345,7 +375,7 @@
     </script>
 
     <script>
-        $('select.selectpicker').change(function() {
+        $('select.selectpicker').change(function () {
             var paymentType = $('input[name="order_pay_type"]:checked').val();
             var selectedShippingOption = $(this).val();
 
@@ -365,11 +395,11 @@
                     payment_type: paymentType,
                     selected_shipping_option: selectedShippingOption
                 },
-                success: function(data) {
+                success: function (data) {
                     $('#shipping').text(data[2].toLocaleString('ja-JP') + '' + ' đ')
                     $('#cart_totals').text(data[1].toLocaleString('ja-JP') + '' + ' đ')
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     // Xử lý lỗi ở đây
                     console.error(error);
                 }
@@ -378,7 +408,7 @@
     </script>
     <script>
         document.querySelectorAll('.type_payment').forEach(input => {
-            input.addEventListener('change', function(event) {
+            input.addEventListener('change', function (event) {
                 const selectedOption = event.target.closest('.payment-option');
                 const orderDetailsDiv = document.getElementById("orderDetailsDiv");
 

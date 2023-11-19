@@ -11,22 +11,19 @@
     <link rel="canonical" href="{{$data_seo->url_canonical}}">
     <meta content="" name="author"/>
     <!---seo fb------->
-    <meta property="og:site_name" content="http://127.0.0.1:8000/"/>
+    <meta property="og:site_name" content="https://devlife.io.vn/"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="{{$data_seo->url_canonical}}"/>
-    <meta property="og:title" content="Long Decor - {{$data_seo->meta_title}}"/>
+    <meta property="og:title" content="Tâm Trà - {{$data_seo->meta_title}}"/>
     <meta property="og:description" content="{{$data_seo->meta_description}}"/>
-    @if (isset($data_seo_image))
-        <meta property="og:image" content="{{$data_seo_image}}"/>
-    @else
-        <meta property="og:image" content="../libs/vinaneon-logo.jpg"/>
-    @endif
+    <meta property="og:image" content="../storage/images_slide/3FlFdKtgWJ_logo.png"/>
 
-    <link rel="shortcut icon" type="image/x-icon" href="../libs/vinaneon-logo-1.png">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../storage/images_slide/3FlFdKtgWJ_logo.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
-    <base href="/">
+    <base href="https://devlife.io.vn/">
     <!-- All css files are included here. -->
     <!-- Bootstrap fremwork main css -->
     <link rel="stylesheet" href="../frontend_assets/css/bootstrap.min.css">
@@ -68,39 +65,41 @@
         <!-- Start Footer Widget -->
         <div class="footer__container bg__cat--1">
             <div class="container">
-                <div class="row">
-                    <!-- Start Single Footer Widget -->
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="footer">
-                            <div class="ft__details">
-                                <div class="row">
-                                    <div class="col-sm-10 elementor-widget-image">
-                                            <a class="main_logo_footer mb-1" href="/">
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer">
+                                <div class="ft__details">
+                                    <div class="row">
+                                        <div class="col-sm-10 elementor-widget-image">
+                                            <a class="main_logo_footer mb-1" href="https://devlife.io.vn/">
                                                 <img style="max-width: 50%; margin-bottom: 5px" src="{{$dataLogoFooter->image}}" title="" alt="logo images"></a>
-                                        <p style="text-align: justify; font-family: 'sans-serif', sans-serif; font-style: normal;font-weight: 400;" >
-                                            Tâm Trà Thái Nguyên là một website chuyên kinh doanh các loại chè Tân Cương Thái Nguyên ngon, chính gốc 100%.
-                                            Bên cạnh đó, tại đây bạn có thể tìm hiểu tất cả những thông tin về trà Tân Cương tại Blog của chúng tôi, hy vọng bạn sẽ tìm được sản phẩm ưng ý & những thông tin bổ ích, xin cảm ơn</p>
+                                            <p style="text-align: justify; font-family: 'sans-serif', sans-serif; font-style: normal;font-weight: 400;" >
+                                                Tâm Trà Thái Nguyên là một website chuyên kinh doanh các loại chè Tân Cương Thái Nguyên ngon, chính gốc 100%.
+                                                Bên cạnh đó, tại đây bạn có thể tìm hiểu tất cả những thông tin về trà Tân Cương tại Blog của chúng tôi, hy vọng bạn sẽ tìm được sản phẩm ưng ý & những thông tin bổ ích, xin cảm ơn</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 xmt-40">
-                        <div class="footer">
-                            <h6> Liên hệ </h6>
-                            <ul class="ft__list">
-                            <li><a class="fa fa-location-arrow mr-1">Số 10, Trần Phú, Hà Đông, Hà Nội</a></li>
-                            <li><a class="fa fa-phone"> 0943206425</a></li>
-                            <li><a class="fa fa fa-envelope">  tamtra@gmail.com  </a></li>
-                                <li><a href="/blog/13-gioi-thieu-thuong-hieu.html" class="btn-footer">Thông tin</a></li>
-                                <li><a href="/contact" class="btn-footer"> Hợp tác</a></li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="col-md-3 col-sm-6 col-xs-12 xmt-40">
-                        <div class="footer">
-                            <h6>Loại sản phẩm</h6>
+                    </div>
+                    <div class="col">
+                        <div class="col-md-3 col-sm-6 col-xs-12 xmt-40">
+                            <div class="footer">
+                                <h6> Liên hệ </h6>
+                                <ul class="ft__list">
+                                    <li><a class="fa fa-location-arrow mr-1">Số 10, Trần Phú, Hà Đông, Hà Nội</a></li>
+                                    <li><a class="fa fa-phone"> 0943206425</a></li>
+                                    <li><a class="fa fa fa-envelope">  tamtra@gmail.com  </a></li>
+                                    <li><a href="/blog/13-gioi-thieu-thuong-hieu.html" class="btn-footer">Thông tin</a></li>
+                                    <li><a href="/contact" class="btn-footer"> Hợp tác</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 xmt-40">
+                            <div class="footer">
+                                <h6>Loại sản phẩm</h6>
                                 <ul class="ft__list">
                                     @foreach ($dataCategory->take(5) as $item)
                                         <li>
@@ -108,20 +107,19 @@
                                         </li>
                                     @endforeach
                                 </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 xmt-40">
+                            <div class="footer">
+                                <h6>Maps</h6>
+                                <div class="map-contacts--2">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.2926381717452!2d105.78486297494075!3d20.980903480656455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accdd8a1ad71%3A0xa2f9b16036648187!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNow61uaCB2aeG7hW4gdGjDtG5n!5e0!3m2!1svi!2s!4v1699585950181!5m2!1svi!2s" width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12">
-                        <div class="footer">
-                            <h6>Maps</h6>
-                        <div class="map-contacts--2">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.2926381717452!2d105.78486297494075!3d20.980903480656455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accdd8a1ad71%3A0xa2f9b16036648187!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNow61uaCB2aeG7hW4gdGjDtG5n!5e0!3m2!1svi!2s!4v1699585950181!5m2!1svi!2s" width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                        </div>
                     </div>
-                    <!-- End Single Footer Widget -->
                 </div>
-            </div>
         </div>
         <style>
             @keyframes pulse {

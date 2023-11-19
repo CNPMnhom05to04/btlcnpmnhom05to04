@@ -45,7 +45,6 @@ Route::get('/shop/product/{id}', [PageController::class, 'product']);
 Route::get('/contact', [PageController::class, 'contact']);
 
 //Route handle cart
-Route::get('/verify', [CartController::class, 'verify'])->name('verify.user');
 Route::get('/cart', [CartController::class, 'cart']);
 Route::get('/checkout', [CartController::class, 'checkout']);
 Route::post('/payment', [CartController::class, 'payment']);
@@ -81,6 +80,7 @@ Route::get('/blog/{id}', [PageController::class, 'viewBlog']);
 Route::get('/customer', [CustomerController::class, 'index']);
 Route::post('/customer/login', [CustomerController::class, 'customerLogin']);
 Route::post('/customer/register', [CustomerController::class, 'customerRegister']);
+Route::get('/customer/verify/{user_id}/{token}', [CustomerController::class, 'verify'])->name('verify.user');
 Route::prefix('customer')->middleware('HandleLoginCustomer')->group(function () {
     Route::get('/profile', [CustomerController::class, 'customerProfile']);
     Route::get('/shipaddres', [CustomerController::class, 'customerShipAddres']);

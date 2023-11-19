@@ -11,7 +11,7 @@
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
-  <base href="/">
+  <base href="https://devlife.io.vn/">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
@@ -21,14 +21,14 @@
 </head>
 
 <body class="">
- 
+
     <div class="content">
 
       @include('backend.note')
 
         <form action="admin" method="POST" autocomplete="on">
             @csrf
-            
+
           <div class="row  mt-5">
             <div class="col-md-6 offset-md-3">
               <div class="card">
@@ -56,10 +56,10 @@
                 <div class="clearfix"></div>
             </div>
           </form>
-    
+
         </div>
     </div>
-  
+
   <!--   Core JS Files   -->
   <script src="../backend_assets/assets/js/core/jquery.min.js"></script>
   <script src="../backend_assets/assets/js/core/popper.min.js"></script>

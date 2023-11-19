@@ -11,17 +11,15 @@ class HandleLoginCustomer
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
-                return $next($request);
-        }
-        else{
+        if (!Auth::check()) {
             return redirect('/customer')->with('msgError', 'Bạn cần phải đăng nhập trước');
         }
+        return $next($request);
     }
 }

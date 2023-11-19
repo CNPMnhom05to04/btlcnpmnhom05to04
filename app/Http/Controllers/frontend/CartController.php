@@ -41,7 +41,7 @@ class CartController extends Controller
         $dataBrand = BrandModel::all();
         $dataLogo = SlideModel::where('type', 3)->first();
         $dataLogoFooter = SlideModel::where('type', 4)->first();
-        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/cart');
+        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'https://devlife.io.vn/cart');
         $this->middleware(function ($request, $next) {
             $this->cart = Session::get('cart');
             $this->coupon = Session::get('coupon');
@@ -273,8 +273,8 @@ class CartController extends Controller
         $orderInfo = "Thanh toán đơn hàng".' '. $request->orderInfo;
         $amount = str_replace(",", "", $request->amount);
         $orderId = time() ."";
-        $redirectUrl = "http://127.0.0.1:8000/payment/return";
-        $ipnUrl = "http://127.0.0.1:8000/payment/return";
+        $redirectUrl = "https://devlife.io.vn/payment/return";
+        $ipnUrl = "https://devlife.io.vn/payment/return";
         $extraData = "";
 
             $requestId = time() . "";

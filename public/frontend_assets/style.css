@@ -2250,7 +2250,7 @@ select.select__size {
 }
 .buttons-cart a {
     background: #ebebeb none repeat scroll 0 0;
-    color: #3f3f3f;
+    color: #000000;
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
     font-weight: 500;
@@ -2284,8 +2284,8 @@ select.select__size {
 .buttons-cart input:hover,
 .coupon input[type=submit]:hover,
 .buttons-cart a:hover{
-    background:#212121;
-    color:#fff !important;
+    background: #3f3f3f;
+    color: #ffffff !important;
 }
 .buttons-cart--inner {
     display: flex;

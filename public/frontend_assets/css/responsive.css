@@ -1321,11 +1321,6 @@ nav.off__canvars--menu ul li {
     width: 120px;
     height: 100px;
     position: absolute;
-    margin: auto;
-    left: 220px;
-    right: 0;
-    bottom: 0;
-    top: 80px;
 }
 h2{
     text-align: center;

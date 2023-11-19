@@ -15,10 +15,14 @@ class UserModel extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
+    /**
+     * @var int|mixed
+     */
     protected $table = 'users';
 
     protected $fillable = [
-        'user_name', 'user_email', 'user_password', 'user_phone', 'user_addres', 'user_district', 'user_city', 'provider', 'provider_id','role_id', 'last_seen'
+        'user_name', 'user_email', 'user_password', 'user_phone', 'user_addres', 'user_district', 'user_city', 'provider', 'provider_id','role_id', 'last_seen',
+        'verification_code','is_verify'
     ];
 
     protected $hidden = [

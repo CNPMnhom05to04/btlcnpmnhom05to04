@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Helpers\CommonHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Users\UserRequest;
 use App\Http\Requests\Admin\Users\UserUpdateProfileRequest;
@@ -107,11 +108,15 @@ class UserController extends Controller
         $user_email = $request->user_email;
         $password = $request->user_password;
 
+        $check_verify = (new \App\Helpers\CommonHelper)->checkUserVerify($request->user_email);
+        if (!$check_verify) {
+            return redirect('customer')->with('msgError', 'Xác nhận thất bại! Tài khoản của bạn chưa được kích hoạt. Vui lòng kiểm tra email và xác nhận.');
+        }
         if(Auth::attempt(['user_email' => $user_email, 'password' => $password])){
             return redirect('admin/dashboard')->with('msgSuccess', 'Đăng nhập thành công');
         }
         else{
-            return redirect('admin')->with('msgError', 'Đăng nhập thất bại </br> Tài khoản hoặc mật khẩu không đúng');
+            return redirect('admin')->with('msgError', 'Đăng nhập thất bại, kiểm tra lại thông tin đăng nhập hoặc tài khoản chưa được kích hoạt.');
         }
     }
 

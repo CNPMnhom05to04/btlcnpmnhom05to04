@@ -80,10 +80,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="section__title--2 text-center">
-                        <h2 class="title__line">
-                            <a>TOP KHUYẾN MÃI</a>
-                        </h2>
+                    <div class="d-none d-md-block">
+                        <div class="section__title--2 text-center">
+                            <h2 class="title__line">
+                                <a>TOP KHUYẾN MÃI</a>
+                            </h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,48 +106,48 @@
     <!-- End Product sale Area -->
     <!-- Start Comment Area -->
     <section class="home-testimonial">
-        <div class="container-fluid">
-            <div class="row d-flex justify-content-center testimonial-pos">
-                <div class="section__title--2 text-center">
-                    <div class="section__title--2 text-center">
-                        <h2 class="title__line">
-                            <a>Bình luận về sản phẩm</a>
-                        </h2>
+            <div class="container-fluid">
+                <div class="row d-flex justify-content-center testimonial-pos">
+                    <div class="col-12 text-center">
+                        <div class="section__title--2">
+                            <h2 class="title__line">
+                                <a>Bình luận về sản phẩm</a>
+                            </h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <section class="home-testimonial-bottom">
-                <div class="container testimonial-inner">
-                    <div class="row d-flex justify-content-center product-review-slider" data-items="3">
-                        @foreach($dataComment as $item)
-                            <div class="col-md-4 col-sm-6 col-xs-12 style-3">
-                                <div class="tour-item">
-                                    <div class="tour-desc bg-white">
-                                        <div class="link-name text-center">{{ $item->user->user_name }}</div>
-                                        <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people"
-                                                                                                  src="{{ $item->product->product_image }}"
-                                                                                                  alt=""></div>
-                                        <div class="tour-text color-grey-3">
-                                            &ldquo;{{ $item->comment_customer }} &ldquo;
-                                        </div>
-                                        <br>
-                                        <div
-                                            class="starrating risingstar d-flex justify-content-center flex-row-reverse">
-                                            @for($i = 1; $i <=5; $i++)
-                                                <input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}"
-                                                       @if($i == $item->comment_rating) checked @endif />
-                                                <label for="star{{ $i }}" title="{{ $i }} star"
-                                                       style="color: @if($i <= $item->comment_rating) yellow @else gray @endif;"></label>
-                                            @endfor
+                <section class="home-testimonial-bottom">
+                    <div class="container testimonial-inner">
+                        <div class="row d-flex justify-content-center product-review-slider" data-items="3">
+                            @foreach($dataComment as $item)
+                                <div class="col-md-4 col-sm-6 col-12 style-3">
+                                    <div class="tour-item">
+                                        <div class="tour-desc bg-white" style="height: 300px; overflow-y: auto;">
+                                            <div class="link-name text-center">{{ $item->user->user_name }}</div>
+                                            <div class="row justify-content-center pt-2 pb-2">
+                                                <div class="col-md-6 col-sm-8 col-12">
+                                                    <img class="tm-people img-fluid" src="{{ $item->product->product_image }}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="tour-text color-grey-3">
+                                                &ldquo;{{ $item->comment_customer }}&ldquo;
+                                            </div>
+                                            <br>
+                                            <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                                                @for($i = 1; $i <=5; $i++)
+                                                    <input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}"
+                                                           @if($i == $item->comment_rating) checked @endif />
+                                                    <label for="star{{ $i }}" title="{{ $i }} star"
+                                                           style="color: @if($i <= $item->comment_rating) yellow @else gray @endif;"></label>
+                                                @endfor
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-            </section>
-
+                </section>
         </div>
     </section>
     <!-- End Comment Area -->
@@ -192,7 +194,8 @@
                                                    value="{{$item->product->product_amount}}">
                                             <input type="hidden" class="cart_quantity_{{$item->product->product_id}}"
                                                    value="1">
-                                            <input type="hidden" class="cart_brand_{{$item->product->product_id}}" value="{{$item->product->brand_name}}">
+                                            <input type="hidden" class="cart_brand_{{$item->product->product_id}}"
+                                                   value="{{$item->product->brand_name}}">
                                             <input type="hidden" class="cart_image_{{$item->product->product_id}}"
                                                    value="{{$item->product->product_image}}">
                                             <ul class="product__action">

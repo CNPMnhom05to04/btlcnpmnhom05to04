@@ -22,20 +22,18 @@
                             <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-
                     <div class="form-group row mb-0">
-                    <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn">Đăng nhập</button> Hoặc
-                        <a href="/auth/redirect/google" class="btn btn-primary"><i class="fa fa-google"></i> Google</a>
+                    <div class=" form-group offset-md-4 text-center">
+                        <button type="submit" class="btn">Đăng nhập</button>
                     </div>
                     </div>
                 </form>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-2 mt--100 mb--100">
                 <center>
-                    <div class="or" style="text-align: center; width: 60px; height: 60px; background: #c43b68; color: #fff; border-radius: 60%; line-height: 60px; margin-top: 120px">
-                        Or
+                    <div class="or" style="text-align: center; width: 50px; height: 50px; background: #c43b68; color: #fff; border-radius: 50%; line-height: 50px">
+                        OR
                     </div>
                 </center>
             </div>
@@ -74,7 +72,9 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn">Đăng ký</button>
+                    <div class=" form-group offset-md-4 text-center">
+                        <button type="submit" class="btn">Đăng ký</button>
+                    </div>
                 </form>
             </div>
         </div>

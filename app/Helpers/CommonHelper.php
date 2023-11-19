@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Enums\Constant;
 use App\Models\BrandModel;
 use App\Models\CategoryModel;
+use App\Models\UserModel;
 
 class CommonHelper
 {
@@ -27,6 +28,18 @@ class CommonHelper
         } else {
             return 0;
         }
+    }
+
+    public function checkUserVerify($param)
+    {
+        $user = UserModel::where('user_email', $param)->first();
+        if (!$user) {
+            return redirect()->with('msgError', 'Xác nhận thất bại, có vẻ như tài khoản của bạn chưa được tạo,Xin hãy tạo tài khoản khác!');
+        }
+        if ($user->is_verify == 0) {
+            return false;
+        }
+        return true;
     }
 
 }

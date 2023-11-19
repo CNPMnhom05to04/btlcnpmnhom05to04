@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Enums\Constant;
 use App\Http\Controllers\Controller;
 use App\Helpers\SeoHelper;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
 use App\Models\CategoryModel;
@@ -29,7 +30,7 @@ class PageController extends Controller
         $dataBrand = BrandModel::all();
         $dataLogo = SlideModel::where('type', 3)->first();
         $dataLogoFooter = SlideModel::where('type', 4)->first();
-        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/');
+        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'https://devlife.io.vn/');
         view()->share([
             'dataCategory' => $dataCategory,
             'dataBrand' => $dataBrand,
@@ -64,7 +65,7 @@ class PageController extends Controller
     }
 
     public function shop(){
-        $this->data_seo = new SeoHelper('Cửa hàng','Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/shop');
+        $this->data_seo = new SeoHelper('Cửa hàng','Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'https://devlife.io.vn/shop');
         $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(Constant::NUMBER_PRODUCT)->get();
 
         if($this->checkFilter()){
@@ -93,7 +94,7 @@ class PageController extends Controller
     public function category($id){
         $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(4)->get();
         $data_category = CategoryModel::find($id);
-        $this->data_seo = new SeoHelper($data_category->category_name, $data_category->category_keyword, $data_category->category_description, 'http://127.0.0.1:8000/shop/');
+        $this->data_seo = new SeoHelper($data_category->category_name, $data_category->category_keyword, $data_category->category_description, 'https://devlife.io.vn/shop/');
         if($this->checkFilter()){
             // echo $id;
             $price_start = $_GET['price_start'];
@@ -117,7 +118,7 @@ class PageController extends Controller
     public function brand($id){
         $dataProductSales = ProductModel::orderBy('product_sale', 'DESC')->limit(4)->get();
         $data_brand = BrandModel::find($id);
-        $this->data_seo = new SeoHelper($data_brand->brand_name, $data_brand->brand_keyword, $data_brand->brand_description, 'http://127.0.0.1:8000/shop/');
+        $this->data_seo = new SeoHelper($data_brand->brand_name, $data_brand->brand_keyword, $data_brand->brand_description, 'https://devlife.io.vn/shop/');
         if($this->checkFilter()){
             $price_start = $_GET['price_start'];
             $price_end = $_GET['price_end'];
@@ -158,7 +159,7 @@ class PageController extends Controller
             }
         }
 
-        $this->data_seo = new SeoHelper($data->product_name, $data->product_keyword, $data->product_description, 'http://127.0.0.1:8000/shop/product/'.$id);
+        $this->data_seo = new SeoHelper($data->product_name, $data->product_keyword, $data->product_description, 'https://devlife.io.vn/shop/product/'.$id);
 
         return view('frontend.pages.product',[
             'data' => $data,

@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <center>
-                            <div class="fb-comments" data-href="http://127.0.0.1:8000/{{Request::path()}}" data-width="900" data-numposts="5"></div>
+                            <div class="fb-comments" data-href="https://devlife.io.vn/{{Request::path()}}" data-width="900" data-numposts="5"></div>
                         </center>
                     </div>
                 </div>

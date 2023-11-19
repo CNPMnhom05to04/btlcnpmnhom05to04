@@ -261,7 +261,7 @@
       rel="stylesheet">
 <div class="container">
     <h3 class="text-center">Chat Tâm Trà
-        <a class="backpage" href="{{ auth()->user()->role_id == 1 || auth()->user()->role_id == 2 ? 'http://127.0.0.1:8000/admin/dashboard' : 'http://127.0.0.1:8000/' }}">
+        <a class="backpage" href="{{ auth()->user()->role_id == 1 || auth()->user()->role_id == 2 ? 'https://devlife.io.vn/admin/dashboard' : 'https://devlife.io.vn/' }}">
             <i class="fa-solid fa-marker mr-1"></i> Quay lại
         </a>
     </h3>

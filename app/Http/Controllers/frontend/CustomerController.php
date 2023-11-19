@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\Helpers\CommonHelper;
 use App\Http\Controllers\Controller;
 use App\Helpers\SeoHelper;
 use App\Jobs\VerifyCustumer;
@@ -33,7 +34,7 @@ class CustomerController extends Controller
         $dataBrand = BrandModel::all();
         $dataLogo = SlideModel::where('type', 3)->first();
         $dataLogoFooter = SlideModel::where('type', 4)->first();
-        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'http://127.0.0.1:8000/customer');
+        $this->data_seo = new SeoHelper('Kính chào quý khách', 'Bàn decor, gương decor, thảm decor, ghể decor, tranh decor', 'VINANEON - Chuyên cung cấp những vật phẩm decor uy tín, chất lượng, giá rẻ', 'https://devlife.io.vn/customer');
 
         view()->share(['dataCategory' => $dataCategory,
             'dataBrand' => $dataBrand,
@@ -55,7 +56,6 @@ class CustomerController extends Controller
 
     public function customerLogin(Request $request)
     {
-
         $request->validate([
             'user_email' => 'required',
             'user_password' => 'required',
@@ -64,11 +64,15 @@ class CustomerController extends Controller
             'user_password.required' => 'Mật khẩu không được để trống',
         ]);
 
+        $check_verify = (new \App\Helpers\CommonHelper)->checkUserVerify($request->user_email);
+        if (!$check_verify) {
+            return redirect('customer')->with('msgError', 'Xác nhận thất bại! Tài khoản của bạn chưa được kích hoạt. Vui lòng kiểm tra email và xác nhận.');
+        }
         if (Auth::attempt(['user_email' => $request->user_email, 'password' => $request->user_password])) {
             return redirect('customer/profile')->with('msgSuccess', 'Đăng nhập thành công');
-        } else {
-            return redirect('customer')->with('msgError', 'Đăng nhập thất bại');
         }
+
+        return redirect('customer')->with('msgError', 'Đăng nhập thất bại, kiểm tra lại thông tin đăng nhập hoặc tài khoản chưa được kích hoạt.');
     }
 
     public function customerRegister(Request $request)
@@ -87,7 +91,7 @@ class CustomerController extends Controller
             'user_name.min' => 'Họ tên quá ngắn phải lớn hơn 5 kí tự',
             'user_name.max' => 'Họ tên quá dài phải nhỏ hơn 50 kí tự',
             'user_email.email' => 'Email không đúng định dạng',
-            'user_email.unique' => 'Email đã được sử dụng',
+//            'user_email.unique' => 'Email đã được sử dụng',
             'user_email.max' => 'Email quá dài',
             'user_password.min' => 'Mật khẩu quá ngắn phải lớn hơn 5 kí tự',
             'user_password.max' => 'Mật khẩu quá dài phải nhỏ hơn 20 kí tự',
@@ -316,15 +320,15 @@ class CustomerController extends Controller
         echo $output;
     }
 
-//    public function verify(Request $request){
-//        $verify_code = Request::get('code');
-//        $user = UserModel::where('verification_code', $verify_code )->first();
-//        if ($user != null){
-//            $user->is_verify = 1;
-//            $user->save();
-//            return redirect('customer')->with('msgSuccess', 'Xác nhận thông tin thành công. Bạn có thể đnăg nhập để sử dụng dịch vụ của chúng tôi');
-//        } else {
-//            return redirect()->with('msgError', 'Xác nhận thất bại');
-//        }
-//    }
+    public function verify($user_id, $token)
+    {
+        $user = UserModel::where('user_id', $user_id)
+            ->where('verification_code', $token)
+            ->first();
+        if (!$user) {
+            return redirect()->with('msgError', 'Xác nhận thất bại, có vẻ như tài khoản của bạn chưa được tạo,Xin hãy tạo tài khoản khác!');
+        }
+        $user->update(['is_verify' => 1]);
+        return redirect('customer')->with('msgSuccess', 'Xác nhận tài khoản thành công. Bạn có thể đăng nhập ngay bây giờ.');
+    }
 }

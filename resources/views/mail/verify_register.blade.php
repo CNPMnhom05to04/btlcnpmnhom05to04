@@ -16,8 +16,8 @@
                         <p>Chào bạn!,</p>
                         <p>Tâm trà shop xin được chào mừng tài khoản : <strong>{{$data['user_name']}}</strong> đã đăng kí tại website của chúng tôi</p>
                         <ul>
-                            <li>Click để xác nhận email và đăng nhập ngay: <a href="http://127.0.0.1:8000"
-                                         style="display:inline-block;padding:5px 15px;background-color:#337ab7;color:#ffffff;text-decoration:none;border-radius:5px;">Xác nhận</a>
+                            <li>Click để xác nhận email và đăng nhập ngay: <a href="{{route('verify.user',[ 'user_id' => $data['user_id'], 'token' => $data['verification_code'] ])}}"
+                                         style="display:inline-block;padding:5px 15px;background-color:#337ab7;color:#ffffff;text-decoration:none;border-radius:5px;">Kích hoạt tài khoản</a>
                         </ul>
                         <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</p>
                         <div style="border-top:1px solid #cccccc;margin-top:20px;"></div>
