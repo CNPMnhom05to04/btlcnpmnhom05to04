@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -194,12 +194,12 @@
         }
 
         .input_msg_write input {
-            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            background: rgb(23, 232, 165) none repeat scroll 0 0;
             border: medium none;
             color: #4c4c4c;
             font-size: 15px;
             min-height: 48px;
-            width: 100%;
+            width: 80%;
         }
 
         .type_msg {
@@ -229,13 +229,15 @@
             height: 516px;
             overflow-y: auto;
         }
-        body,html{
+
+        body, html {
             height: 100%;
             margin: 0;
             background: #7F7FD5;
             background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
             background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
         }
+
         .backpage {
             display: inline-block;
             background-color: #007bff;
@@ -251,6 +253,26 @@
             background-color: #0056b3;
             color: #ffffff;
         }
+
+        #file-display {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .mesgs.dragover {
+            background-color: #f0f0f0;
+        }
+
+        .file-name {
+            margin-bottom: 5px;
+            margin-right: 10px;
+        }
+
+
     </style>
 </head>
 <body>
@@ -261,47 +283,40 @@
       rel="stylesheet">
 <div class="container">
     <h3 class="text-center">Chat Tâm Trà
-        <a class="backpage" href="{{ auth()->user()->role_id == 1 || auth()->user()->role_id == 2 ? 'https://devlife.io.vn/admin/dashboard' : 'https://devlife.io.vn/' }}">
+        <a class="backpage"
+           href="{{ auth()->user()->role_id == 1 || auth()->user()->role_id == 2 ? 'https://devlife.io.vn/admin/dashboard' : 'https://devlife.io.vn/' }}">
             <i class="fa-solid fa-marker mr-1"></i> Quay lại
         </a>
     </h3>
-                @yield('content')
+    @yield('content')
 </div>
 
 <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
     var receiver_id = '';
     var my_id = "{{ Auth::id() }}";
     $(document).ready(function () {
-        // ajax setup form csrf token
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
-
         var pusher = new Pusher('5607066b2ea2dd8d4ecd', {
             cluster: 'ap1'
         });
-
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function (data) {
-            // alert(JSON.stringify(data));
-            if (my_id == data.from) {
+            if (my_id === data.from) {
                 $('#' + data.to).click();
-            } else if (my_id == data.to) {
-                if (receiver_id == data.from) {
-                    // if receiver is selected, reload the selected user ...
+            } else if (my_id === data.to) {
+                if (receiver_id === data.from) {
                     $('#' + data.from).click();
                 } else {
-                    // if receiver is not seleted, add notification for that user
                     var pending = parseInt($('#' + data.from).find('.pending').html());
-
                     if (pending) {
                         $('#' + data.from).find('.pending').html(pending + 1);
                     } else {
@@ -332,27 +347,140 @@
         $(document).on('keyup', '.input-text input', function (e) {
             var message = $(this).val();
 
-            if (e.keyCode == 13 && message != '' && receiver_id != '') {
-                $(this).val('');
-
-                var datastr = "receiver_id=" + receiver_id + "&message=" + message;
-                $.ajax({
-                    type: "post",
-                    url: "message",
-                    data: datastr,
-                    cache: false,
-                    success: function (data) {
-
-                    },
-                    error: function (jqXHR, status, err) {
-                    },
-                    complete: function () {
-                        scrollToBottomFunc();
-                    }
-                })
+            if (e.keyCode === 13 && message !== '' && receiver_id !== '') {
+                sendMessage();
+                // $(this).val('');
+                //
+                // var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+                // $.ajax({
+                //     type: "post",
+                //     url: "message",
+                //     data: datastr,
+                //     cache: false,
+                //     success: function (data) {
+                //
+                //     },
+                //     error: function (jqXHR, status, err) {
+                //     },
+                //     complete: function () {
+                //         scrollToBottomFunc();
+                //     }
+                // })
             }
         });
     });
+
+
+    // check lại
+    var uploadedFiles = [];
+    console.log(uploadedFiles);
+    function openInput() {
+        var fileInput = document.getElementById('file');
+        fileInput.click();
+
+        document.getElementById('file').addEventListener('change', function (event) {
+            handleFileSelect(event);
+        });
+
+        function handleFileSelect(event) {
+            var files = event.target.files;
+
+            if (files.length > 0) {
+                uploadedFiles = Array.from(files).slice(0, 3);
+                console.log(uploadedFiles);
+                displayUploadedFiles();
+
+                if (files.length > 3) {
+                    alert("Chỉ hiển thị và lưu trữ tối đa 3 file. Các file vượt quá sẽ không được lưu.");
+                }
+            }
+        }
+
+        function displayUploadedFiles() {
+            var fileNameDisplay = $("#file-display");
+            fileNameDisplay.empty();
+            console.log(uploadedFiles);
+            for (var i = 0; i < uploadedFiles.length; i++) {
+                var file = uploadedFiles[i];
+                var fileName = document.createElement('p');
+                fileName.textContent = file.name;
+                fileNameDisplay.append(fileName);
+
+                var deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Xoá';
+                deleteButton.onclick = function () {
+                    removeFile(file);
+                };
+                fileNameDisplay.append(deleteButton);
+            }
+
+            $("#file-display").css("display", "block");
+        }
+
+        function removeFile(fileToRemove) {
+            uploadedFiles = uploadedFiles.filter(function (file) {
+                console.log(uploadedFiles);
+                return file !== fileToRemove;
+            });
+            displayUploadedFiles();
+        }
+    }
+    function sendMessage() {
+        var message = $('.write_msg').val();
+        var fileInput = $('#file')[0];
+        var files = fileInput.files;
+
+        var formData = new FormData();
+        formData.append('receiver_id', receiver_id);
+        formData.append('message', message);
+
+        for (var i = 0; i < files.length; i++) {
+            formData.append('files[]', files[i]);
+        }
+        $.ajax({
+            type: "post",
+            url: "message",
+            data: formData,
+            contentType: false,
+            processData: false,
+            cache: false,
+            success: function (data) {
+            },
+            error: function (jqXHR, status, err) {
+            },
+            complete: function () {
+                scrollToBottomFunc();
+            }
+        });
+    }
+
+
+
+    // Xử lý sự kiện khi file được chọn
+    $('#file').on('change', function (e) {
+        var files = e.target.files;
+        displaySelectedFileNames(files);
+    });
+
+    // Hiển thị tên file đã chọn
+    function displaySelectedFileNames(files) {
+        var fileDisplay = $('#file-display');
+        fileDisplay.empty();
+        console.log(files.length);
+
+        for (var i = 0; i < Math.min(files.length, 3); i++) {
+            var fileName = files[i].name;
+            var fileNameDisplay = $('<p class="file-name">' + fileName + '</p>');
+            fileDisplay.append(fileNameDisplay);
+        }
+    }
+
+    // Xóa tên file khi xoá tin nhắn
+    function removeFileDisplay() {
+        $('#file').val(null);
+        $('#file-display').empty();
+    }
+
 
     function scrollToBottomFunc() {
         $('.mesgs').animate({

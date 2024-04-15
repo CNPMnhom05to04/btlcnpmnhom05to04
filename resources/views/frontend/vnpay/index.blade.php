@@ -97,7 +97,11 @@
                                     </td>
                                     <td class="text-center">
                                         <p>
-                                            <strong id="shipping">{{number_format($cart_totals)}}</strong>
+                                            <strong id="shipping">
+                                                @if(isset($coupon['coupon_show']))
+                                                    {{ $coupon['coupon_show'] }}
+                                                @endif
+                                            </strong>
                                         </p>
                                     </td>
                                 </tr>

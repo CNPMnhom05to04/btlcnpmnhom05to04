@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Enums\Constant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Brands\BrandRequest;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\BrandModel;
-use mysql_xdevapi\Exception;
 
 class BrandController extends Controller
 {
@@ -20,7 +17,7 @@ class BrandController extends Controller
 
     public function index()
     {
-        $data = BrandModel::orderBy('brand_id', 'DESC')->paginate(Constant::PER_PAGE);
+        $data = BrandModel::orderBy('brand_id', 'DESC')->paginate(5);
 
         return view('backend.brands.list', ['data' => $data]);
     }
@@ -39,10 +36,10 @@ class BrandController extends Controller
         $data->brand_description = $request->brand_description;
 
         if($data->save()){
-            return redirect('admin/brands')->with('msgSuccess', 'Thêm chất lượng trà Thành Công');
+            return redirect('admin/brands/create')->with('msgSuccess', 'Thêm khu vực - địa chỉ Thành Công');
         }
         else{
-            return redirect('admin/brands/create')->with('msgSuccess', 'Thêm chất lượng trà Thất Bại');
+            return redirect('admin/brands/create')->with('msgSuccess', 'Thêm khu vực - địa chỉ Thất Bại');
         }
     }
 
@@ -63,22 +60,22 @@ class BrandController extends Controller
         $data->brand_description = $request->brand_description;
 
         if($data->save()){
-            return redirect('admin/brands')->with('msgSuccess', 'Cập nhật chất lượng trà Thành Công');
+            return redirect()->back()->with('msgSuccess', 'Cập Nhật Khu Vực - Địa Điểm Thành Công');
         }
         else{
-            return redirect()->back()->with('msgSuccess', 'Cập nhật chất lượng trà Thất Bại');
+            return redirect()->back()->with('msgSuccess', 'Cập Nhật Khu Vực - Địa Điểm Thất Bại');
         }
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $data = BrandModel::find($id);
 
         if($data->delete()){
-            return response()->json(['msgSuccess'=>'Xóa chất lượng trà thành công']);
+            return response()->json(['msgSuccess'=>'Xóa không gian decor thành công']);
         }
         else{
-            return response()->json(['msgError'=>'Xóa chất lượng trà thất bại']);
+            return response()->json(['msgError'=>'Xóa không gian decor thất bại']);
         }
     }
 }

@@ -40,13 +40,13 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        $dataUserTop = $this->getDataUserTop();
+//        $dataUserTop = $this->getDataUserTop();
         $dataShow = $this->getDataShow();
         $dataTagNav = $this->dataTagProduct();
 
-        return view('backend.dashboard.dashboard',[
+        return view('backend.dashboard.dashboard',[  
             'dataShow' => $dataShow,
-            'dataUserTop' => $dataUserTop,
+//            'dataUserTop' => $dataUserTop,
             'dataTagNav' => $dataTagNav,
         ]);
     }
@@ -68,10 +68,10 @@ class DashboardController extends Controller
         return $dataShow = [$dataUser, $dataProduct, $dataOrder, $dataPost];
     }
 
-    public function getDataUserTop(){
-        $dataUser = OrderModel::groupBy('user_id')->select('user_id', DB::raw('sum(order_total) as total'))->orderBy('total', 'DESC')->limit(10)->get();
-        return $dataUser;
-    }
+//    public function getDataUserTop(){
+//        $dataUser = OrderModel::groupBy('user_id')->select('user_id', DB::raw('sum(order_total) as total'))->orderBy('total', 'DESC')->limit(10)->get();
+//        return $dataUser;
+//    }
 
     public function getChartCityBuy(){
         $dataCityBuy = UserModel::where('user_city', '!=', '')->groupBy('user_city')->select('user_city', DB::raw('count(*) as total'))->orderBy('total', 'DESC')->limit(10)->get();
@@ -83,7 +83,7 @@ class DashboardController extends Controller
         }
         return $data = [$city, $count];
     }
-    
+
     public function getDataChartLine(Request $request){
         $day = $request->day;
         $orderDay = Carbon::today('Asia/Ho_Chi_Minh')->subDay($day);//Lấy ngày
@@ -97,7 +97,7 @@ class DashboardController extends Controller
 
         foreach($dataOrderDay as $item){
             $time = $item->created_at;
-            
+
             $time = $time->format('Y-m-d');
             if(!in_array($time, $dataLabel)){
                 array_push($dataLabel, $time);
@@ -129,7 +129,7 @@ class DashboardController extends Controller
 
         foreach($dataOrderDay as $item){
             $time = $item->created_at;
-            
+
             $time = $time->format('Y-m-d');
             if(!in_array($time, $dataLabel)){
                 array_push($dataLabel, $time);

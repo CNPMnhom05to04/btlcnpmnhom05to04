@@ -8,7 +8,7 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title">Thêm sản phẩm</h4>
+              <h4 class="card-title">Thêm Sân</h4>
               {{-- <p class="card-category">Complete your profile</p> --}}
             </div>
             <div class="card-body">
@@ -17,7 +17,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Tên Sản Phẩm</label>
+                      <label class="bmd-label-floating">Tên Sân</label>
                       <input type="text" value="{{ old('product_name') }}" name="product_name" class="form-control">
                       @error('product_name')
                         <span class="text-danger">{{$message}}</span>
@@ -44,47 +44,11 @@
                         @enderror
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Giá Nhập</label>
-                        <input type="number" value="{{ old('product_price_buy') }}" name="product_price_buy" class="form-control">
-                        @error('product_price_buy')
-                          <span class="text-danger">{{$message}}</span>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Giá Bán</label>
-                        <input type="number" value="{{ old('product_price_sell') }}" name="product_price_sell" class="form-control">
-                        @error('product_price_sell')
-                          <span class="text-danger">{{$message}}</span>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Khuyễn Mãi</label>
-                      <input type="number" value="{{ old('product_sale') }}" name="product_sale" class="form-control">
-                      @error('product_sale')
-                        <span class="text-danger">{{$message}}</span>
-                      @enderror
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Số Lượng</label>
-                      <input type="number" value="{{ old('product_amount') }}" name="product_amount" class="form-control">
-                      @error('product_amount')
-                        <span class="text-danger">{{$message}}</span>
-                      @enderror
-                    </div>
-                  </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Loại Sản Phẩm</label>
+                      <label class="bmd-label-floating">Loại Sân</label>
                       <select name="category_id" class="form-control">
-                        <option value="">---Chọn Loại---</option>
+                        <option value="">---Chọn Loại Sân---</option>
                         @foreach ($dataCategory as $item)
                           <option value="{{$item->category_id}}">{{$item->category_name}}</option>
                         @endforeach
@@ -96,9 +60,9 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Khối Lượng</label>
+                      <label class="bmd-label-floating">Khu Vực - Địa chỉ</label>
                       <select name="brand_id" class="form-control">
-                        <option value="">---Chọn Khối Lượng---</option>
+                        <option value="">---Chọn Khu Vực - Địa chỉ---</option>
                         @foreach ($dataBrand as $item)
                           <option value="{{$item->brand_id}}">{{$item->brand_name}}</option>
                         @endforeach
@@ -123,7 +87,7 @@
                   <span class="text-danger">{{$message}}</span>
                 @enderror
                 <br>
-                <img src="../libs/image_no.png" id="image" style="width:200px" alt="Ảnh sản phẩm">
+                <img src="../libs/image_no.png" id="image" style="width:200px" alt="Ảnh sân">
               </div>
             </div>
             <br>
@@ -131,7 +95,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="fom-group">
-                    <label class="bmd-label-floating">Hình Ảnh Phụ</label>
+                    <label class="bmd-label-floating">Hình Ảnh Khác</label>
                     <input type="file" id="product_list_image" name="product_list_image[]" onchange="chosseFiles(this)" class="form-control" accept="image/*" multiple>
                   </div>
                   @error('product_list_image')
@@ -170,11 +134,9 @@
                 </div>
             </div>
         </div>
-          <button type="submit" class="btn btn-primary pull-right">Xác nhận
-          </button>
-          <a href="/admin/products" class="btn btn-primary pull-right">Huỷ
-          </a>
-          <div class="clearfix"></div>
+        <button type="submit" class="btn btn-primary pull-right">Thêm Sân</button>
+        <a href="/admin/products" class="btn btn-primary pull-right">Danh sách sân</a>
+        <div class="clearfix"></div>
       </div>
     </form>
     </div>

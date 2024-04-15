@@ -23,7 +23,7 @@
                         <th>Tên Người Dùng</th>
                         <th>Email</th>
                         <th>Vai Trò</th>
-                        <th></th>
+                        <th>Tuỳ chọn</th>
                     </thead>
                     <tbody>
                     @foreach ($data as $item)
@@ -58,7 +58,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3 offset-md-4">
-                  {{ $data->render("pagination::bootstrap-4") }}
+                  {{ $data->render("pagination::bootstrap-4") }}  // phân trang
                 </div>
             </div>
         </div>

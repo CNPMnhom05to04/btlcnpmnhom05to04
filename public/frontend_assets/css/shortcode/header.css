@@ -24,7 +24,7 @@
 .main__menu > li > a {
     color: #ffffff;
     display: block;
-    font-size: 18px;
+    font-size: 20px;
     height: 80px;
     line-height: 85px;
     position: relative;
@@ -221,7 +221,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 -----------------------*/
 
 .header__search a i {
-    color: #000000;
+    color: #ffffff;
     font-size: 19px;
     position: relative;
 }

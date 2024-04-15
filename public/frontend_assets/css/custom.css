@@ -19,8 +19,8 @@
 }
 
 .btn{
-    border: 1px solid #c43b68;
-    background: #c43b68;
+    border: 1px solid  #2b8d06;
+    background: #2b8d06;
     color: white;
     border-radius: 0;
 }
@@ -32,8 +32,8 @@
 }
 
 .btn:hover{
-  background: white;
-  color: #c43b68;
+  background: #3ec508;
+  color: white;
 }
 
 .ht__cat__thumb{
@@ -76,11 +76,15 @@ input.star {
 }
 
 label.star {
-  float: right;
-  padding: 10px;
-  font-size: 36px;
-  color: #f5e277;
-  transition: all .2s
+    align-items: center;
+    height: 100%;
+    flex-direction: row;
+    font-size: 36px;
+    color: #f5e277;
+    transition: all .2s;
+    margin: 0;
+    margin-left: 20px;
+    padding: 4px 4px 4px 4px;
 }
 
 input.star:checked~label.star:before {

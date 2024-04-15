@@ -4,9 +4,9 @@
 <div class="content">
     <div class="container-fluid">
       @include('backend.note')
-      <form action="admin/users" method="POST">
+      <form action="admin/users" method="POST">  
         @csrf
-      <div class="row">
+           <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header card-header-primary">
@@ -65,6 +65,7 @@
                         <option value="1">Admin</option>
                         <option value="2">Quản lý sản phẩm</option>
                         <option value="3">Người dùng</option>
+                        <option value="4">Khách hàng</option>
                       </select>
                     </div>
                   </div>
