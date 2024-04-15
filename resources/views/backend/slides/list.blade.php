@@ -74,48 +74,47 @@
             </div>
             <div class="row">
                 <div class="col-md-3 offset-md-4">
-                  {{ $data->links("pagination::bootstrap-4") }}
+                    {{ $data->links("pagination::bootstrap-4") }}
                 </div>
             </div>
         </div>
     </div>
-  </div>
 @endsection
 
 @section('script')
-<script>
-    $(document).ready(function () {
-        $('.button-delete').click(function (e) {
-            e.preventDefault();
-            var deleteId = $(this).closest('tr').find('.id_delete').val();
-            var token = $('input[name=_token]').val();
-            // alert(token);
-            swal({
-                title: "Bạn có chắc sẽ xóa",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
+    <script>
+        $(document).ready(function () {
+            $('.button-delete').click(function (e) {
+                e.preventDefault();
+                var deleteId = $(this).closest('tr').find('.id_delete').val();
+                var token = $('input[name=_token]').val();
+                // alert(token);
+                swal({
+                    title: "Bạn có chắc sẽ xóa",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
                 })
-            .then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
-                        method: 'DELETE',
-                        url: 'admin/slides/'+deleteId,
-                        data: {
-                            _token: token,
-                            id: deleteId,
-                        },
-                        success: function (response) {
-                            swal(response.msgSuccess, {
-                                icon: "success",
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                method: 'DELETE',
+                                url: 'admin/slides/' + deleteId,
+                                data: {
+                                    _token: token,
+                                    id: deleteId,
+                                },
+                                success: function (response) {
+                                    swal(response.msgSuccess, {
+                                        icon: "success",
+                                    })
+                                        .then((willDelete) => location.reload())
+                                }
                             })
-                            .then((willDelete) => location.reload())
                         }
-                    })
-                }
-            });
+                    });
+            })
         })
-    })
-</script>
+    </script>
 @endsection
 

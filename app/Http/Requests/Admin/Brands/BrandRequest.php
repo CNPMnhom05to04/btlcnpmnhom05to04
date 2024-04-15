@@ -24,7 +24,7 @@ class BrandRequest extends FormRequest
     public function rules()
     {
         return [
-            'brand_name' => 'required|max:50',
+            'brand_name' => 'required|max:50|min:5',
             'brand_keyword' => 'required',
             'brand_description' => 'required',
         ];
@@ -33,10 +33,11 @@ class BrandRequest extends FormRequest
     public function messages()
     {
         return [
-            'brand_name.required' => 'Tên khối lượng không được để trống',
-            'brand_name.max' => 'Tên khối lượng không được không được dài hơn 50 kí tự',
-            'brand_keyword.required' => 'Từ khóa khối lượng không được để trống',
-            'brand_description.required' => 'Mô tả khối lượng không được để trống',
+            'brand_name.required' => 'Tên khu vực địa chỉ không được để trống',
+            'brand_name.max' => 'Tên khu vực địa chỉ không được ngắn hơn 5 kí tự và không được dài hơn 50 kí tự',
+            'brand_name.min' => 'Tên khu vực địa chỉ không được ngắn hơn 5 kí tự và không được dài hơn 50 kí tự',
+            'brand_keyword.required' => 'Quận không được để trống',
+            'brand_description.required' => 'Mô tả không được để trống',
         ];
     }
 }

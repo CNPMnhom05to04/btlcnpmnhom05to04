@@ -4,7 +4,7 @@
     <div class="container" style="margin-top: 50px; margin-bottom: 50px">
         @include('frontend.note')
         <div class="row">
-            <center><p style="color: #c43b68; font-size: 2em">Các Đơn Hàng Của Tôi</p></center>
+            <center><p style="color: #c43b68; font-size: 2em">Danh sách đặt sân </p></center>
         </div>
         <br>
         <div class="row mt-5">
@@ -21,22 +21,23 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Ngày đặt</th>
-                                    <th>Tống giá</th>
-                                    <th>Trạng thái</th>
+                                <th class="text-primary">Ngày đặt</th>
+                                <th class="text-primary">Tên sân</th>
+                                <th class="text-primary">Địa điểm</th>
+                                <th class="text-primary">Thời gian</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
                                 <tr>
-                                    <td>{{date('d/m/Y',strtotime($item->created_at))}}</td>
-                                    <td>{{number_format($item->order_total)}}</td>
-                                    <td>{!! \App\Helpers\OrderStatusHelper::Status($item->order_status) !!}</td>
-                                    <td><a class="btn btn-primary" href="/customer/orderdetail/{{$item->order_id}}">Xem chi tiết</a></td>
+                                    <td class="text-info">{{date('d/m/Y',strtotime($item->created_at))}}</td>
+                                    <td class="text-info">{{($item->product_name)}}</td>
+                                    <td class="text-info">{{($item->brand_name)}}</td>
+                                    <td class="text-info">{{date('d/m/Y',strtotime($item->start_time))}} {{date('H:i:s',strtotime($item->start_time))}} - {{date('H:i:s',strtotime($item->end_time))}}</td>
                                 </tr>
                                 @endforeach
-                                
+
                             </tbody>
                         </table>
                     </div>

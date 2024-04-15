@@ -8,7 +8,7 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title">Sửa sản phẩm</h4>
+              <h4 class="card-title">Thêm sản phẩm</h4>
             </div>
             <div class="card-body">
               <form action="admin/products/{{$data->product_id}}" method="POST" enctype="multipart/form-data">
@@ -44,47 +44,11 @@
                         @enderror
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Giá Nhập</label>
-                        <input type="number" name="product_price_buy" value="{{$data->product_price_buy}}" class="form-control">
-                        @error('product_price_buy')
-                          <span class="text-danger">{{$message}}</span>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                        <label class="bmd-label-floating">Giá Bán</label>
-                        <input type="number" name="product_price_sell" value="{{$data->product_price_sell}}" class="form-control">
-                        @error('product_price_sell')
-                          <span class="text-danger">{{$message}}</span>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Khuyễn Mãi</label>
-                      <input type="number" name="product_sale" value="{{$data->product_sale}}" class="form-control">
-                      @error('product_sale')
-                        <span class="text-danger">{{$message}}</span>
-                      @enderror
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">Số Lượng</label>
-                      <input type="number" name="product_amount" value="{{$data->product_amount}}" class="form-control">
-                      @error('product_amount')
-                        <span class="text-danger">{{$message}}</span>
-                      @enderror
-                    </div>
-                  </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Loại Sản Phẩm</label>
+                      <label class="bmd-label-floating">Loại Sân</label>
                       <select name="category_id" class="form-control">
-                        <option value="">---Chọn Loại---</option>
+                        <option value="">---Chọn Loại Sân---</option>
                         @foreach ($dataCategory as $item)
                           <option value="{{$item->category_id}}"
                             @if ($item->category_id == $data->category_id)
@@ -100,9 +64,9 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="bmd-label-floating">Thương Hiệu</label>
+                      <label class="bmd-label-floating">Khu Vực - Địa chỉ</label>
                       <select name="brand_id" class="form-control">
-                        <option value="">---Chọn Thương Hiệu---</option>
+                        <option value="">---Chọn Khu Vực - Địa chỉ---</option>
                         @foreach ($dataBrand as $item)
                           <option value="{{$item->brand_id}}"
                             @if ($item->brand_id == $data->brand_id)
@@ -180,10 +144,8 @@
                 </div>
             </div>
         </div>
-          <button type="submit" class="btn btn-primary pull-right">Xác nhận
-          </button>
-          <a href="/admin/products" class="btn btn-primary pull-right">Huỷ
-          </a>
+        <button type="submit" class="btn btn-primary pull-right">Sửa Chi Tiết Sân</button>
+        <a href="/admin/products" class="btn btn-primary pull-right">Danh sách chi tiết sân</a>
         <div class="clearfix"></div>
       </div>
     </form>

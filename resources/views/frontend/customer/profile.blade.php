@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 
 @section('content')
-    <div class="container" style="margin-top: 50px; margin-bottom: 50px">
+    <div class="container san74" style="margin-top: 50px; margin-bottom: 50px">
         @include('frontend.note')
         <div class="row">
             <center><p style="color: #c43b68; font-size: 2em">Thông tin Khách Hàng</p></center>

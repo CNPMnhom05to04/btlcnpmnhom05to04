@@ -382,6 +382,7 @@
             sendShippingFeeRequest(paymentType, selectedShippingOption);
         });
 
+        var ship_19 = $('#city_id').val();
         function sendShippingFeeRequest(paymentType, selectedShippingOption) {
             var _token = $('input[name="_token"]').val();
             $.ajax({
@@ -396,6 +397,7 @@
                     selected_shipping_option: selectedShippingOption
                 },
                 success: function (data) {
+                    if()
                     $('#shipping').text(data[2].toLocaleString('ja-JP') + '' + ' đ')
                     $('#cart_totals').text(data[1].toLocaleString('ja-JP') + '' + ' đ')
                 },

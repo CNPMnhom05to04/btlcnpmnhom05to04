@@ -3,8 +3,7 @@
     <style>
         span{
             font-size: 15px;
-            font-weight: 400;
-            color: #020002;
+            color: #9124a3;
         }
     </style>
 @endsection
@@ -14,7 +13,7 @@
     <div class="row">
         @include('backend.note')
         <div class="col-md-8">
-            <div class="card ">
+            <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">Thông Tin Sản Phẩm</h4>
                 </div>
@@ -31,14 +30,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Từ khóa:</label>
-                                    <span> {{ $data->category->category_keyword}}</span>
+                                    <span> {{ $data->product_keyword}}</span>
 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Mô tả:</label>
-                                    <span> {{ $data->brand->brand_description}}</span>
+                                    <span> {{ $data->product_description}}</span>
 
                                 </div>
                             </div>
@@ -51,7 +50,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="bmd-label-floating">Khối Lượng:</label>
+                                    <label class="bmd-label-floating">Không gian:</label>
                                     <span> {{ $data->brand->brand_name}}</span>
 
                                 </div>
@@ -67,23 +66,11 @@
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Giá bán:</label>
                                     <span>{{ number_format($data->product_price_sell)}} VNĐ</span>
+
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Số Lượng: </label>
-                                    <span> {{ $data->product_amount}}</span>
-
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Giảm giá:</label>
-                                    <span> {{ $data->product_sale}} %</span>
-                                </div>
-                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Thuộc tính: </label>
@@ -123,10 +110,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center">
-                <a href="/admin/products/{{$item->product_id}}/edit" class="btn btn-primary mx-2">Sửa</a>
-                <a href="/admin/products" class="btn btn-primary mx-2">Quay lại</a>
             </div>
         </div>
     </div>

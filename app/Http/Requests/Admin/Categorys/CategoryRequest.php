@@ -33,11 +33,11 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'category_name.required' => 'Tên loại sản phẩm không được để trống',
-            'category_name.max' => 'Tên loại sản phẩm không được ngắn hơn 10 kí tự và không được dài hơn 50 kí tự',
-            'category_name.min' => 'Tên loại sản phẩm không được ngắn hơn 10 kí tự và không được dài hơn 50 kí tự',
-            'category_keyword.required' => 'Từ khóa loại sản phẩm không được để trống',
-            'category_description.required' => 'Mô tả loại sản phẩm không được để trống',
+            'category_name.required' => 'Tên loại sân không được để trống',
+            'category_name.max' => 'Tên loại sân không được ngắn hơn 10 kí tự và không được dài hơn 50 kí tự',
+            'category_name.min' => 'Tên loại sân không được ngắn hơn 10 kí tự và không được dài hơn 50 kí tự',
+            'category_keyword.required' => 'Từ khóa loại sân không được để trống',
+            'category_description.required' => 'Mô tả loại sân không được để trống',
         ];
     }
 }

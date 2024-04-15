@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Coupons\CouponRequest;
+use App\Http\Requests\Admin\Coupons\CouponsUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\CouponModel;
 
@@ -53,7 +54,7 @@ class CouponController extends Controller
     }
 
     //Cập nhật mã giảm giá
-    public function update(CouponRequest $request, $id){
+    public function update(CouponsUpdateRequest $request, $id){
         $data = CouponModel::find($id);
 
         $data->coupon_name = $request->coupon_name;

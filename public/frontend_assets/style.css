@@ -54,66 +54,66 @@
   02. Scroll To Top
 ----------------------------------------*/
 #scrollUp {
-  border-radius: 2px;
-  bottom: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  color: #fff;
-  font-size: 28px;
-  height: 45px;
-  line-height: 49px;
-  position: fixed;
-  right: 15px;
-  text-align: center;
-  transition: all 0.3s ease 0s;
-  width: 45px;
-  z-index: 200;
+    border-radius: 2px;
+    bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    color: #fff;
+    font-size: 28px;
+    height: 45px;
+    line-height: 49px;
+    position: fixed;
+    right: 15px;
+    text-align: center;
+    transition: all 0.3s ease 0s;
+    width: 45px;
+    z-index: 200;
 }
 #scrollUp:hover {
 }
 
 @-webkit-keyframes scroll-ani-to-top {
-  0% {
-    opacity: 0;
-    bottom: 0;
-  }
-  50% {
-    opacity: 1;
-    bottom: 50%;
-  }
-  100% {
-    opacity: 0;
-    bottom: 75%;
-  }
+    0% {
+        opacity: 0;
+        bottom: 0;
+    }
+    50% {
+        opacity: 1;
+        bottom: 50%;
+    }
+    100% {
+        opacity: 0;
+        bottom: 75%;
+    }
 }
 @keyframes scroll-ani-to-top {
-  0% {
-    opacity: 0;
-    bottom: 0;
-  }
-  50% {
-    opacity: 1;
-    bottom: 50%;
-  }
-  100% {
-    opacity: 0;
-    bottom: 75%;
-  }
+    0% {
+        opacity: 0;
+        bottom: 0;
+    }
+    50% {
+        opacity: 1;
+        bottom: 50%;
+    }
+    100% {
+        opacity: 0;
+        bottom: 75%;
+    }
 }
 #scrollUp:hover i {
-  -webkit-animation: 800ms linear 0s normal none infinite running scroll-ani-to-top;
-          animation: 800ms linear 0s normal none infinite running scroll-ani-to-top;
-  height: 100%;
-  left: 0;
-  margin-bottom: -25px;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+    -webkit-animation: 800ms linear 0s normal none infinite running scroll-ani-to-top;
+    animation: 800ms linear 0s normal none infinite running scroll-ani-to-top;
+    height: 100%;
+    left: 0;
+    margin-bottom: -25px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 #scrollUp i {
-  color: #fff;
+    color: #fff;
 }
- #scrollUp {
-  background: #2b8d06 none repeat scroll 0 0;
+#scrollUp {
+    background: #2b8d06 none repeat scroll 0 0;
 }
 
 /*---------------------------------------
@@ -129,12 +129,16 @@
 ----------------------------*/
 
 
-.section__title--2 h2 {
-    color: #313131;
-    font-family: "Mazzard Soft H", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-size: 40px;
-    font-weight: 700;
+.section__title--2 h2 > a {
+    display: inline-block;
+    border-radius: 20px;
+    background: #2a8b09;
+    padding: 10.5px 20px;
+    margin: 0;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 .section__title--2 p {
     color: #333;
@@ -163,14 +167,6 @@
     transform-origin: bottom right;
 }
 
-.section__title--2 h2 {
-    padding: 0;
-    margin: 0;
-    margin-bottom: 15px;
-    position: relative;
-    display: block;
-    line-height: normal;
-}
 
 .section__title--2 a {
     display: inline-block;
@@ -226,7 +222,7 @@
     right: 10%;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
     width: 63%;
 }
 
@@ -375,6 +371,70 @@
     border-radius: 15px;
     overflow: hidden;
     margin-bottom: 15px;
+    background-image: url("https://www.traviet.com/wp-content/uploads/2021/11/banner-qua-tet-2022-11.jpg.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.khuyen_mai {
+    margin-top: 40px;
+    position: relative;
+    border: 1px #ebebeb solid;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-image: url("https://www.traviet.com/wp-content/uploads/2021/08/baner-qua-tang-doanh-nghiep.jpg.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.voucher {
+    margin-top: 40px;
+    position: relative;
+    border: 1px #ebebeb solid;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #ffd400, #acf6c6);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.product_top_buy {
+    margin-top: 40px;
+    position: relative;
+    border: 1px #ebebeb solid;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-image: url("https://www.traviet.com/wp-content/uploads/2021/11/banner-qua-tet-2022-2.jpg.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.blog {
+    margin-top: 40px;
+    position: relative;
+    border: 1px #ebebeb solid;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #656a6a, #99c5be);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.product_item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
 .product__wrap {
     margin-top: 30px;
@@ -468,21 +528,21 @@
 
 .category:hover .product__action li:nth-child(1) {
     -webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInRight;
-          animation: 300ms ease-in-out 0s normal none 1 running fadeInRight;
+    animation: 300ms ease-in-out 0s normal none 1 running fadeInRight;
     opacity: 1;
     transition: opacity 300ms linear 0s;
 }
 
 .category:hover .product__action li:nth-child(2) {
     -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInRight;
-          animation: 500ms ease-in-out 0s normal none 1 running fadeInRight;
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInRight;
     opacity: 1;
     transition: opacity 500ms linear 0s;
 }
 
 .category:hover .product__action li:nth-child(3) {
     -webkit-animation: 700ms ease-in-out 0s normal none 1 running fadeInRight;
-          animation: 700ms ease-in-out 0s normal none 1 running fadeInRight;
+    animation: 700ms ease-in-out 0s normal none 1 running fadeInRight;
     opacity: 1;
     transition: opacity 700ms linear 0s;
 }
@@ -656,7 +716,7 @@
     left: 50%;
     position: absolute;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 25px;
 }
 .testimonial__thumb img {
@@ -778,18 +838,18 @@
     justify-content: space-between;
 }
 .ht__brand__inner {
-  padding: 100px 0;
+    padding: 100px 0;
 }
 .owl-theme .owl-nav.disabled + .owl-dots {
-  margin-top: 0;
+    margin-top: 0;
 }
 .owl-carousel .owl-item img {
-  width: 85%;
+    width: 85%;
     height: 100%;
 }
 .brand__list li a img {
-  display: block;
-  margin: auto;
+    display: block;
+    margin: auto;
 }
 
 
@@ -866,7 +926,7 @@
     left: 50%;
     position: absolute;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     width: 2px;
 }
 .service__details h2:hover a {
@@ -921,7 +981,7 @@
 
 .promobox:hover .promo__thumb img {
     -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    transform: scale(1.2);
 }
 .promo__thumb img {
     transition: all 0.5s ease 0s;
@@ -933,7 +993,7 @@
     text-align: center;
     top: 50%;
     -webkit-transform: translateY(-50%) translateX(-50%);
-            transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
 }
 .ht__promo__details h2 {
     color: #ffffff;
@@ -980,7 +1040,7 @@
 }
 .big__promo__inner:hover .bg__promo__thumb img {
     -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    transform: scale(1.2);
 }
 .bg__promo__thumb img {
     transition: all 0.5s ease 0s;
@@ -990,7 +1050,7 @@
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 .big__promo__box {
     left: 100px;
@@ -1085,7 +1145,7 @@
     right: 90px;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .about {
@@ -1166,7 +1226,7 @@
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%) translateX(-50%);
-            transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
 }
 .ht__bann__details p span {
     color: #fff;
@@ -1207,7 +1267,7 @@
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%) rotate(24deg);
-            transform: translateY(-50%) rotate(24deg);
+    transform: translateY(-50%) rotate(24deg);
     transition: all 0.3s ease 0s;
     width: 1px;
 }
@@ -1217,16 +1277,16 @@
 }
 .ht__bnn__thumb:hover img {
     -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    transform: scale(1.2);
 }
 .ht__bnn__thumb img {
     transition: all 0.5s ease 0s;
 }
 
 .htc__best__product {
-  align-items: center;
-  display: flex;
-  margin-top: 40px;
+    align-items: center;
+    display: flex;
+    margin-top: 40px;
 }
 
 .htc__best__pro__thumb {
@@ -1328,7 +1388,7 @@
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 .ht__intrac__details h6 {
     color: #b7b7b7;
@@ -1372,7 +1432,7 @@
     position: absolute;
     top: -45px;
     -webkit-transform: rotate(29deg);
-            transform: rotate(29deg);
+    transform: rotate(29deg);
     width: 1px;
 }
 
@@ -1384,7 +1444,7 @@
 .inc__banner--2 .ht__intrac__details {
     left: 50%;
     -webkit-transform: translateY(-50%) translateX(-50%);
-            transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
     text-align: center;
 }
 .inc__banner--2 .ht__intrac__details h6 {
@@ -1652,14 +1712,14 @@
     color: #2b8d06;
 }
 .ht__tag__list li + li {
-  margin-left: 9px;
-  padding-left: 12px;
-  position: relative;
+    margin-left: 9px;
+    padding-left: 12px;
+    position: relative;
 }
 .ht__tag__list li + li::before {
-  content: "/";
-  position: absolute;
-  left: 0;
+    content: "/";
+    position: absolute;
+    left: 0;
 }
 .htc__compare__area {
     margin-top: 31px;
@@ -1919,7 +1979,7 @@ select.ht__select {
     left: 50%;
     position: absolute;
     -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 .htc__product__details__tab__content {
     position: relative;
@@ -1936,9 +1996,10 @@ select.ht__select {
     border: 1px solid #2b8d06;
 }
 .ht__product__dtl h2 {
-    color: #444;
+    color: #fbff00;
+    text-shadow: #000000;
     font-family: Old Standard TT;
-    font-size: 20px;
+    font-size: 45px;
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -1974,7 +2035,7 @@ select.ht__select {
     margin: 0;
 }
 .sin__desc p span {
-    color: #100d13;
+    color: #d9ff00;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     text-transform: capitalize;
@@ -2036,7 +2097,7 @@ select.ht__select {
     background: #100d13 none repeat scroll 0 0;
 }
 .pro__cat__list li a {
-    color: #363f4d;
+    color: #ffffff;
     font-size: 16px;
     transition: 0.3s;
 }
@@ -2448,7 +2509,7 @@ a.shipping-calculator-button:hover{
     right: 0;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 .ht__cp__btn a, .ht__cp__btn button {
     background: #212121 none repeat scroll 0 0;
@@ -2799,7 +2860,7 @@ a.shipping-calculator-button:hover{
     justify-content: space-between;
 }
 .comment {
-  display: flex;
+    display: flex;
 }
 .ht__comment__title h2 {
     color: #333333;
@@ -2926,11 +2987,11 @@ a.shipping-calculator-button:hover{
     border-top: 1px solid #ffffff;
 }
 .title__line--6 {
-  color: #4d4d4d;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 34px;
-  text-transform: uppercase;
+    color: #4d4d4d;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 34px;
+    text-transform: uppercase;
 }
 
 .contact-box input {
@@ -3079,28 +3140,28 @@ a.shipping-calculator-button:hover{
     top: 0;
 }
 .pointer__tooltip{
-  width: 35px;
-  height: 35px;
-  border-radius: 100%;
-  border: 5px solid #2b8d06;
-  background-color: #fff;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 5px solid #2b8d06;
+    background-color: #fff;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
 }
 .pointer__tooltip:before{
-  content: "\f129";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
-  font-family: FontAwesome;
-  color: #2b8d06;
-  font-size: 18px;
-  width: 100%;
-  height: 100%;
+    content: "\f129";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-family: FontAwesome;
+    color: #2b8d06;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
 }
 .prize__inner {
     position: relative;
@@ -3116,69 +3177,69 @@ a.shipping-calculator-button:hover{
     top: 52%;
 }
 .pointer__tooltip.pointer--3 {
-  left: 3%;
-  top: 56%;
+    left: 3%;
+    top: 56%;
 }
 
 .pointer__tooltip.pointer--4.align-top {
-  left: -7%;
-  top: 1%;
+    left: -7%;
+    top: 1%;
 }
 
 .pointer__tooltip.pointer--5.align-bottom {
-  left: 31%;
-  top: 34%;
+    left: 31%;
+    top: 34%;
 }
 
 
 .pointer__tooltip.pointer--6 {
-  left: 74%;
-  top: 2%;
+    left: 74%;
+    top: 2%;
 }
 .pointer__tooltip.pointer--7 {
-  left: 76%;
-  position: absolute;
-  top: 67%;
+    left: 76%;
+    position: absolute;
+    top: 67%;
 }
 .pointer__tooltip.pointer--8 {
-  left: 78%;
-  position: absolute;
-  top: 2%;
+    left: 78%;
+    position: absolute;
+    top: 2%;
 }
 .pointer__tooltip.pointer--9 {
-  left: 17%;
-  position: absolute;
-  top: 40%;
+    left: 17%;
+    position: absolute;
+    top: 40%;
 }
 .pointer__tooltip.pointer--10 {
-  left: 36%;
-  position: absolute;
-  top: 59%;
+    left: 36%;
+    position: absolute;
+    top: 59%;
 }
 .pointer__tooltip.pointer--11 {
-  left: 80%;
-  position: absolute;
-  top: 63%;
+    left: 80%;
+    position: absolute;
+    top: 63%;
 }
 .pointer__tooltip.pointer--12 {
-  left: 140%;
-  position: absolute;
-  top: 62%;
+    left: 140%;
+    position: absolute;
+    top: 62%;
 }
 .pointer__tooltip.pointer--13 {
-  left: 196%;
-  position: absolute;
-  top: -42%;
+    left: 196%;
+    position: absolute;
+    top: -42%;
 }
 .pointer__tooltip.pointer--14 {
-  left: 227%;
-  top: -1%;
-  position: absolute;
+    left: 227%;
+    top: -1%;
+    position: absolute;
 }
 .pointer__tooltip.pointer--15.align-top {
-  left: 206%;
-  top: 107%;
-  position: absolute;
+    left: 206%;
+    top: 107%;
+    position: absolute;
 }
 
 
@@ -3309,7 +3370,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
     left: 0;
     right: 0;
     text-align: center;
@@ -3384,9 +3445,9 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-size: 16px;
 }
 .accordion__body__form .checkout-method .checkout-method__title i.zmdi{
-   padding-right: 13px;
-   font-size: 24px;
-   line-height: 24px;
+    padding-right: 13px;
+    font-size: 24px;
+    line-height: 24px;
 }
 .accordion__body__form .checkout-method .checkout-method__single{
     margin-bottom: 40px;
@@ -3454,7 +3515,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     top: 0;
     left: 0;
 }
-                                                                                                                                                                                                                                                           /*Billing Info*/
+/*Billing Info*/
 .bilinfo .single-input,
 .paymentinfo-credit-content .single-input,
 .shipinfo .single-input{
@@ -3963,3 +4024,217 @@ ul.htc__instagram__posts.owl-carousel li img {
 .btn-primary:hover span {
     border-color: #000;
 }
+
+
+section{padding:5% 0}
+.alizarin{background:#e74c3c}
+.amethyst{background:#9b59b6}
+.emerald{background:#2ecc71}
+.midnight-blue{background:#2c3e50}
+.peter-river{background:#3498db}
+.dl{background:#f0f0f0;padding:30px 0;border-radius:20px;position:relative}
+.dl:before{content:" ";height:20px;width:20px;background:#ddd;border-radius:20px;position:absolute;left:50%;top:20px;margin-left:-10px}
+.dl .brand{text-transform:uppercase;letter-spacing:3px;padding:10px 15px;margin-top:10px;text-align:center;min-height:100px}
+.dl .discount{min-height:50px;position:relative;font-size:30px;line-height:60px;text-align:center;font-weight:700;padding:20px 15px 0;color:#f1c40f}
+.dl .discount.alizarin:after{border-top:20px solid #e74c3c}
+.dl .discount.peter-river:after{border-top:20px solid #3498db}
+.dl .discount.emerald:after{border-top:20px solid #2ecc71}
+.dl .discount.amethyst:after{border-top:20px solid #9b59b6}
+.dl .discount .type{font-size:20px;letter-spacing:1px;text-transform:uppercase;margin-top:-30px}
+.dl .descr{color:#999;margin-top:10px;padding:20px 15px}
+.dl .ends{padding:0 15px;color:#f1c40f;margin-bottom:10px}
+.dl .coupon{min-height:50px;text-align:center;text-transform:uppercase;font-weight:700;font-size:18px;padding:20px 15px}
+.dl .coupon a.open-code{color:#16a085}
+.dl .coupon .code{letter-spacing:1px;border-radius:4px;margin-top:10px;padding:10px 15px;color:#f1c40f;background:#2b8d06}
+
+
+/* Thêm khung cho mỗi phần tử sản phẩm */
+.category {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd; /* Đường viền màu xám nhạt */
+    border-radius: 8px; /* Độ cong các góc */
+}
+
+.ht__cat__thumb {
+    position: relative;
+}
+
+.ht__cat__thumb img {
+    width: 100%;
+    height: auto;
+    max-width: 260px;
+    max-height: 260px;
+    border-radius: 6px; /* Độ cong của các góc ảnh */
+}
+
+/* Hiệu ứng đổ bóng khi hover */
+.category:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.fr__product__inner {
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+/* Thêm hiệu ứng chữ khi hover */
+.fr__product__inner h4 a {
+    color: #333;
+    transition: color 0.3s ease-in-out;
+}
+
+.fr__product__inner h4 a:hover {
+    color: #ff5e15; /* Màu chữ khi hover */
+}
+
+.inventory {
+    display: inline-block;
+    line-height: 24px;
+    padding: 0 10px;
+    color: #fff;
+    background: #2a8b09;
+}
+.inventory_mark{
+    display: inline-block;
+    line-height: 24px;
+    padding: 0 10px;
+    color: #fff;
+    background: #d80808;
+}
+
+.luta-tet-left{
+    position:fixed;
+    top:100px;
+    left:0;
+    z-index: 10px;
+    width:180px;
+}
+.luta-tet-right{
+    position:fixed;
+    top:100px;
+    right:0;
+    z-index: 10px;
+    width:180px;
+}
+@media(max-width:1524px){
+    .luta-tet-left,.luta-tet-right{
+        display:none!important
+    }
+}
+
+.title__line {
+    color: #FFF;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.table-score {
+    color: #ffff;
+    font-size: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+.san7 {
+    background: url(https://treobangron.com.vn/wp-content/uploads/2022/11/background-bong-da-20.jpg) center center / cover no-repeat rgb(216, 34, 83);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.san71 {
+    background: url(https://media.istockphoto.com/id/1543118897/photo/3d-image-of-open-air-empty-american-football-stadium-with-flashlight-green-grass-gates.webp?b=1&s=170667a&w=0&k=20&c=i1EL3K35qpBUKZW3s2TTneFyiS5DcP210CkLtBNTfgM=) center center / cover no-repeat rgb(216, 34, 83);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.san72 {
+    background: url(https://media.istockphoto.com/id/1293105095/photo/soccer-field-with-illumination-green-grass-and-cloudy-sky-background-for-design-or-advertising.webp?b=1&s=170667a&w=0&k=20&c=utGs9gBO8yyq7huMRHL-ko6OADXdfYdi_suBoh1pNWU=) center center / cover no-repeat rgb(216, 34, 83);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.san74 {
+    background: url(https://images.unsplash.com/photo-1466065665758-d473db752253?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D) center center / cover no-repeat rgb(216, 34, 83);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.image_product {
+    background: url(https://media.istockphoto.com/id/1168591951/vi/anh/n%E1%BB%81n-th%E1%BB%83-thao-s%C3%A2n-v%E1%BA%ADn-%C4%91%E1%BB%99ng-b%C3%B3ng-%C4%91%C3%A1-b%C3%B3ng-%C4%91%C3%A1-tr%C3%AAn-s%C3%A2n-v%E1%BA%ADn-%C4%91%E1%BB%99ng-%C3%A1p-ph%C3%ADch-b%C3%B3ng-%C4%91%C3%A1.jpg?s=612x612&w=0&k=20&c=DlmSm2s0wyO5Qza5iGQdrFrgnYEIxtTuiVDQ1fBai-M=) center center / cover no-repeat rgb(216, 34, 83);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.animation {
+    height:50px;
+    overflow:hidden;
+    margin-left: 1rem;
+    font-size: 40px;
+  }
+  
+  .animation > div > div {
+    padding: 0.25rem 0.75rem;
+    height:2.81rem;
+    margin-bottom: 2.81rem;
+    display:inline-block;
+    align-content: center;
+  }
+  
+  .animation div:first-child {
+    animation: text-animation 8s infinite;
+  }
+  
+  .first div {
+    background-color:#20a7d8;
+  }
+  .second div {
+    background-color:#CD921E;
+  }
+  .third div {
+    background-color:#c10528;
+  }
+  
+  @keyframes text-animation {
+    0% {margin-top: 0;}
+    10% {margin-top: 0;}
+    20% {margin-top: -5.62rem;}
+    30% {margin-top: -5.62rem;}
+    40% {margin-top: -11.24rem;}
+    60% {margin-top: -11.24rem;}
+    70% {margin-top: -5.62rem;}
+    80% {margin-top: -5.62rem;}
+    90% {margin-top: 0;}
+    100% {margin-top: 0;}
+  }
+  
+
+  .animated-button {
+    width: 200px;
+    height: auto;
+    border-radius: 20px !important;
+    font-size: 20px;
+    font-family: 'simple-line-icons';
+    font-weight: 700;
+    background: #8ec1ff !important;
+  }
+
+  .animated-button:hover {
+    background: #006aef !important;
+  }
+
+  .share {
+    background: rgb(238, 255, 6);
+  }

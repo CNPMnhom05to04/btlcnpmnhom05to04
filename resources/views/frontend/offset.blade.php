@@ -6,7 +6,7 @@
                 <div class="col-md-12" >
                     <div class="search__inner">
                         <form action="/shop" autocomplete="off" method="GET">
-                            <input placeholder="Tìm kiếm sản phẩm... " type="text" name="search_keyword" id="keyword">
+                            <input placeholder="Tìm kiếm .... " type="text" name="search_keyword" id="keyword">
                             <div class="ajax-search"></div>
                             <button type="submit"></button>
                         </form>

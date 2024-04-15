@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ShipModel extends Model
 {
     use HasFactory;
-    protected $table = 'ships';
-    protected $primaryKey = 'ship_id';
+    protected $table = 'times';
+    protected $primaryKey = 'time_id';
 
 
     /**

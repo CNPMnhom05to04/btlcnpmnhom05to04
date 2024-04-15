@@ -49,8 +49,9 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section__title--2 text-center">
+                        <h2 class="title__line mb--10">
                         @if (count($dataBlog) > 0)
-                        <h2 class="title__line">BÀI VIẾT KHÁC</h2>
+                        <a>BÀI VIẾT KHÁC</a>
                         @endif
                     </div>
                 </div>
