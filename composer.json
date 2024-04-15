@@ -24,6 +24,7 @@
         "realrashid/sweet-alert": "^4.0",
         "unisharp/laravel-filemanager": "^2.3"
     },
+    
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
